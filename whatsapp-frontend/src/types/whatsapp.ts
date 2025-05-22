@@ -30,12 +30,12 @@ export interface Client {
   status: 'active' | 'expiring' | 'expired' | 'suspended';
   plan?: string;
   lastPayment?: string;
-  createdAt?: string;        // ← Agregar
-  updatedAt?: string;        // ← Agregar  
-  suspensionReason?: string; // ← Agregar
-  suspendedAt?: string;      // ← Agregar
-  reactivatedAt?: string;    // ← Agregar
-  notes?: string;            // ← Agregar
+  createdAt?: string;
+  updatedAt?: string;
+  suspensionReason?: string;
+  suspendedAt?: string;
+  reactivatedAt?: string;
+  notes?: string;
 }
 
 // Tipos para workflows de n8n
@@ -79,12 +79,100 @@ export interface SendMessageRequest {
   session?: string;
 }
 
-// Tipos para estadísticas del dashboard
+// Tipos para estadísticas de mensajes
+export interface MessageStats {
+  today: number;
+  total: number;
+  thisWeek: number;
+  thisMonth: number;
+}
+
+// Tipos para estadísticas de clientes
+export interface ClientStats {
+  active: number;
+  expiring: number;
+  expired: number;
+  suspended: number;
+  total: number;
+}
+
+// Tipos para estadísticas por tipo de mensaje
+export interface MessageTypeStats {
+  text: number;
+  file: number;
+  image: number;
+  audio: number;
+  document: number;
+}
+
+// Tipos para estadísticas por estado de mensaje
+export interface MessageStatusStats {
+  sent: number;
+  delivered: number;
+  read: number;
+  failed: number;
+}
+
+// Tipos para resumen general
+export interface SummaryStats {
+  responseRate: number;
+  totalRevenue: number;
+  avgResponseTime: number;
+  customerSatisfaction: number;
+}
+
+// Tipos para estadísticas del sistema
+export interface SystemStats {
+  uptime: {
+    process: number;
+    system: number;
+  };
+  memory: {
+    heapUsed: string;
+    heapTotal: string;
+    external: string;
+    rss: string;
+  };
+  nodejs: {
+    version: string;
+    platform: string;
+    arch: string;
+  };
+  database: {
+    type: string;
+    status: string;
+    connections?: number;
+  };
+  performance: {
+    cpu: number;
+    loadAverage: number[];
+  };
+}
+
+// Tipos para estadísticas del dashboard - ACTUALIZADO
 export interface DashboardStats {
+  // Propiedades originales
   activeSessions: number;
   messagesTotal: number;
   messagesDay: number;
   activeClients: number;
   expiringClients: number;
   activeWorkflows: number;
+  
+  // Nuevas propiedades anidadas que usa el código
+  messages: MessageStats;
+  clients: ClientStats;
+  messageTypes: MessageTypeStats;
+  messageStatus: MessageStatusStats;
+  summary: SummaryStats;
+}
+
+// Tipo combinado para respuesta completa del dashboard
+export interface FullDashboardData {
+  stats: DashboardStats;
+  systemStats: SystemStats;
+  clients: Client[];
+  messages: WhatsAppMessage[];
+  workflows: N8nWorkflow[];
+  sessionStatus: WPPConnectResponse;
 }

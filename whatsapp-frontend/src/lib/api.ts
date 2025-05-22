@@ -239,7 +239,7 @@ export const clientsAPI = {
     }
   },
 
-  // 👉 AÑADE ESTA PARTE JUSTO AQUÍ 👇
+  // Importar clientes
   importClients: async (data: { clients: Client[] }) => {
     try {
       const response = await apiClient.post('/api/clients/import', data);
@@ -253,7 +253,6 @@ export const clientsAPI = {
     }
   }
 };
-
 
 // API para workflows de n8n
 export const workflowsAPI = {
@@ -321,16 +320,16 @@ export const workflowsAPI = {
   }
 };
 
-// API para estadísticas
+// API para estadísticas - MEJORADA
 export const statsAPI = {
-  // Obtener estadísticas generales
+  // Obtener estadísticas generales - MEJORADO
   getGeneral: async () => {
     try {
       const response = await apiClient.get('/api/stats');
       return response.data.data;
     } catch (error) {
       console.error('Error fetching stats:', error);
-      // Datos de ejemplo si falla
+      // Datos de ejemplo mejorados si falla
       return {
         clients: { 
           total: 3, 
@@ -347,6 +346,19 @@ export const statsAPI = {
           sent: 28, 
           received: 17 
         },
+        messageTypes: {
+          text: 40,
+          file: 3,
+          image: 2,
+          audio: 0,
+          video: 0
+        },
+        messageStatus: {
+          sent: 25,
+          delivered: 15,
+          read: 5,
+          failed: 0
+        },
         wppConnect: { 
           connected: true, 
           session: SESSION,
@@ -359,29 +371,88 @@ export const statsAPI = {
         },
         performance: {
           uptime: Math.floor(Math.random() * 86400),
-          responseTime: Math.floor(Math.random() * 200) + 50
+          responseTime: Math.floor(Math.random() * 200) + 50,
+          averageResponseTime: 45
+        },
+        summary: {
+          totalRevenue: 1250,
+          activeRate: 85.5,
+          responseRate: 92.3
         }
       };
     }
   },
 
-  // Obtener estadísticas de clientes
+  // NUEVO: Obtener estadísticas del sistema
+  getSystem: async () => {
+    try {
+      const response = await apiClient.get('/api/stats/system');
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching system stats:', error);
+      // Datos de ejemplo del sistema si falla
+      return {
+        uptime: {
+          process: Math.floor(Math.random() * 86400) + 3600, // Entre 1-24 horas
+          system: Math.floor(Math.random() * 345600) + 86400 // Entre 1-4 días
+        },
+        memory: {
+          rss: '45 MB',
+          heapTotal: '12 MB', 
+          heapUsed: '8 MB',
+          external: '2 MB'
+        },
+        cpu: {
+          usage: Math.floor(Math.random() * 30) + 5, // 5-35%
+          loadAverage: [0.5, 0.7, 0.8]
+        },
+        wppConnect: {
+          status: 'healthy',
+          connected: true,
+          session: SESSION
+        },
+        database: {
+          status: 'connected',
+          type: 'JSON Files',
+          location: './data/'
+        },
+        nodejs: {
+          version: process.version || 'v18.17.0',
+          platform: 'linux',
+          arch: 'x64'
+        }
+      };
+    }
+  },
+
+  // NUEVO: Obtener estadísticas detalladas de clientes
   getClients: async () => {
     try {
       const response = await apiClient.get('/api/stats/clients');
       return response.data.data;
     } catch (error) {
+      console.error('Error fetching client stats:', error);
       return { 
         total: 3, 
         active: 2, 
         expiring: 1,
         expired: 0,
-        suspended: 0
+        suspended: 0,
+        growth: {
+          thisMonth: 2,
+          lastMonth: 1,
+          percentage: 100
+        },
+        byService: [
+          { name: 'Netflix Premium', count: 1 },
+          { name: 'Disney+ Familiar', count: 1 },
+          { name: 'Prime Video', count: 1 }
+        ]
       };
     }
   },
 
-  // Obtener estadísticas de mensajes
+  // Obtener estadísticas de mensajes - MEJORADO
   getMessages: async () => {
     try {
       const response = await apiClient.get('/api/stats/messages');
@@ -391,14 +462,28 @@ export const statsAPI = {
         total: 45, 
         today: 12,
         thisWeek: 67,
+        thisMonth: 156,
         sent: 28,
-        received: 17
+        received: 17,
+        byType: {
+          text: 40,
+          file: 3,
+          image: 2,
+          audio: 0
+        },
+        byStatus: {
+          sent: 25,
+          delivered: 15,
+          read: 5,
+          failed: 0
+        },
+        hourlyActivity: new Array(24).fill(0).map(() => Math.floor(Math.random() * 10))
       };
     }
   },
 
   // Obtener estadísticas del sistema
-  getSystem: async () => {
+  getSystemPerformance: async () => {
     try {
       const response = await apiClient.get('/api/stats/system');
       return response.data.data;
@@ -407,7 +492,12 @@ export const statsAPI = {
         uptime: Math.floor(Math.random() * 86400),
         memory: '128 MB',
         cpu: '15%',
-        status: 'healthy'
+        status: 'healthy',
+        connections: {
+          wpp: true,
+          gpt: true,
+          n8n: false
+        }
       };
     }
   },
@@ -426,24 +516,39 @@ export const statsAPI = {
           sentMessages: 0,
           receivedMessages: 0,
           uniqueContacts: 0
-        }
+        },
+        hourlyActivity: new Array(24).fill(0),
+        topContacts: []
       };
     }
   }
 };
 
-// API para GPT
+// API para GPT - EXPANDIDA
 export const gptAPI = {
   // Generar respuesta
   generateResponse: async (message: string, clientContext?: any) => {
     try {
-      const response = await apiClient.post('/api/gpt/generate', {
+      const response = await apiClient.post('/api/gpt/generate-response', {
         message,
         clientContext
       });
       return response.data;
     } catch (error) {
       throw new Error('Error generating GPT response');
+    }
+  },
+
+  // NUEVO: Generar respuesta específica
+  generateSpecific: async (type: string, data: any) => {
+    try {
+      const response = await apiClient.post('/api/gpt/generate-specific-response', {
+        type,
+        data
+      });
+      return response.data;
+    } catch (error) {
+      return { response: 'Lo siento, no puedo generar una respuesta en este momento.' };
     }
   },
 
@@ -459,29 +564,54 @@ export const gptAPI = {
     }
   },
 
-  // Generar respuesta específica
-  generateSpecific: async (type: string, data: any) => {
-    try {
-      const response = await apiClient.post('/api/gpt/generate-specific', {
-        type,
-        data
-      });
-      return response.data;
-    } catch (error) {
-      return { response: 'Lo siento, no puedo generar una respuesta en este momento.' };
-    }
-  },
-
-  // Mejorar mensaje
+  // NUEVO: Mejorar mensaje
   enhanceMessage: async (message: string, improvements: string[] = []) => {
     try {
-      const response = await apiClient.post('/api/gpt/enhance', {
+      const response = await apiClient.post('/api/gpt/enhance-message', {
         message,
         improvements
       });
       return response.data;
     } catch (error) {
       return { enhancedMessage: message };
+    }
+  },
+
+  // NUEVO: Generar resumen de conversación
+  generateSummary: async (messages: any[]) => {
+    try {
+      const response = await apiClient.post('/api/gpt/generate-summary', {
+        messages
+      });
+      return response.data;
+    } catch (error) {
+      return { summary: 'Conversación sobre servicios de streaming.' };
+    }
+  },
+
+  // NUEVO: Procesar múltiples mensajes
+  processMultiple: async (messages: any[]) => {
+    try {
+      const response = await apiClient.post('/api/gpt/process-multiple-messages', {
+        messages
+      });
+      return response.data;
+    } catch (error) {
+      return { results: [] };
+    }
+  },
+
+  // NUEVO: Generar sugerencias
+  generateSuggestions: async (message: string, clientContext?: any, count: number = 3) => {
+    try {
+      const response = await apiClient.post('/api/gpt/generate-suggestions', {
+        message,
+        clientContext,
+        count
+      });
+      return response.data;
+    } catch (error) {
+      return { suggestions: [] };
     }
   },
 
@@ -494,7 +624,23 @@ export const gptAPI = {
       return {
         configured: false,
         model: 'gpt-3.5-turbo',
-        temperature: 0.7
+        temperature: 0.7,
+        maxTokens: 500
+      };
+    }
+  },
+
+  // NUEVO: Obtener estadísticas de uso de GPT
+  getUsageStats: async () => {
+    try {
+      const response = await apiClient.get('/api/gpt/usage-stats');
+      return response.data.data;
+    } catch (error) {
+      return {
+        totalRequests: 0,
+        successfulRequests: 0,
+        averageResponseTime: 0,
+        cacheHitRate: 0
       };
     }
   },

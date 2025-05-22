@@ -50,6 +50,7 @@ interface MetricCardProps {
 const WhatsAppDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [systemStats, setSystemStats] = useState<any>(null); // ← NUEVO
   const [clients, setClients] = useState<Client[]>([]);
   const [messages, setMessages] = useState<WhatsAppMessage[]>([]);
   const [workflows, setWorkflows] = useState<N8nWorkflow[]>([]);
@@ -67,9 +68,10 @@ const WhatsAppDashboard = () => {
     try {
       setLoading(true);
       
-      // Cargar datos en paralelo
-      const [statsData, clientsData, messagesData, workflowsData, sessionData] = await Promise.all([
+      // Cargar TODOS los datos disponibles del backend
+      const [statsData, systemData, clientsData, messagesData, workflowsData, sessionData] = await Promise.all([
         api.stats.getGeneral().catch(() => null),
+        api.stats.getSystem().catch(() => null),      // ← NUEVO
         api.clients.getAll().catch(() => []),
         api.messages.getHistory().catch(() => []),
         api.workflows.getActive().catch(() => []),
@@ -77,6 +79,7 @@ const WhatsAppDashboard = () => {
       ]);
 
       setStats(statsData);
+      setSystemStats(systemData);  // ← NUEVO
       setClients(clientsData);
       setMessages(messagesData);
       setWorkflows(workflowsData);
@@ -163,46 +166,205 @@ const WhatsAppDashboard = () => {
         </div>
       </div>
 
-      {/* Métricas principales */}
+      {/* Métricas principales - MEJORADAS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
           title="Sesiones Activas"
-          value={stats?.activeSessions || (sessionStatus?.status ? '1' : '0')}
+          value={sessionStatus?.status ? '1' : '0'}
           icon={Phone}
           color="green"
         />
         <MetricCard
           title="Mensajes Hoy"
-          value={stats?.messagesDay || 0}
+          value={stats?.messages?.today || 0}
           icon={MessageSquare}
           change={15}
           color="blue"
         />
         <MetricCard
           title="Clientes Activos"
-          value={stats?.activeClients || clients.filter(c => c.status === 'active').length}
+          value={stats?.clients?.active || clients.filter(c => c.status === 'active').length}
           icon={Users}
           change={8}
           color="purple"
         />
         <MetricCard
           title="Por Vencer"
-          value={stats?.expiringClients || clients.filter(c => c.status === 'expiring').length}
+          value={stats?.clients?.expiring || clients.filter(c => c.status === 'expiring').length}
           icon={Bell}
           color="orange"
         />
       </div>
 
-      {/* Gráficos y datos */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Actividad reciente */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-          <div className="p-6 border-b border-gray-100">
-            <div className="flex items-center space-x-2">
-              <Activity className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-semibold">Actividad Reciente</h3>
+      {/* NUEVAS métricas del sistema */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <MetricCard
+          title="Uptime Sistema"
+          value={systemStats?.uptime?.process ? `${Math.floor(systemStats.uptime.process / 3600)}h` : '0h'}
+          icon={Activity}
+          color="green"
+        />
+        <MetricCard
+          title="Memoria Usada"
+          value={systemStats?.memory?.heapUsed || '0 MB'}
+          icon={BarChart3}
+          color="yellow"
+        />
+        <MetricCard
+          title="Tasa Respuesta"
+          value={`${stats?.summary?.responseRate || 85}%`}
+          icon={Zap}
+          color="indigo"
+        />
+        <MetricCard
+          title="Revenue Total"
+          value={`S/ ${stats?.summary?.totalRevenue || 0}`}
+          icon={TrendingUp}
+          color="emerald"
+        />
+      </div>
+
+      {/* NUEVO: Estado de Servicios */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+            <Activity className="w-5 h-5 text-green-600 mr-2" />
+            Estado de Servicios
+          </h3>
+          <button 
+            onClick={loadDashboardData}
+            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          >
+            <RefreshCw className="w-4 h-4" />
+          </button>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* WhatsApp Status */}
+          <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+            <div className={`w-3 h-3 rounded-full mr-3 ${sessionStatus?.status ? 'bg-green-400' : 'bg-red-400'}`}></div>
+            <div>
+              <p className="font-medium text-gray-900">WhatsApp</p>
+              <p className="text-sm text-gray-600">{sessionStatus?.status ? 'Conectado' : 'Desconectado'}</p>
+            </div>
+            <div className="ml-auto">
+              {sessionStatus?.status ? (
+                <CheckCircle className="w-5 h-5 text-green-500" />
+              ) : (
+                <XCircle className="w-5 h-5 text-red-500" />
+              )}
             </div>
           </div>
+
+          {/* GPT Status */}
+          <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+            <div className="w-3 h-3 rounded-full mr-3 bg-green-400"></div>
+            <div>
+              <p className="font-medium text-gray-900">OpenAI GPT</p>
+              <p className="text-sm text-gray-600">Configurado</p>
+            </div>
+            <div className="ml-auto">
+              <CheckCircle className="w-5 h-5 text-green-500" />
+            </div>
+          </div>
+
+          {/* n8n Status */}
+          <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+            <div className="w-3 h-3 rounded-full mr-3 bg-yellow-400"></div>
+            <div>
+              <p className="font-medium text-gray-900">n8n Workflows</p>
+              <p className="text-sm text-gray-600">{workflows.length} activos</p>
+            </div>
+            <div className="ml-auto">
+              <AlertCircle className="w-5 h-5 text-yellow-500" />
+            </div>
+          </div>
+        </div>
+
+        {/* Información del Sistema */}
+        {systemStats && (
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div>
+                <span className="text-gray-600">Node.js:</span>
+                <span className="ml-1 font-medium">{systemStats.nodejs?.version || 'N/A'}</span>
+              </div>
+              <div>
+                <span className="text-gray-600">Plataforma:</span>
+                <span className="ml-1 font-medium">{systemStats.nodejs?.platform || 'N/A'}</span>
+              </div>
+              <div>
+                <span className="text-gray-600">Base de Datos:</span>
+                <span className="ml-1 font-medium">{systemStats.database?.type || 'JSON Files'}</span>
+              </div>
+              <div>
+                <span className="text-gray-600">Estado BD:</span>
+                <span className="ml-1 font-medium text-green-600">{systemStats.database?.status || 'Conectada'}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Gráficos y datos */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Actividad reciente - MEJORADA */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+          <div className="p-6 border-b border-gray-100">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Activity className="w-5 h-5 text-blue-600" />
+                <h3 className="text-lg font-semibold">Actividad Reciente</h3>
+              </div>
+              {/* NUEVO: Estadísticas rápidas */}
+              <div className="flex space-x-4 text-sm">
+                <span className="text-gray-600">
+                  Total: <span className="font-medium text-blue-600">{stats?.messages?.total || 0}</span>
+                </span>
+                <span className="text-gray-600">
+                  Semana: <span className="font-medium text-green-600">{stats?.messages?.thisWeek || 0}</span>
+                </span>
+                <span className="text-gray-600">
+                  Mes: <span className="font-medium text-purple-600">{stats?.messages?.thisMonth || 0}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          {/* NUEVO: Estadísticas por tipo y estado */}
+          <div className="p-4 bg-gray-50 border-b border-gray-100">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h4 className="text-sm font-medium text-gray-700 mb-2">Por Tipo</h4>
+                <div className="flex space-x-3 text-xs">
+                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                    Texto: {stats?.messageTypes?.text || 0}
+                  </span>
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded">
+                    Archivos: {stats?.messageTypes?.file || 0}
+                  </span>
+                  <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                    Imágenes: {stats?.messageTypes?.image || 0}
+                  </span>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-gray-700 mb-2">Por Estado</h4>
+                <div className="flex space-x-3 text-xs">
+                  <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                    Enviados: {stats?.messageStatus?.sent || 0}
+                  </span>
+                  <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+                    Entregados: {stats?.messageStatus?.delivered || 0}
+                  </span>
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded">
+                    Leídos: {stats?.messageStatus?.read || 0}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="p-6">
             {loading ? (
               <div className="flex items-center justify-center py-8">
