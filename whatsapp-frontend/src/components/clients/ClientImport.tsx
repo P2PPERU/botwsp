@@ -1,6 +1,6 @@
 // src/components/clients/ClientImport.tsx
 import React, { useState } from 'react';
-import { Upload, Download, FileText, AlertCircle } from 'lucide-react';
+import { Upload, Download, FileText, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import api from '@/lib/api';
 
@@ -9,9 +9,18 @@ interface ClientImportProps {
   onCancel: () => void;
 }
 
+interface ImportResult {
+  imported: number;
+  skipped: number;
+  errors: Array<{
+    data?: any;
+    error: string;
+  }>;
+}
+
 export function ClientImport({ onSuccess, onCancel }: ClientImportProps) {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<ImportResult | null>(null);
   const [dragActive, setDragActive] = useState(false);
 
   const handleDrag = (e: React.DragEvent) => {
@@ -169,12 +178,12 @@ export function ClientImport({ onSuccess, onCancel }: ClientImportProps) {
               className="hidden"
               id="csv-upload"
             />
-            <label htmlFor="csv-upload">
+            <label htmlFor="csv-upload" className="cursor-pointer">
               <Button
-                as="span"
                 variant="outline"
                 icon={<Upload className="w-4 h-4" />}
                 disabled={loading}
+                type="button"
               >
                 {loading ? 'Procesando...' : 'Seleccionar archivo'}
               </Button>
@@ -189,29 +198,57 @@ export function ClientImport({ onSuccess, onCancel }: ClientImportProps) {
           </h3>
           
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-green-50 p-4 rounded-lg text-center">
+            <div className="bg-green-50 p-4 rounded-lg text-center border border-green-200">
+              <div className="flex items-center justify-center mb-2">
+                <CheckCircle className="w-8 h-8 text-green-600" />
+              </div>
               <p className="text-2xl font-bold text-green-600">{results.imported}</p>
               <p className="text-sm text-green-700">Importados</p>
             </div>
-            <div className="bg-yellow-50 p-4 rounded-lg text-center">
+            <div className="bg-yellow-50 p-4 rounded-lg text-center border border-yellow-200">
+              <div className="flex items-center justify-center mb-2">
+                <AlertCircle className="w-8 h-8 text-yellow-600" />
+              </div>
               <p className="text-2xl font-bold text-yellow-600">{results.skipped}</p>
               <p className="text-sm text-yellow-700">Omitidos</p>
             </div>
-            <div className="bg-red-50 p-4 rounded-lg text-center">
+            <div className="bg-red-50 p-4 rounded-lg text-center border border-red-200">
+              <div className="flex items-center justify-center mb-2">
+                <XCircle className="w-8 h-8 text-red-600" />
+              </div>
               <p className="text-2xl font-bold text-red-600">{results.errors?.length || 0}</p>
               <p className="text-sm text-red-700">Errores</p>
             </div>
           </div>
 
+          {/* Resumen de la importación */}
+          <div className="bg-gray-50 rounded-lg p-4">
+            <h4 className="font-medium text-gray-900 mb-2">Resumen</h4>
+            <div className="text-sm text-gray-600 space-y-1">
+              <p>✅ <strong>{results.imported} clientes</strong> importados correctamente</p>
+              {results.skipped > 0 && (
+                <p>⚠️ <strong>{results.skipped} clientes</strong> omitidos (ya existían)</p>
+              )}
+              {results.errors && results.errors.length > 0 && (
+                <p>❌ <strong>{results.errors.length} errores</strong> encontrados</p>
+              )}
+            </div>
+          </div>
+
           {results.errors && results.errors.length > 0 && (
-            <div className="bg-red-50 rounded-lg p-4">
+            <div className="bg-red-50 rounded-lg p-4 border border-red-200">
               <h4 className="font-medium text-red-900 mb-2">Errores encontrados:</h4>
-              <ul className="text-sm text-red-700 space-y-1">
-                {results.errors.slice(0, 5).map((error: any, index: number) => (
-                  <li key={index}>• {error.error}</li>
+              <ul className="text-sm text-red-700 space-y-1 max-h-40 overflow-y-auto">
+                {results.errors.slice(0, 10).map((error, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-red-500 mr-2">•</span>
+                    <span>{error.error}</span>
+                  </li>
                 ))}
-                {results.errors.length > 5 && (
-                  <li>• Y {results.errors.length - 5} errores más...</li>
+                {results.errors.length > 10 && (
+                  <li className="text-red-600 font-medium">
+                    ... y {results.errors.length - 10} errores más
+                  </li>
                 )}
               </ul>
             </div>
@@ -220,11 +257,15 @@ export function ClientImport({ onSuccess, onCancel }: ClientImportProps) {
       )}
 
       {/* Botones */}
-      <div className="flex justify-end space-x-2">
-        <Button variant="outline" onClick={onCancel}>
+      <div className="flex justify-end space-x-2 pt-4">
+        <Button 
+          variant="outline" 
+          onClick={onCancel}
+          disabled={loading}
+        >
           {results ? 'Cerrar' : 'Cancelar'}
         </Button>
-        {results && (
+        {results && results.imported > 0 && (
           <Button onClick={onSuccess}>
             Continuar
           </Button>

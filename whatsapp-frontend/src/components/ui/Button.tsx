@@ -1,7 +1,31 @@
 // src/components/ui/Button.tsx
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
+// Función cn local (no importar desde utils)
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Utilidades locales
+export function formatDate(date: string | Date) {
+  return new Date(date).toLocaleDateString('es-PE');
+}
+
+export function formatDateTime(date: string | Date) {
+  return new Date(date).toLocaleString('es-PE');
+}
+
+export function formatPhone(phone: string) {
+  // Formatear número peruano
+  if (phone.startsWith('51') && phone.length === 11) {
+    return `+51 ${phone.slice(2, 5)} ${phone.slice(5, 8)} ${phone.slice(8)}`;
+  }
+  return phone;
+}
+
+// Button Component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
@@ -50,7 +74,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-// src/components/ui/Input.tsx
+Button.displayName = "Button";
+
+// Input Component
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
@@ -91,7 +117,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-// src/components/ui/Table.tsx
+Input.displayName = "Input";
+
+// Table Component
 interface Column<T> {
   key: keyof T | string;
   label: string;
@@ -186,7 +214,7 @@ export function Table<T extends Record<string, any>>({
   );
 }
 
-// src/components/ui/Modal.tsx
+// Modal Component
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -224,7 +252,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
   );
 }
 
-// src/components/ui/Badge.tsx
+// Badge Component
 interface BadgeProps {
   children: React.ReactNode;
   variant?: 'default' | 'success' | 'warning' | 'danger' | 'info';
@@ -254,28 +282,4 @@ export function Badge({ children, variant = 'default', size = 'md' }: BadgeProps
       {children}
     </span>
   );
-}
-
-// src/lib/utils.ts
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-export function formatDate(date: string | Date) {
-  return new Date(date).toLocaleDateString('es-PE');
-}
-
-export function formatDateTime(date: string | Date) {
-  return new Date(date).toLocaleString('es-PE');
-}
-
-export function formatPhone(phone: string) {
-  // Formatear número peruano
-  if (phone.startsWith('51') && phone.length === 11) {
-    return `+51 ${phone.slice(2, 5)} ${phone.slice(5, 8)} ${phone.slice(8)}`;
-  }
-  return phone;
 }

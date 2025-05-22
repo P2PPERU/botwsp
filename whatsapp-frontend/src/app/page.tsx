@@ -1,3 +1,4 @@
+// src/app/page.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -8,24 +9,23 @@ import {
   Users, 
   BarChart3, 
   Bot, 
-  Workflow, 
-  Send, 
-  QrCode, 
-  Bell, 
-  AlertCircle,
+  Workflow,
+  Bell,
+  Activity,
+  RefreshCw,
   CheckCircle,
   XCircle,
-  Zap,
-  Activity,
-  TrendingUp,
-  Clock,
-  DollarSign,
-  UserPlus,
+  AlertCircle,
+  Send,
   MessageCircle,
-  RefreshCw
+  Clock,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
 import api from '@/lib/api';
 import { ClientsPage } from '@/components/clients/ClientsPage';
+import { MessagingHub } from '@/components/messaging/MessagingHub';
+import { MessagingProvider } from '@/components/messaging/MessagingPage';
 import { 
   Client, 
   WhatsAppMessage, 
@@ -54,7 +54,6 @@ const WhatsAppDashboard = () => {
   const [messages, setMessages] = useState<WhatsAppMessage[]>([]);
   const [workflows, setWorkflows] = useState<N8nWorkflow[]>([]);
   const [loading, setLoading] = useState(true);
-  const [newMessage, setNewMessage] = useState({ phone: '', message: '' });
   const [sessionStatus, setSessionStatus] = useState<WPPConnectResponse | null>(null);
 
   // Cargar datos iniciales
@@ -86,23 +85,6 @@ const WhatsAppDashboard = () => {
       console.error('Error loading dashboard data:', error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleSendMessage = async () => {
-    if (!newMessage.phone || !newMessage.message) {
-      alert('Por favor completa todos los campos');
-      return;
-    }
-
-    try {
-      await api.messages.send(newMessage);
-      setNewMessage({ phone: '', message: '' });
-      alert('Mensaje enviado correctamente');
-      loadDashboardData(); // Recargar datos
-    } catch (error) {
-      console.error('Error sending message:', error);
-      alert('Error al enviar mensaje');
     }
   };
 
@@ -324,7 +306,12 @@ const WhatsAppDashboard = () => {
                   <button className="text-xs bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
                     Renovar
                   </button>
-                  <button className="text-xs bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
+                  <button 
+                    onClick={() => {
+                      setActiveTab('messages');
+                    }}
+                    className="text-xs bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                  >
                     Contactar
                   </button>
                 </div>
@@ -336,106 +323,9 @@ const WhatsAppDashboard = () => {
     </div>
   );
 
-  const MessagesContent = () => (
-    <div className="space-y-6">
-      {/* Formulario de envío mejorado */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-        <div className="p-6 border-b border-gray-100">
-          <h3 className="text-lg font-semibold flex items-center">
-            <Send className="w-5 h-5 mr-2 text-blue-600" />
-            Enviar Mensaje
-          </h3>
-        </div>
-        <div className="p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Número de teléfono
-                </label>
-                <input
-                  type="text"
-                  value={newMessage.phone}
-                  onChange={(e) => setNewMessage({...newMessage, phone: e.target.value})}
-                  placeholder="51987654321"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje
-                </label>
-                <textarea
-                  value={newMessage.message}
-                  onChange={(e) => setNewMessage({...newMessage, message: e.target.value})}
-                  placeholder="Escribe tu mensaje aquí..."
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                />
-              </div>
-              <button
-                onClick={handleSendMessage}
-                disabled={!newMessage.phone || !newMessage.message}
-                className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center space-x-2 font-medium"
-              >
-                <Send className="h-4 w-4" />
-                <span>Enviar Mensaje</span>
-              </button>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="font-medium text-gray-900 mb-3">Plantillas Rápidas</h4>
-              <div className="space-y-2">
-                {[
-                  { label: 'Saludo', text: '¡Hola! 👋 ¿En qué puedo ayudarte hoy?' },
-                  { label: 'Precios', text: 'Te envío información sobre nuestros planes de streaming 📺' },
-                  { label: 'Soporte', text: 'Estoy aquí para ayudarte con cualquier problema técnico 🔧' }
-                ].map((template) => (
-                  <button
-                    key={template.label}
-                    onClick={() => setNewMessage({...newMessage, message: template.text})}
-                    className="w-full text-left p-3 bg-white border border-gray-200 hover:border-blue-300 rounded-lg text-sm"
-                  >
-                    <span className="font-medium">{template.label}:</span>
-                    <span className="text-gray-600 ml-2">{template.text}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Historial de mensajes */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-        <div className="p-6 border-b border-gray-100">
-          <h3 className="text-lg font-semibold">Historial de Mensajes</h3>
-        </div>
-        <div className="p-6">
-          <div className="space-y-4">
-            {messages.map((msg, index) => (
-              <div key={msg.id || index} className={`flex ${msg.fromMe ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
-                  msg.fromMe 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-gray-100 text-gray-900'
-                }`}>
-                  <p className="text-sm">{msg.message}</p>
-                  <div className="flex items-center justify-between mt-2 text-xs opacity-75">
-                    <span>{msg.time}</span>
-                    <StatusBadge status={msg.status} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-    { id: 'messages', label: 'Mensajes', icon: MessageSquare },
+    { id: 'messages', label: 'Mensajería', icon: MessageSquare },
     { id: 'clients', label: 'Clientes', icon: Users },
     { id: 'workflows', label: 'Workflows', icon: Workflow },
     { id: 'settings', label: 'Configuración', icon: Settings }
@@ -443,17 +333,46 @@ const WhatsAppDashboard = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'dashboard': return <DashboardContent />;
-      case 'messages': return <MessagesContent />;
+      case 'dashboard': 
+        return <DashboardContent />;
+      
+      case 'messages': 
+        return (
+          <MessagingProvider>
+            <MessagingHub />
+          </MessagingProvider>
+        );
+      
       case 'clients': 
-        return <ClientsPage onSendMessage={(phone: string, name: string) => {
-          console.log('Enviar mensaje a:', phone, name);
-          setActiveTab('messages');
-          setNewMessage({ phone, message: `Hola ${name}, ¿cómo estás?` });
-        }} />;
-      case 'workflows': return <div className="p-8 text-center text-gray-500">Módulo de workflows en desarrollo</div>;
-      case 'settings': return <div className="p-8 text-center text-gray-500">Configuración en desarrollo</div>;
-      default: return <DashboardContent />;
+        return (
+          <ClientsPage 
+            onSendMessage={(phone: string, name: string) => {
+              console.log('Enviar mensaje a:', phone, name);
+              setActiveTab('messages');
+            }} 
+          />
+        );
+      
+      case 'workflows': 
+        return (
+          <div className="p-8 text-center text-gray-500">
+            <Workflow className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-xl font-medium text-gray-700 mb-2">Workflows en Desarrollo</h3>
+            <p className="text-gray-500">Esta sección estará disponible pronto</p>
+          </div>
+        );
+      
+      case 'settings': 
+        return (
+          <div className="p-8 text-center text-gray-500">
+            <Settings className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-xl font-medium text-gray-700 mb-2">Configuración</h3>
+            <p className="text-gray-500">Panel de configuración en desarrollo</p>
+          </div>
+        );
+      
+      default: 
+        return <DashboardContent />;
     }
   };
 
@@ -495,11 +414,20 @@ const WhatsAppDashboard = () => {
 
         {/* Status del sistema */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">
-          <div className="flex items-center space-x-2">
-            <div className={`w-2 h-2 rounded-full ${sessionStatus?.status ? 'bg-green-400' : 'bg-red-400'}`}></div>
-            <span className="text-xs text-gray-600">
-              {sessionStatus?.status ? 'Sistema Activo' : 'Desconectado'}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className={`w-2 h-2 rounded-full ${sessionStatus?.status ? 'bg-green-400' : 'bg-red-400'}`}></div>
+              <span className="text-xs text-gray-600">
+                {sessionStatus?.status ? 'Sistema Activo' : 'Desconectado'}
+              </span>
+            </div>
+            <button
+              onClick={loadDashboardData}
+              className="p-1 text-gray-400 hover:text-gray-600 rounded"
+              title="Actualizar"
+            >
+              <RefreshCw className="w-3 h-3" />
+            </button>
           </div>
         </div>
       </div>
