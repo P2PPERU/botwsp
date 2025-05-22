@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Juan Pérez",
+    "phone": "51987654321",
+    "service": "Netflix Premium",
+    "plan": "Familiar",
+    "expiry": "2025-05-25",
+    "status": "active",
+    "lastPayment": "2025-04-25",
+    "createdAt": "2025-05-22T03:21:06.915Z",
+    "updatedAt": "2025-05-22T03:21:06.915Z"
+  },
+  {
+    "id": 2,
+    "name": "María García",
+    "phone": "51923456789",
+    "service": "Disney+ Familiar",
+    "plan": "Premium",
+    "expiry": "2025-05-24",
+    "status": "expiring",
+    "lastPayment": "2025-04-24",
+    "createdAt": "2025-05-22T03:21:06.915Z",
+    "updatedAt": "2025-05-22T03:21:06.915Z"
+  },
+  {
+    "id": 3,
+    "name": "Carlos López",
+    "phone": "51956789123",
+    "service": "Prime Video",
+    "plan": "Basic",
+    "expiry": "2025-05-22",
+    "status": "expired",
+    "lastPayment": "2025-04-22",
+    "createdAt": "2025-05-22T03:21:06.915Z",
+    "updatedAt": "2025-05-22T03:21:06.915Z"
+  }
+]

@@ -2,13 +2,6 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-// Importar rutas
-const sessionRoutes = require('./routes/sessions');
-const messageRoutes = require('./routes/messages');
-const clientRoutes = require('./routes/clients');
-const workflowRoutes = require('./routes/workflows');
-const webhookRoutes = require('./routes/webhooks');
-
 // Importar middleware
 const errorHandler = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
@@ -19,8 +12,12 @@ require('./jobs/reminderCron');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware global
-app.use(cors());
+// Middleware global mejorado
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,24 +27,33 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rutas principales
-app.use('/api/sessions', sessionRoutes);
-app.use('/api/messages', messageRoutes);
-app.use('/api/clients', clientRoutes);
-app.use('/api/workflows', workflowRoutes);
-app.use('/webhook', webhookRoutes);
+// Importar controladores
+const sessionController = require('./controllers/sessionController');
+const messageController = require('./controllers/messageController');
+const clientController = require('./controllers/clientController');
+const statsController = require('./controllers/statsController');
+const workflowController = require('./controllers/workflowController');
+
+// Rutas principales con binding correcto
+app.use('/api/sessions', require('./routes/sessions'));
+app.use('/api/messages', require('./routes/messages'));
+app.use('/api/clients', require('./routes/clients'));
+app.use('/api/workflows', require('./routes/workflows'));
+app.use('/webhook', require('./routes/webhooks'));
+
+// Ruta de estadísticas con binding correcto
+app.get('/api/stats', (req, res) => statsController.getStats(req, res));
 
 // Ruta de health check
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    memory: process.memoryUsage(),
+    version: '1.0.0'
   });
 });
-
-// Ruta de estadísticas generales
-app.get('/api/stats', require('./controllers/statsController').getStats);
 
 // Manejo de errores
 app.use(errorHandler);

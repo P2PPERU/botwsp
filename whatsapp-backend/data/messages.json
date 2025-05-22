@@ -1,0 +1,54 @@
+[
+  {
+    "id": "msg_1747884459032_937",
+    "from": "tes4",
+    "to": "51946508454@c.us",
+    "message": "Te envío información sobre nuestros planes de streaming 📺",
+    "type": "text",
+    "status": "sent",
+    "fromMe": true,
+    "timestamp": 1747884459032,
+    "time": "10:27:39 p. m.",
+    "bulkId": null,
+    "fileData": null,
+    "readAt": null,
+    "deliveredAt": null,
+    "createdAt": "2025-05-22T03:27:39.032Z"
+  },
+  {
+    "id": "msg_1",
+    "from": "51987654321",
+    "to": "tes4",
+    "message": "Hola, necesito información sobre Netflix",
+    "type": "text",
+    "status": "delivered",
+    "fromMe": false,
+    "timestamp": 1747883466928,
+    "time": "10:11:06 p. m.",
+    "createdAt": "2025-05-22T03:11:06.929Z"
+  },
+  {
+    "id": "msg_2",
+    "from": "tes4",
+    "to": "51987654321",
+    "message": "¡Hola! Te ayudo con información sobre nuestros planes de Netflix Premium.",
+    "type": "text",
+    "status": "read",
+    "fromMe": true,
+    "timestamp": 1747883486929,
+    "time": "10:11:26 p. m.",
+    "createdAt": "2025-05-22T03:11:26.929Z"
+  },
+  {
+    "id": "msg_3",
+    "from": "51923456789",
+    "to": "tes4",
+    "message": "Mi suscripción vence mañana, ¿puedo renovar?",
+    "type": "text",
+    "status": "delivered",
+    "fromMe": false,
+    "timestamp": 1747883766929,
+    "time": "10:16:06 p. m.",
+    "createdAt": "2025-05-22T03:16:06.929Z"
+  }
+]
