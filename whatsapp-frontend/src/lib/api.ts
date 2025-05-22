@@ -237,8 +237,23 @@ export const clientsAPI = {
     } catch (error) {
       return { clients: [], count: 0 };
     }
+  },
+
+  // 👉 AÑADE ESTA PARTE JUSTO AQUÍ 👇
+  importClients: async (data: { clients: Client[] }) => {
+    try {
+      const response = await apiClient.post('/api/clients/import', data);
+      return response.data;
+    } catch (error: any) {
+      return {
+        imported: 0,
+        skipped: 0,
+        errors: [{ error: 'Import failed', details: error.message }]
+      };
+    }
   }
 };
+
 
 // API para workflows de n8n
 export const workflowsAPI = {

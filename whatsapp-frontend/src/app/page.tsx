@@ -25,16 +25,37 @@ import {
   RefreshCw
 } from 'lucide-react';
 import api from '@/lib/api';
+import { ClientsPage } from '@/components/clients/ClientsPage';
+import { 
+  Client, 
+  WhatsAppMessage, 
+  N8nWorkflow, 
+  WPPConnectResponse, 
+  DashboardStats 
+} from '@/types/whatsapp';
+
+interface StatusBadgeProps {
+  status: string;
+  icon?: React.ComponentType<any>;
+}
+
+interface MetricCardProps {
+  title: string;
+  value: string | number;
+  icon: React.ComponentType<any>;
+  change?: number;
+  color?: string;
+}
 
 const WhatsAppDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [stats, setStats] = useState(null);
-  const [clients, setClients] = useState([]);
-  const [messages, setMessages] = useState([]);
-  const [workflows, setWorkflows] = useState([]);
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [messages, setMessages] = useState<WhatsAppMessage[]>([]);
+  const [workflows, setWorkflows] = useState<N8nWorkflow[]>([]);
   const [loading, setLoading] = useState(true);
   const [newMessage, setNewMessage] = useState({ phone: '', message: '' });
-  const [sessionStatus, setSessionStatus] = useState(null);
+  const [sessionStatus, setSessionStatus] = useState<WPPConnectResponse | null>(null);
 
   // Cargar datos iniciales
   useEffect(() => {
@@ -85,20 +106,24 @@ const WhatsAppDashboard = () => {
     }
   };
 
-  const StatusBadge = ({ status, icon: Icon }) => {
-    const getStatusConfig = (status) => {
+  const StatusBadge = ({ status, icon: Icon }: StatusBadgeProps) => {
+    const getStatusConfig = (status: string) => {
       const configs = {
         connected: { color: 'bg-green-100 text-green-800 border-green-200', icon: CheckCircle },
         disconnected: { color: 'bg-red-100 text-red-800 border-red-200', icon: XCircle },
+        connecting: { color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: AlertCircle },
         active: { color: 'bg-green-100 text-green-800 border-green-200', icon: CheckCircle },
         paused: { color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: AlertCircle },
         expired: { color: 'bg-red-100 text-red-800 border-red-200', icon: XCircle },
         expiring: { color: 'bg-orange-100 text-orange-800 border-orange-200', icon: AlertCircle },
+        suspended: { color: 'bg-gray-100 text-gray-800 border-gray-200', icon: XCircle },
         delivered: { color: 'bg-blue-100 text-blue-800 border-blue-200', icon: CheckCircle },
         read: { color: 'bg-green-100 text-green-800 border-green-200', icon: CheckCircle },
-        sent: { color: 'bg-gray-100 text-gray-800 border-gray-200', icon: CheckCircle }
+        sent: { color: 'bg-gray-100 text-gray-800 border-gray-200', icon: CheckCircle },
+        failed: { color: 'bg-red-100 text-red-800 border-red-200', icon: XCircle },
+        error: { color: 'bg-red-100 text-red-800 border-red-200', icon: XCircle }
       };
-      return configs[status] || configs.sent;
+      return configs[status as keyof typeof configs] || configs.sent;
     };
 
     const config = getStatusConfig(status);
@@ -112,7 +137,7 @@ const WhatsAppDashboard = () => {
     );
   };
 
-  const MetricCard = ({ title, value, icon: Icon, change, color = 'blue' }) => (
+  const MetricCard = ({ title, value, icon: Icon, change, color = 'blue' }: MetricCardProps) => (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between">
         <div>
@@ -142,9 +167,9 @@ const WhatsAppDashboard = () => {
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            <div className={`w-3 h-3 rounded-full animate-pulse ${sessionStatus?.status ? 'bg-green-400' : 'bg-red-400'}`}></div>
             <span className="text-sm font-medium text-gray-700">
-              {sessionStatus ? 'Conectado' : 'Desconectado'}
+              {sessionStatus?.status ? 'Conectado' : 'Desconectado'}
             </span>
           </div>
           <button 
@@ -160,27 +185,27 @@ const WhatsAppDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
           title="Sesiones Activas"
-          value={stats?.wppConnect?.connected ? '1' : '0'}
+          value={stats?.activeSessions || (sessionStatus?.status ? '1' : '0')}
           icon={Phone}
           color="green"
         />
         <MetricCard
           title="Mensajes Hoy"
-          value={stats?.messages?.today || '0'}
+          value={stats?.messagesDay || 0}
           icon={MessageSquare}
           change={15}
           color="blue"
         />
         <MetricCard
           title="Clientes Activos"
-          value={stats?.clients?.active || clients.filter(c => c.status === 'active').length}
+          value={stats?.activeClients || clients.filter(c => c.status === 'active').length}
           icon={Users}
           change={8}
           color="purple"
         />
         <MetricCard
           title="Por Vencer"
-          value={stats?.clients?.expiring || clients.filter(c => c.status === 'expiring').length}
+          value={stats?.expiringClients || clients.filter(c => c.status === 'expiring').length}
           icon={Bell}
           color="orange"
         />
@@ -204,7 +229,7 @@ const WhatsAppDashboard = () => {
             ) : (
               <div className="space-y-4">
                 {messages.slice(0, 5).map((msg, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg">
+                  <div key={msg.id || index} className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       msg.fromMe ? 'bg-blue-100' : 'bg-green-100'
                     }`}>
@@ -388,7 +413,7 @@ const WhatsAppDashboard = () => {
         <div className="p-6">
           <div className="space-y-4">
             {messages.map((msg, index) => (
-              <div key={index} className={`flex ${msg.fromMe ? 'justify-end' : 'justify-start'}`}>
+              <div key={msg.id || index} className={`flex ${msg.fromMe ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
                   msg.fromMe 
                     ? 'bg-blue-600 text-white' 
@@ -420,7 +445,12 @@ const WhatsAppDashboard = () => {
     switch (activeTab) {
       case 'dashboard': return <DashboardContent />;
       case 'messages': return <MessagesContent />;
-      case 'clients': return <div className="p-8 text-center text-gray-500">Módulo de clientes en desarrollo</div>;
+      case 'clients': 
+        return <ClientsPage onSendMessage={(phone: string, name: string) => {
+          console.log('Enviar mensaje a:', phone, name);
+          setActiveTab('messages');
+          setNewMessage({ phone, message: `Hola ${name}, ¿cómo estás?` });
+        }} />;
       case 'workflows': return <div className="p-8 text-center text-gray-500">Módulo de workflows en desarrollo</div>;
       case 'settings': return <div className="p-8 text-center text-gray-500">Configuración en desarrollo</div>;
       default: return <DashboardContent />;
@@ -466,9 +496,9 @@ const WhatsAppDashboard = () => {
         {/* Status del sistema */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">
           <div className="flex items-center space-x-2">
-            <div className={`w-2 h-2 rounded-full ${sessionStatus ? 'bg-green-400' : 'bg-red-400'}`}></div>
+            <div className={`w-2 h-2 rounded-full ${sessionStatus?.status ? 'bg-green-400' : 'bg-red-400'}`}></div>
             <span className="text-xs text-gray-600">
-              {sessionStatus ? 'Sistema Activo' : 'Desconectado'}
+              {sessionStatus?.status ? 'Sistema Activo' : 'Desconectado'}
             </span>
           </div>
         </div>

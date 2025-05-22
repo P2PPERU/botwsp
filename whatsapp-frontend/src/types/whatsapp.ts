@@ -30,6 +30,12 @@ export interface Client {
   status: 'active' | 'expiring' | 'expired' | 'suspended';
   plan?: string;
   lastPayment?: string;
+  createdAt?: string;        // ← Agregar
+  updatedAt?: string;        // ← Agregar  
+  suspensionReason?: string; // ← Agregar
+  suspendedAt?: string;      // ← Agregar
+  reactivatedAt?: string;    // ← Agregar
+  notes?: string;            // ← Agregar
 }
 
 // Tipos para workflows de n8n
