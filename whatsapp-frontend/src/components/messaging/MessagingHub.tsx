@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import api from '@/lib/api';
 import { WhatsAppMessage, Client } from '@/types/whatsapp';
+import { LoadingStates } from '@/components/LoadingStates';
 
 // Interfaces
 interface Conversation {
@@ -55,6 +56,7 @@ export function MessagingHub() {
   
   // Estados de UI
   const [loading, setLoading] = useState(true);
+  const [loadingMessages, setLoadingMessages] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [newMessage, setNewMessage] = useState('');
   const [sending, setSending] = useState(false);
@@ -119,11 +121,14 @@ export function MessagingHub() {
 
   const loadMessages = async () => {
     try {
+      setLoadingMessages(true);
       const messagesData = await api.messages.getHistory();
       setMessages(messagesData);
       setConversations(buildConversations(messagesData, clients));
     } catch (error) {
       console.error('Error loading messages:', error);
+    } finally {
+      setLoadingMessages(false);
     }
   };
 
@@ -418,13 +423,14 @@ export function MessagingHub() {
               <div className="flex-1 overflow-y-auto">
                 {loading ? (
                   <div className="flex items-center justify-center h-32">
-                    <Loader className="w-6 h-6 animate-spin text-blue-600" />
+                    <LoadingStates.Message message="Cargando conversaciones..." />
                   </div>
                 ) : filteredConversations.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center h-32 text-gray-500">
-                    <MessageSquare className="w-8 h-8 mb-2" />
-                    <p>No hay conversaciones</p>
-                  </div>
+                  <LoadingStates.Empty
+                    icon={MessageSquare}
+                    title="No hay conversaciones"
+                    description={searchTerm ? "No se encontraron conversaciones" : "Aún no tienes conversaciones"}
+                  />
                 ) : (
                   filteredConversations.map((conversation) => (
                     <div
@@ -527,41 +533,47 @@ export function MessagingHub() {
 
                   {/* Messages */}
                   <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
-                    {currentConversation.messages
-                      .sort((a, b) => a.timestamp - b.timestamp)
-                      .map((message) => (
-                        <div
-                          key={message.id}
-                          className={`flex ${message.fromMe ? 'justify-end' : 'justify-start'}`}
-                        >
-                          <div
-                            className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                              message.fromMe
-                                ? 'bg-blue-500 text-white'
-                                : 'bg-white text-gray-900 border border-gray-200'
-                            }`}
-                          >
-                            <p className="text-sm">{message.message}</p>
-                            <div className="flex items-center justify-end mt-1 space-x-1">
-                              <span className={`text-xs ${message.fromMe ? 'text-blue-100' : 'text-gray-500'}`}>
-                                {formatTime(message.timestamp)}
-                              </span>
-                              {message.fromMe && (
-                                <div className={`${
-                                  message.status === 'read' ? 'text-green-300' : 
-                                  message.status === 'delivered' ? 'text-blue-200' : 
-                                  'text-blue-100'
-                                }`}>
-                                  {message.status === 'sent' && '✓'}
-                                  {message.status === 'delivered' && '✓✓'}
-                                  {message.status === 'read' && '✓✓'}
+                    {loadingMessages ? (
+                      <LoadingStates.Conversation />
+                    ) : (
+                      <>
+                        {currentConversation.messages
+                          .sort((a, b) => a.timestamp - b.timestamp)
+                          .map((message) => (
+                            <div
+                              key={message.id}
+                              className={`flex ${message.fromMe ? 'justify-end' : 'justify-start'}`}
+                            >
+                              <div
+                                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                                  message.fromMe
+                                    ? 'bg-blue-500 text-white'
+                                    : 'bg-white text-gray-900 border border-gray-200'
+                                }`}
+                              >
+                                <p className="text-sm">{message.message}</p>
+                                <div className="flex items-center justify-end mt-1 space-x-1">
+                                  <span className={`text-xs ${message.fromMe ? 'text-blue-100' : 'text-gray-500'}`}>
+                                    {formatTime(message.timestamp)}
+                                  </span>
+                                  {message.fromMe && (
+                                    <div className={`${
+                                      message.status === 'read' ? 'text-green-300' : 
+                                      message.status === 'delivered' ? 'text-blue-200' : 
+                                      'text-blue-100'
+                                    }`}>
+                                      {message.status === 'sent' && '✓'}
+                                      {message.status === 'delivered' && '✓✓'}
+                                      {message.status === 'read' && '✓✓'}
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      ))}
-                    <div ref={messagesEndRef} />
+                          ))}
+                        <div ref={messagesEndRef} />
+                      </>
+                    )}
                   </div>
 
                   {/* GPT Suggestions */}
@@ -668,11 +680,13 @@ export function MessagingHub() {
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 transition-colors"
                       >
                         {sending ? (
-                          <Loader className="w-4 h-4 animate-spin" />
+                          <LoadingStates.Button text="Enviando" />
                         ) : (
-                          <Send className="w-4 h-4" />
+                          <>
+                            <Send className="w-4 h-4" />
+                            <span>Enviar</span>
+                          </>
                         )}
-                        <span>Enviar</span>
                       </button>
                     </div>
                   </div>
@@ -755,11 +769,13 @@ export function MessagingHub() {
                       className="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                     >
                       {sending ? (
-                        <Loader className="w-5 h-5 animate-spin" />
+                        <LoadingStates.Button text={`Enviando a ${selectedClients.length} destinatarios`} />
                       ) : (
-                        <Send className="w-5 h-5" />
+                        <>
+                          <Send className="w-5 h-5" />
+                          <span>Enviar a {selectedClients.length} destinatarios</span>
+                        </>
                       )}
-                      <span>Enviar a {selectedClients.length} destinatarios</span>
                     </button>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+// src/lib/api.ts
 import axios from 'axios';
 import { 
   WhatsAppSession, 
@@ -15,594 +16,653 @@ const WPPCONNECT_URL = 'http://localhost:21465';
 const SESSION = 'tes4';
 const TOKEN = '$2b$10$NZPYrgMAeAN.7A2t2Xcka.aA2o_YxeL_SIuFacM7PsgfNpLi3n5f2';
 
-// Cliente axios configurado
+// CONFIGURACIÓN TEMPORAL - Remover cuando el backend esté estable
+const TEMP_CONFIG = {
+  DISABLE_AUTO_CHECKS: true,
+  DISABLE_GPT_CHECKS: true,
+  DISABLE_N8N_CHECKS: true,
+  REQUEST_TIMEOUT: 5000,
+  MAX_RETRIES: 1,
+  RETRY_DELAY: 1000
+};
+
+// Cliente axios configurado con interceptores mejorados
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000,
+  timeout: TEMP_CONFIG.REQUEST_TIMEOUT,
+  headers: {
+    'Content-Type': 'application/json',
+  }
 });
 
 // Cliente para WPPConnect directo
 const wppClient = axios.create({
   baseURL: WPPCONNECT_URL,
-  timeout: 10000,
+  timeout: TEMP_CONFIG.REQUEST_TIMEOUT,
   headers: {
     'Authorization': `Bearer ${TOKEN}`,
     'Content-Type': 'application/json'
   }
 });
 
+// Interceptor para agregar timeout a todas las requests
+apiClient.interceptors.request.use(
+  (config) => {
+    // Asegurar timeout en todas las requests
+    config.timeout = config.timeout || TEMP_CONFIG.REQUEST_TIMEOUT;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor global para manejo de errores mejorado
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Log más limpio del error
+    if (error.code === 'ECONNABORTED') {
+      console.warn('Request timeout:', error.config?.url);
+    } else if (!error.response) {
+      console.warn('Network error:', error.config?.url);
+    } else if (error.response?.status >= 500) {
+      console.warn('Server error:', error.config?.url, error.response?.status);
+    }
+
+    // Verificar si el backend está caído
+    if (!error.response) {
+      throw {
+        message: 'No se puede conectar con el servidor',
+        code: 'NETWORK_ERROR',
+        isNetworkError: true
+      };
+    }
+
+    // Re-lanzar el error para que lo maneje cada función
+    throw error;
+  }
+);
+
+// Helper para manejar reintentos
+async function withRetry<T>(
+  fn: () => Promise<T>, 
+  retries = TEMP_CONFIG.MAX_RETRIES,
+  delay = TEMP_CONFIG.RETRY_DELAY
+): Promise<T> {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0) {
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return withRetry(fn, retries - 1, delay);
+    }
+    throw error;
+  }
+}
+
 // API para sesiones de WhatsApp
 export const sessionsAPI = {
-  // Obtener estado de la sesión actual
   getStatus: async (): Promise<WPPConnectResponse> => {
-    try {
-      const response = await apiClient.get('/api/sessions/status');
-      return response.data.data;
-    } catch (error) {
-      // Fallback a WPPConnect directo
-      const response = await wppClient.get(`/api/${SESSION}/check-connection-session`);
-      return response.data;
-    }
+    return withRetry(async () => {
+      try {
+        const response = await apiClient.get('/api/sessions/status');
+        return response.data.data;
+      } catch (error: any) {
+        console.warn('Error fetching session status:', error.message);
+        throw {
+          message: error.response?.data?.message || 'Error al verificar estado de sesión',
+          status: error.response?.status || 500,
+          details: error.response?.data?.details
+        };
+      }
+    });
   },
 
-  // Iniciar nueva sesión
   startSession: async (sessionId: string = SESSION) => {
     try {
       const response = await apiClient.post('/api/sessions/start');
       return response.data;
-    } catch (error) {
-      const response = await wppClient.post(`/api/${sessionId}/start-session`, {
-        webhook: "",
-        waitQrCode: true,
-        autoClose: 120
-      });
-      return response.data;
+    } catch (error: any) {
+      console.error('Error starting session:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al iniciar sesión',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Obtener código QR
   getQRCode: async (sessionId: string = SESSION) => {
     try {
       const response = await apiClient.get('/api/sessions/qr');
       return response.data;
-    } catch (error) {
-      const response = await wppClient.get(`/api/${sessionId}/qrcode-session`);
-      return response.data;
+    } catch (error: any) {
+      console.error('Error fetching QR code:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al obtener código QR',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Cerrar sesión
   closeSession: async (sessionId: string = SESSION) => {
     try {
       const response = await apiClient.post('/api/sessions/close');
       return response.data;
-    } catch (error) {
-      const response = await wppClient.post(`/api/${sessionId}/close-session`);
-      return response.data;
+    } catch (error: any) {
+      console.error('Error closing session:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al cerrar sesión',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   }
 };
 
 // API para mensajes
 export const messagesAPI = {
-  // Enviar mensaje
   send: async (data: SendMessageRequest): Promise<APIResponse<any>> => {
     try {
       const response = await apiClient.post('/api/messages/send', data);
-      return {
-        status: 'success',
-        data: response.data
-      };
-    } catch (error) {
-      // Fallback a WPPConnect directo
-      const response = await wppClient.post(`/api/${SESSION}/send-message`, {
-        phone: data.phone,
-        message: data.message
-      });
-      return {
-        status: 'success',
-        data: response.data
+      return response.data;
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al enviar mensaje',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
       };
     }
   },
 
-  // Obtener historial de mensajes
+  sendFile: async (data: any): Promise<APIResponse<any>> => {
+    try {
+      const response = await apiClient.post('/api/messages/send-file', data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error sending file:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al enviar archivo',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
+  sendBulk: async (data: any): Promise<APIResponse<any>> => {
+    try {
+      const response = await apiClient.post('/api/messages/send-bulk', data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error sending bulk messages:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al enviar mensajes masivos',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
   getHistory: async (): Promise<WhatsAppMessage[]> => {
     try {
       const response = await apiClient.get('/api/messages/history');
-      return response.data.data.messages || [];
-    } catch (error) {
-      // Datos de ejemplo si falla
-      return [
-        {
-          id: '1',
-          from: '51987654321',
-          to: SESSION,
-          message: 'Hola, necesito información sobre Netflix',
-          time: new Date().toLocaleTimeString(),
-          status: 'delivered',
-          type: 'text',
-          timestamp: Date.now(),
-          fromMe: false
-        },
-        {
-          id: '2',
-          from: SESSION,
-          to: '51987654321',
-          message: '¡Hola! Te ayudo con información sobre Netflix Premium.',
-          time: new Date().toLocaleTimeString(),
-          status: 'read',
-          type: 'text',
-          timestamp: Date.now(),
-          fromMe: true
-        }
-      ];
+      return response.data.data?.messages || [];
+    } catch (error: any) {
+      console.warn('Error fetching message history:', error.message);
+      return []; // Devolver array vacío en lugar de throw
     }
   },
 
-  // Marcar mensajes como leídos
   markAsRead: async (messageIds: string[]) => {
     try {
       const response = await apiClient.put('/api/messages/mark-read', { messageIds });
       return response.data;
-    } catch (error) {
-      return { success: true };
+    } catch (error: any) {
+      console.error('Error marking messages as read:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al marcar mensajes como leídos',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Obtener estadísticas de mensajes
   getStats: async () => {
     try {
       const response = await apiClient.get('/api/messages/stats');
       return response.data.data;
-    } catch (error) {
-      return { total: 0, today: 0, sent: 0, received: 0 };
+    } catch (error: any) {
+      console.warn('Error fetching message stats:', error.message);
+      return null; // Devolver null en lugar de throw
     }
   }
 };
 
 // API para clientes
 export const clientsAPI = {
-  // Obtener todos los clientes
   getAll: async (): Promise<Client[]> => {
     try {
       const response = await apiClient.get('/api/clients');
-      return response.data.data.clients || [];
-    } catch (error) {
-      // Datos de ejemplo si falla
-      return [
-        {
-          id: 1,
-          name: "Juan Pérez",
-          phone: "51987654321",
-          service: "Netflix Premium",
-          expiry: "2025-05-25",
-          status: "active"
-        },
-        {
-          id: 2,
-          name: "María García",
-          phone: "51923456789",
-          service: "Disney+ Familiar",
-          expiry: "2025-05-24",
-          status: "expiring"
-        },
-        {
-          id: 3,
-          name: "Carlos López",
-          phone: "51956789123",
-          service: "Prime Video",
-          expiry: "2025-05-22",
-          status: "expired"
-        }
-      ];
+      return response.data.data?.clients || [];
+    } catch (error: any) {
+      console.warn('Error fetching clients:', error.message);
+      return []; // Devolver array vacío en lugar de throw
     }
   },
 
-  // Crear nuevo cliente
+  getById: async (id: number): Promise<Client> => {
+    try {
+      const response = await apiClient.get(`/api/clients/${id}`);
+      return response.data.data;
+    } catch (error: any) {
+      console.error('Error fetching client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al cargar cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
   create: async (client: Omit<Client, 'id'>): Promise<Client> => {
     try {
       const response = await apiClient.post('/api/clients', client);
       return response.data.data;
-    } catch (error) {
-      return { ...client, id: Math.floor(Math.random() * 1000) };
+    } catch (error: any) {
+      console.error('Error creating client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al crear cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Actualizar cliente
   update: async (id: number, client: Partial<Client>): Promise<Client> => {
     try {
       const response = await apiClient.put(`/api/clients/${id}`, client);
       return response.data.data;
-    } catch (error) {
-      return { id, ...client } as Client;
+    } catch (error: any) {
+      console.error('Error updating client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al actualizar cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Eliminar cliente
   delete: async (id: number): Promise<boolean> => {
     try {
       await apiClient.delete(`/api/clients/${id}`);
       return true;
-    } catch (error) {
-      return true;
+    } catch (error: any) {
+      console.error('Error deleting client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al eliminar cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Obtener clientes próximos a vencer
   getExpiring: async (days: number = 7) => {
     try {
       const response = await apiClient.get(`/api/clients/expiring?days=${days}`);
       return response.data.data;
-    } catch (error) {
-      return { clients: [], count: 0 };
+    } catch (error: any) {
+      console.warn('Error fetching expiring clients:', error.message);
+      return []; // Devolver array vacío en lugar de throw
     }
   },
 
-  // Importar clientes
   importClients: async (data: { clients: Client[] }) => {
     try {
       const response = await apiClient.post('/api/clients/import', data);
-      return response.data;
+      return response.data.data;
     } catch (error: any) {
-      return {
-        imported: 0,
-        skipped: 0,
-        errors: [{ error: 'Import failed', details: error.message }]
+      console.error('Error importing clients:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al importar clientes',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
+  renewSubscription: async (id: number, data: { months?: number; newExpiry?: string }) => {
+    try {
+      const response = await apiClient.post(`/api/clients/${id}/renew`, data);
+      return response.data.data;
+    } catch (error: any) {
+      console.error('Error renewing subscription:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al renovar suscripción',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
+  suspend: async (id: number, reason: string) => {
+    try {
+      const response = await apiClient.post(`/api/clients/${id}/suspend`, { reason });
+      return response.data.data;
+    } catch (error: any) {
+      console.error('Error suspending client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al suspender cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
+  reactivate: async (id: number) => {
+    try {
+      const response = await apiClient.post(`/api/clients/${id}/reactivate`);
+      return response.data.data;
+    } catch (error: any) {
+      console.error('Error reactivating client:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al reactivar cliente',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
       };
     }
   }
 };
 
-// API para workflows de n8n
+// API para workflows de n8n - CON CHECKS DESHABILITADOS
 export const workflowsAPI = {
-  // Obtener workflows activos
   getActive: async (): Promise<N8nWorkflow[]> => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      console.log('n8n checks disabled');
+      return [];
+    }
+    
     try {
       const response = await apiClient.get('/api/workflows');
       return response.data.data || [];
-    } catch (error) {
-      // Datos de ejemplo si falla
-      return [
-        {
-          id: '1',
-          name: 'Recordatorios de Vencimiento',
-          status: 'active',
-          lastRun: '9:00 AM',
-          triggers: 15
-        },
-        {
-          id: '2',
-          name: 'Respuestas Automáticas GPT',
-          status: 'active',
-          lastRun: '10:35 AM',
-          triggers: 45
-        },
-        {
-          id: '3',
-          name: 'Backup Automático',
-          status: 'active',
-          lastRun: '2:00 AM',
-          triggers: 1
-        }
-      ];
+    } catch (error: any) {
+      console.warn('Error fetching workflows:', error.message);
+      return []; // Devolver array vacío en lugar de throw
     }
   },
 
-  // Ejecutar workflow
+  getDetails: async (workflowId: string) => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      return null;
+    }
+    
+    try {
+      const response = await apiClient.get(`/api/workflows/${workflowId}`);
+      return response.data.data;
+    } catch (error: any) {
+      console.error('Error fetching workflow details:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al cargar detalles del workflow',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
   trigger: async (workflowId: string, data?: any) => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      return { success: false, message: 'n8n disabled' };
+    }
+    
     try {
       const response = await apiClient.post(`/api/workflows/${workflowId}/execute`, { data });
       return response.data;
-    } catch (error) {
-      return { success: true, executionId: 'exec_123' };
+    } catch (error: any) {
+      console.error('Error triggering workflow:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al ejecutar workflow',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Obtener estadísticas de workflows
+  toggle: async (workflowId: string, active: boolean) => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      return { success: false, message: 'n8n disabled' };
+    }
+    
+    try {
+      const response = await apiClient.patch(`/api/workflows/${workflowId}/toggle`, { active });
+      return response.data;
+    } catch (error: any) {
+      console.error('Error toggling workflow:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al cambiar estado del workflow',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
+    }
+  },
+
   getStats: async () => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      return null;
+    }
+    
     try {
       const response = await apiClient.get('/api/workflows/stats');
       return response.data.data;
-    } catch (error) {
-      return { total: 0, successful: 0, failed: 0 };
+    } catch (error: any) {
+      console.warn('Error fetching workflow stats:', error.message);
+      return null;
     }
   },
 
-  // Health check de n8n
   healthCheck: async () => {
+    if (TEMP_CONFIG.DISABLE_N8N_CHECKS) {
+      return { success: false, disabled: true };
+    }
+    
     try {
-      const response = await apiClient.get('/api/workflows/health');
+      const response = await apiClient.get('/api/workflows/health', {
+        timeout: 3000 // Timeout más corto para health checks
+      });
       return response.data;
-    } catch (error) {
-      return { success: false, error: 'n8n not available' };
+    } catch (error: any) {
+      // Solo log, no throw
+      console.log('n8n health check failed (expected if not configured)');
+      return { success: false, error: error.message };
     }
   }
 };
 
-// API para estadísticas - MEJORADA
+// API para estadísticas
 export const statsAPI = {
-  // Obtener estadísticas generales - MEJORADO
   getGeneral: async () => {
     try {
       const response = await apiClient.get('/api/stats');
       return response.data.data;
-    } catch (error) {
-      console.error('Error fetching stats:', error);
-      // Datos de ejemplo mejorados si falla
-      return {
-        clients: { 
-          total: 3, 
-          active: 2, 
-          expiring: 1, 
-          expired: 0,
-          suspended: 0
-        },
-        messages: { 
-          total: 45, 
-          today: 12, 
-          thisWeek: 67,
-          thisMonth: 156,
-          sent: 28, 
-          received: 17 
-        },
-        messageTypes: {
-          text: 40,
-          file: 3,
-          image: 2,
-          audio: 0,
-          video: 0
-        },
-        messageStatus: {
-          sent: 25,
-          delivered: 15,
-          read: 5,
-          failed: 0
-        },
-        wppConnect: { 
-          connected: true, 
-          session: SESSION,
-          lastCheck: new Date().toISOString()
-        },
-        workflows: {
-          total: 3,
-          active: 3,
-          paused: 0
-        },
-        performance: {
-          uptime: Math.floor(Math.random() * 86400),
-          responseTime: Math.floor(Math.random() * 200) + 50,
-          averageResponseTime: 45
-        },
-        summary: {
-          totalRevenue: 1250,
-          activeRate: 85.5,
-          responseRate: 92.3
-        }
-      };
+    } catch (error: any) {
+      console.warn('Error fetching general stats:', error.message);
+      return null; // Devolver null en lugar de throw
     }
   },
 
-  // NUEVO: Obtener estadísticas del sistema
   getSystem: async () => {
     try {
       const response = await apiClient.get('/api/stats/system');
       return response.data.data;
-    } catch (error) {
-      console.error('Error fetching system stats:', error);
-      // Datos de ejemplo del sistema si falla
-      return {
-        uptime: {
-          process: Math.floor(Math.random() * 86400) + 3600, // Entre 1-24 horas
-          system: Math.floor(Math.random() * 345600) + 86400 // Entre 1-4 días
-        },
-        memory: {
-          rss: '45 MB',
-          heapTotal: '12 MB', 
-          heapUsed: '8 MB',
-          external: '2 MB'
-        },
-        cpu: {
-          usage: Math.floor(Math.random() * 30) + 5, // 5-35%
-          loadAverage: [0.5, 0.7, 0.8]
-        },
-        wppConnect: {
-          status: 'healthy',
-          connected: true,
-          session: SESSION
-        },
-        database: {
-          status: 'connected',
-          type: 'JSON Files',
-          location: './data/'
-        },
-        nodejs: {
-          version: process.version || 'v18.17.0',
-          platform: 'linux',
-          arch: 'x64'
-        }
-      };
+    } catch (error: any) {
+      console.warn('Error fetching system stats:', error.message);
+      return null;
     }
   },
 
-  // NUEVO: Obtener estadísticas detalladas de clientes
   getClients: async () => {
     try {
       const response = await apiClient.get('/api/stats/clients');
       return response.data.data;
-    } catch (error) {
-      console.error('Error fetching client stats:', error);
-      return { 
-        total: 3, 
-        active: 2, 
-        expiring: 1,
-        expired: 0,
-        suspended: 0,
-        growth: {
-          thisMonth: 2,
-          lastMonth: 1,
-          percentage: 100
-        },
-        byService: [
-          { name: 'Netflix Premium', count: 1 },
-          { name: 'Disney+ Familiar', count: 1 },
-          { name: 'Prime Video', count: 1 }
-        ]
-      };
+    } catch (error: any) {
+      console.warn('Error fetching client stats:', error.message);
+      return null;
     }
   },
 
-  // Obtener estadísticas de mensajes - MEJORADO
   getMessages: async () => {
     try {
       const response = await apiClient.get('/api/stats/messages');
       return response.data.data;
-    } catch (error) {
-      return { 
-        total: 45, 
-        today: 12,
-        thisWeek: 67,
-        thisMonth: 156,
-        sent: 28,
-        received: 17,
-        byType: {
-          text: 40,
-          file: 3,
-          image: 2,
-          audio: 0
-        },
-        byStatus: {
-          sent: 25,
-          delivered: 15,
-          read: 5,
-          failed: 0
-        },
-        hourlyActivity: new Array(24).fill(0).map(() => Math.floor(Math.random() * 10))
-      };
+    } catch (error: any) {
+      console.warn('Error fetching message stats:', error.message);
+      return null;
     }
   },
 
-  // Obtener estadísticas del sistema
-  getSystemPerformance: async () => {
-    try {
-      const response = await apiClient.get('/api/stats/system');
-      return response.data.data;
-    } catch (error) {
-      return {
-        uptime: Math.floor(Math.random() * 86400),
-        memory: '128 MB',
-        cpu: '15%',
-        status: 'healthy',
-        connections: {
-          wpp: true,
-          gpt: true,
-          n8n: false
-        }
-      };
-    }
-  },
-
-  // Obtener reporte diario
   getDailyReport: async (date?: string) => {
     try {
       const url = date ? `/api/stats/daily?date=${date}` : '/api/stats/daily';
       const response = await apiClient.get(url);
       return response.data.data;
-    } catch (error) {
-      return {
-        date: new Date().toISOString().split('T')[0],
-        summary: {
-          totalMessages: 0,
-          sentMessages: 0,
-          receivedMessages: 0,
-          uniqueContacts: 0
-        },
-        hourlyActivity: new Array(24).fill(0),
-        topContacts: []
-      };
+    } catch (error: any) {
+      console.warn('Error fetching daily report:', error.message);
+      return null;
     }
   }
 };
 
-// API para GPT - EXPANDIDA
+// API para GPT - CON CHECKS DESHABILITADOS
 export const gptAPI = {
-  // Generar respuesta
   generateResponse: async (message: string, clientContext?: any) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/generate-response', {
         message,
         clientContext
       });
       return response.data;
-    } catch (error) {
-      throw new Error('Error generating GPT response');
+    } catch (error: any) {
+      console.error('Error generating GPT response:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al generar respuesta GPT',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // NUEVO: Generar respuesta específica
   generateSpecific: async (type: string, data: any) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/generate-specific-response', {
         type,
         data
       });
       return response.data;
-    } catch (error) {
-      return { response: 'Lo siento, no puedo generar una respuesta en este momento.' };
+    } catch (error: any) {
+      console.error('Error generating specific response:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al generar respuesta específica',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // Analizar intención
   analyzeIntent: async (message: string) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/analyze-intent', {
         message
       });
       return response.data;
-    } catch (error) {
-      return { intent: 'general' };
+    } catch (error: any) {
+      console.error('Error analyzing intent:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al analizar intención',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // NUEVO: Mejorar mensaje
   enhanceMessage: async (message: string, improvements: string[] = []) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/enhance-message', {
         message,
         improvements
       });
       return response.data;
-    } catch (error) {
-      return { enhancedMessage: message };
+    } catch (error: any) {
+      console.error('Error enhancing message:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al mejorar mensaje',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // NUEVO: Generar resumen de conversación
   generateSummary: async (messages: any[]) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/generate-summary', {
         messages
       });
       return response.data;
-    } catch (error) {
-      return { summary: 'Conversación sobre servicios de streaming.' };
+    } catch (error: any) {
+      console.error('Error generating summary:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al generar resumen',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // NUEVO: Procesar múltiples mensajes
   processMultiple: async (messages: any[]) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/process-multiple-messages', {
         messages
       });
       return response.data;
-    } catch (error) {
-      return { results: [] };
+    } catch (error: any) {
+      console.error('Error processing multiple messages:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al procesar múltiples mensajes',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   },
 
-  // NUEVO: Generar sugerencias
   generateSuggestions: async (message: string, clientContext?: any, count: number = 3) => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, message: 'GPT disabled' };
+    }
+    
     try {
       const response = await apiClient.post('/api/gpt/generate-suggestions', {
         message,
@@ -610,76 +670,95 @@ export const gptAPI = {
         count
       });
       return response.data;
-    } catch (error) {
-      return { suggestions: [] };
-    }
-  },
-
-  // Obtener configuración de GPT
-  getConfig: async () => {
-    try {
-      const response = await apiClient.get('/api/gpt/config');
-      return response.data.data;
-    } catch (error) {
-      return {
-        configured: false,
-        model: 'gpt-3.5-turbo',
-        temperature: 0.7,
-        maxTokens: 500
+    } catch (error: any) {
+      console.error('Error generating suggestions:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al generar sugerencias',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
       };
     }
   },
 
-  // NUEVO: Obtener estadísticas de uso de GPT
+  getConfig: async () => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { configured: false, disabled: true };
+    }
+    
+    try {
+      const response = await apiClient.get('/api/gpt/config', {
+        timeout: 3000 // Timeout más corto para config checks
+      });
+      return response.data.data || { configured: false };
+    } catch (error: any) {
+      // Solo log, no throw
+      console.log('GPT config check failed (expected if not configured)');
+      return { configured: false, error: error.message };
+    }
+  },
+
   getUsageStats: async () => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return null;
+    }
+    
     try {
       const response = await apiClient.get('/api/gpt/usage-stats');
       return response.data.data;
-    } catch (error) {
-      return {
-        totalRequests: 0,
-        successfulRequests: 0,
-        averageResponseTime: 0,
-        cacheHitRate: 0
-      };
+    } catch (error: any) {
+      console.warn('Error fetching GPT usage stats:', error.message);
+      return null;
     }
   },
 
-  // Health check de GPT
   healthCheck: async () => {
+    if (TEMP_CONFIG.DISABLE_GPT_CHECKS) {
+      return { success: false, disabled: true };
+    }
+    
     try {
-      const response = await apiClient.get('/api/gpt/health');
+      const response = await apiClient.get('/api/gpt/health', {
+        timeout: 3000
+      });
       return response.data;
-    } catch (error) {
-      return { success: false, error: 'GPT not available' };
+    } catch (error: any) {
+      console.log('GPT health check failed (expected if not configured)');
+      return { success: false, error: error.message };
     }
   }
 };
 
 // API para webhooks
 export const webhooksAPI = {
-  // Health check de webhooks
   healthCheck: async () => {
     try {
-      const response = await apiClient.get('/webhook/health');
+      const response = await apiClient.get('/webhook/health', {
+        timeout: 3000
+      });
       return response.data;
-    } catch (error) {
-      return { status: 'unhealthy' };
+    } catch (error: any) {
+      console.warn('Error checking webhook health:', error.message);
+      return { success: false, error: error.message };
     }
   },
 
-  // Probar webhook
   test: async (data: any) => {
     try {
       const response = await apiClient.post('/webhook/test', data);
       return response.data;
-    } catch (error) {
-      return { success: false, error: 'Webhook test failed' };
+    } catch (error: any) {
+      console.error('Error testing webhook:', error);
+      throw {
+        message: error.response?.data?.message || 'Error al probar webhook',
+        status: error.response?.status || 500,
+        details: error.response?.data?.details
+      };
     }
   }
 };
 
-export default {
+// Exportar todo junto
+const api = {
   sessions: sessionsAPI,
   messages: messagesAPI,
   clients: clientsAPI,
@@ -688,3 +767,5 @@ export default {
   gpt: gptAPI,
   webhooks: webhooksAPI
 };
+
+export default api;

@@ -16,6 +16,7 @@ import { ClientForm } from './ClientForm';
 import { ClientDetails } from './ClientDetails';
 import { ClientImport } from './ClientImport';
 import { ClientFilters } from './ClientFilters';
+import { LoadingStates } from '@/components/LoadingStates';
 import api from '@/lib/api';
 import { Client } from '@/types/whatsapp';
 import { formatDate, formatPhone } from '@/lib/utils';
@@ -449,16 +450,35 @@ export function ClientsPage({ onSendMessage }: ClientsPageProps) {
         </div>
       </div>
 
-      {/* Tabla de clientes */}
+      {/* Tabla de clientes con loading mejorado */}
       <div className="bg-white rounded-lg border border-gray-200">
-        <Table
-          data={filteredClients}
-          columns={columns}
-          loading={loading}
-          onSort={handleSort}
-          sortKey={sortKey}
-          sortDirection={sortDirection}
-        />
+        {loading ? (
+          <LoadingStates.Table rows={10} columns={5} />
+        ) : filteredClients.length === 0 ? (
+          <LoadingStates.Empty
+            icon={Users}
+            title="No hay clientes"
+            description={searchTerm || statusFilter !== 'all' || serviceFilter !== 'all' 
+              ? "No se encontraron clientes con los filtros aplicados" 
+              : "Agrega tu primer cliente para comenzar"}
+            action={{
+              label: "Agregar Cliente",
+              onClick: () => {
+                setSelectedClient(null);
+                setShowForm(true);
+              }
+            }}
+          />
+        ) : (
+          <Table
+            data={filteredClients}
+            columns={columns}
+            loading={false}
+            onSort={handleSort}
+            sortKey={sortKey}
+            sortDirection={sortDirection}
+          />
+        )}
       </div>
 
       {/* Modales */}
