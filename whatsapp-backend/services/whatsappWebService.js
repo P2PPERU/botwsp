@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('../utils/logger');
 const Message = require('../models/Message');
+const metricsService = require('./metricsService');
 
 class WhatsAppWebService {
   constructor() {
@@ -58,6 +59,10 @@ class WhatsAppWebService {
       logger.success('✅ WhatsApp Web client is ready!');
       this.isConnected = true;
       this.lastCheck = new Date();
+      
+      // NUEVO - Registrar conexión exitosa
+      metricsService.recordWhatsAppConnection(true);
+      metricsService.recordWhatsAppStatus(true);
     });
 
     // Mensaje recibido
@@ -79,6 +84,10 @@ class WhatsAppWebService {
       logger.warn('❌ WhatsApp disconnected:', reason);
       this.isConnected = false;
       
+      // NUEVO - Registrar desconexión
+      metricsService.recordWhatsAppStatus(false);
+      metricsService.recordError('whatsapp_disconnection', reason);
+      
       // Intentar reconectar
       setTimeout(() => {
         this.initialize();
@@ -88,12 +97,19 @@ class WhatsAppWebService {
     // Errores de autenticación
     this.client.on('auth_failure', (msg) => {
       logger.error('❌ Authentication failure:', msg);
+      
+      // NUEVO - Registrar fallo de autenticación
+      metricsService.recordWhatsAppConnection(false);
+      metricsService.recordError('whatsapp_auth', msg);
     });
   }
 
   // Manejar mensajes entrantes (compatible con tu webhook actual)
   async handleIncomingMessage(msg) {
     try {
+      // NUEVO - Registrar mensaje recibido
+      metricsService.recordMessageReceived(msg.from);
+      
       // Guardar en base de datos
       const newMessage = new Message({
         from: msg.from,
@@ -123,6 +139,8 @@ class WhatsAppWebService {
       logger.info(`📨 Message received from ${msg.from}`);
     } catch (error) {
       logger.error('Error handling incoming message:', error);
+      // NUEVO - Registrar error
+      metricsService.recordError('whatsapp_incoming', error.message);
     }
   }
 
@@ -144,12 +162,18 @@ class WhatsAppWebService {
       this.isConnected = state === 'CONNECTED';
       this.lastCheck = new Date();
       
+      // NUEVO - Actualizar estado en métricas
+      metricsService.recordWhatsAppStatus(this.isConnected);
+      
       return {
         connected: this.isConnected,
         session: 'streaming-bot',
         lastCheck: this.lastCheck
       };
     } catch (error) {
+      // NUEVO - Registrar error de verificación
+      metricsService.recordError('whatsapp_check', error.message);
+      
       return {
         connected: false,
         session: 'streaming-bot',
@@ -181,6 +205,9 @@ class WhatsAppWebService {
       
       logger.success(`Message sent to ${formattedPhone}`);
       
+      // NUEVO - Registrar mensaje enviado exitosamente
+      metricsService.recordMessageSent(formattedPhone, 'success');
+      
       return {
         success: true,
         id: result.id._serialized,
@@ -188,6 +215,11 @@ class WhatsAppWebService {
       };
     } catch (error) {
       logger.error(`Error sending message to ${phone}:`, error.message);
+      
+      // NUEVO - Registrar fallo de mensaje
+      metricsService.recordMessageSent(phone, 'failed');
+      metricsService.recordError('whatsapp_send', error.message, { phone });
+      
       throw error;
     }
   }
@@ -304,6 +336,14 @@ class WhatsAppWebService {
     const cleanPhone = this.extractCleanNumber(phone);
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
+  }
+
+  // NUEVO - Agregar método para verificación periódica de estado
+  startHealthCheck() {
+    // Verificar estado cada minuto
+    setInterval(async () => {
+      await this.checkConnection();
+    }, 60 * 1000);
   }
 }
 

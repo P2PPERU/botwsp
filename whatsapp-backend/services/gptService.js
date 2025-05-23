@@ -1,6 +1,7 @@
 const OpenAI = require('openai');
 const logger = require('../utils/logger');
 const messageTemplates = require('../utils/messageTemplates');
+const metricsService = require('./metricsService'); // NUEVO
 
 class GPTService {
   constructor() {
@@ -28,6 +29,8 @@ class GPTService {
 
   // Generar respuesta automática
   async generateResponse(userMessage, clientContext = null) {
+    const startTime = Date.now(); // NUEVO - medir tiempo
+    
     try {
       if (!this.openai) {
         return this.getFallbackResponse(userMessage);
@@ -39,6 +42,11 @@ class GPTService {
       
       if (cachedResponse && Date.now() - cachedResponse.timestamp < this.cacheTimeout) {
         logger.info('Using cached GPT response');
+        
+        // NUEVO - Registrar uso de cache
+        const responseTime = Date.now() - startTime;
+        metricsService.recordGPTUsage(0, responseTime, true);
+        
         return cachedResponse.response;
       }
 
@@ -61,6 +69,13 @@ class GPTService {
       const response = completion.choices[0]?.message?.content?.trim();
       
       if (response) {
+        // NUEVO - Calcular tokens usados (aproximación)
+        const tokensUsed = completion.usage?.total_tokens || this.estimateTokens(contextualPrompt + response);
+        const responseTime = Date.now() - startTime;
+        
+        // Registrar métricas
+        metricsService.recordGPTUsage(tokensUsed, responseTime, false);
+        
         // Guardar en cache
         this.responseCache.set(cacheKey, {
           response: response,
@@ -70,7 +85,7 @@ class GPTService {
         // Limpiar cache viejo
         this.cleanCache();
 
-        logger.success('GPT response generated successfully');
+        logger.success(`GPT response generated successfully (${tokensUsed} tokens, ${responseTime}ms)`);
         return response;
       } else {
         throw new Error('Empty response from OpenAI');
@@ -79,6 +94,10 @@ class GPTService {
     } catch (error) {
       logger.error('Error generating GPT response:', error.message);
       
+      // NUEVO - Registrar error
+      metricsService.recordGPTError();
+      metricsService.recordError('gpt_generation', error.message);
+      
       // Respuesta de fallback
       return this.getFallbackResponse(userMessage, clientContext);
     }
@@ -86,6 +105,8 @@ class GPTService {
 
   // Generar respuesta para consulta específica
   async generateSpecificResponse(type, data) {
+    const startTime = Date.now(); // NUEVO
+    
     try {
       if (!this.openai) {
         return this.getSpecificFallback(type, data);
@@ -121,18 +142,33 @@ class GPTService {
       });
 
       const response = completion.choices[0]?.message?.content?.trim();
+      
+      // NUEVO - Registrar métricas
+      if (response) {
+        const tokensUsed = completion.usage?.total_tokens || this.estimateTokens(prompt + response);
+        const responseTime = Date.now() - startTime;
+        metricsService.recordGPTUsage(tokensUsed, responseTime, false);
+      }
+      
       logger.success(`Specific GPT response generated for type: ${type}`);
       
       return response || this.getSpecificFallback(type, data);
 
     } catch (error) {
       logger.error(`Error generating specific GPT response for ${type}:`, error.message);
+      
+      // NUEVO - Registrar error
+      metricsService.recordGPTError();
+      metricsService.recordError('gpt_specific_response', error.message, { type });
+      
       return this.getSpecificFallback(type, data);
     }
   }
 
   // Analizar intención del mensaje
   async analyzeIntent(message) {
+    const startTime = Date.now(); // NUEVO
+    
     try {
       if (!this.openai) {
         return this.analyzeIntentFallback(message);
@@ -165,6 +201,11 @@ Intención:`;
 
       const intent = completion.choices[0]?.message?.content?.trim().toLowerCase();
       
+      // NUEVO - Registrar métricas (análisis de intención usa menos tokens)
+      const tokensUsed = completion.usage?.total_tokens || 150;
+      const responseTime = Date.now() - startTime;
+      metricsService.recordGPTUsage(tokensUsed, responseTime, false);
+      
       // Validar respuesta
       const validIntents = ['pricing', 'technical', 'renewal', 'greeting', 'complaint', 'general', 'other'];
       if (validIntents.includes(intent)) {
@@ -175,12 +216,18 @@ Intención:`;
 
     } catch (error) {
       logger.error('Error analyzing intent:', error.message);
+      
+      // NUEVO - Registrar error
+      metricsService.recordGPTError();
+      
       return this.analyzeIntentFallback(message);
     }
   }
 
   // Mejorar mensaje existente
   async enhanceMessage(originalMessage, improvements = []) {
+    const startTime = Date.now(); // NUEVO
+    
     try {
       if (!this.openai) {
         return originalMessage;
@@ -212,16 +259,27 @@ Mensaje mejorado:`;
       });
 
       const enhanced = completion.choices[0]?.message?.content?.trim();
+      
+      // NUEVO - Registrar métricas
+      if (enhanced) {
+        const tokensUsed = completion.usage?.total_tokens || this.estimateTokens(enhancePrompt + enhanced);
+        const responseTime = Date.now() - startTime;
+        metricsService.recordGPTUsage(tokensUsed, responseTime, false);
+      }
+      
       return enhanced || originalMessage;
 
     } catch (error) {
       logger.error('Error enhancing message:', error.message);
+      metricsService.recordGPTError();
       return originalMessage;
     }
   }
 
   // Generar resumen de conversación
   async generateConversationSummary(messages) {
+    const startTime = Date.now(); // NUEVO
+    
     try {
       if (!this.openai || messages.length === 0) {
         return 'No hay suficiente información para generar un resumen.';
@@ -247,13 +305,27 @@ Resumen (máximo 200 caracteres):`;
         max_tokens: 100
       });
 
-      return completion.choices[0]?.message?.content?.trim() || 
-             'Conversación sobre consulta de servicio.';
+      const summary = completion.choices[0]?.message?.content?.trim() || 
+                     'Conversación sobre consulta de servicio.';
+      
+      // NUEVO - Registrar métricas
+      const tokensUsed = completion.usage?.total_tokens || this.estimateTokens(summaryPrompt + summary);
+      const responseTime = Date.now() - startTime;
+      metricsService.recordGPTUsage(tokensUsed, responseTime, false);
+      
+      return summary;
 
     } catch (error) {
       logger.error('Error generating conversation summary:', error.message);
+      metricsService.recordGPTError();
       return 'Error generando resumen de conversación.';
     }
+  }
+
+  // NUEVO - Estimar tokens (aproximación simple)
+  estimateTokens(text) {
+    // Aproximación: ~4 caracteres por token en español
+    return Math.ceil(text.length / 4);
   }
 
   // System prompt básico
@@ -290,7 +362,7 @@ INSTRUCCIONES:
 Si no puedes resolver algo, deriva con: "Un especialista te contactará pronto para ayudarte con esto 😊"`;
   }
 
-  // Métodos auxiliares
+  // Métodos auxiliares (sin cambios)
   buildContextualPrompt(message, clientContext) {
     let prompt = `Mensaje del cliente: "${message}"`;
     
