@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   GLOBAL STYLES & CUSTOM CLASSES
+   ================================ */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    @apply transition-colors duration-300;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
+
+@layer components {
+  /* ================================
+     BUTTON COMPONENTS
+     ================================ */
+  
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg;
+    @apply transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+    @apply dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  }
+  
+  .btn-success {
+    @apply btn bg-whatsapp-500 text-white hover:bg-whatsapp-600 focus:ring-whatsapp-500;
+    @apply shadow-lg hover:shadow-xl hover:shadow-whatsapp-500/25;
+  }
+  
+  .btn-danger {
+    @apply btn bg-error-600 text-white hover:bg-error-700 focus:ring-error-500;
+    @apply shadow-lg hover:shadow-xl hover:shadow-error-500/25;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+    @apply dark:text-gray-300 dark:hover:bg-gray-800;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+  
+  /* ================================
+     CARD COMPONENTS
+     ================================ */
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700;
+    @apply transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600;
+    @apply transform hover:-translate-y-1;
+  }
+  
+  .card-premium {
+    @apply card bg-gradient-to-br from-white via-white to-blue-50;
+    @apply dark:from-gray-800 dark:via-gray-800 dark:to-blue-900/20;
+    @apply shadow-premium border-blue-200 dark:border-blue-800;
+  }
+  
+  /* ================================
+     INPUT COMPONENTS
+     ================================ */
+  
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+    @apply dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100;
+    @apply transition-all duration-200;
+  }
+  
+  .input-error {
+    @apply input border-error-500 focus:ring-error-500;
+  }
+  
+  .input-lg {
+    @apply input px-4 py-3 text-base;
+  }
+  
+  /* ================================
+     BADGE COMPONENTS
+     ================================ */
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
+  }
+  
+  .badge-success {
+    @apply badge bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200;
+  }
+  
+  .badge-warning {
+    @apply badge bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200;
+  }
+  
+  .badge-error {
+    @apply badge bg-error-100 text-error-800 dark:bg-error-900 dark:text-error-200;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200;
+  }
+  
+  .badge-gray {
+    @apply badge bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200;
+  }
+  
+  /* ================================
+     LAYOUT COMPONENTS
+     ================================ */
+  
+  .container-responsive {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+  
+  /* ================================
+     ANIMATION UTILITIES
+     ================================ */
+  
+  .animate-enter {
+    @apply opacity-0 translate-y-4;
+    animation: enter 0.3s ease-out forwards;
+  }
+  
+  .animate-enter-delay {
+    @apply animate-enter;
+    animation-delay: 0.1s;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* ================================
+     GLASS EFFECT UTILITIES
+     ================================ */
+  
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+    @apply dark:bg-black/10 dark:border-white/10;
+    @apply shadow-glass dark:shadow-glass-dark;
+  }
+  
+  .glass-button {
+    @apply glass-card hover:bg-white/20 dark:hover:bg-white/5;
+    @apply transition-all duration-200;
+  }
+  
+  /* ================================
+     CHAT SPECIFIC STYLES
+     ================================ */
+  
+  .chat-bubble {
+    @apply px-4 py-2 rounded-2xl max-w-xs lg:max-w-md;
+    @apply relative break-words;
+  }
+  
+  .chat-bubble-sent {
+    @apply chat-bubble bg-whatsapp-500 text-white ml-auto;
+    @apply rounded-br-sm;
+  }
+  
+  .chat-bubble-received {
+    @apply chat-bubble bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+    @apply border border-gray-200 dark:border-gray-600;
+    @apply rounded-bl-sm;
+  }
+  
+  .chat-timestamp {
+    @apply text-xs text-gray-500 dark:text-gray-400 mt-1;
+  }
+  
+  /* ================================
+     STATUS INDICATORS
+     ================================ */
+  
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .status-online {
+    @apply status-dot bg-success-500;
+  }
+  
+  .status-offline {
+    @apply status-dot bg-gray-400;
+  }
+  
+  .status-away {
+    @apply status-dot bg-warning-500;
+  }
+  
+  .status-busy {
+    @apply status-dot bg-error-500;
+  }
+  
+  /* ================================
+     LOADING ANIMATIONS
+     ================================ */
+  
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.5s steps(5, end) infinite;
+  }
+  
+  .spinner {
+    @apply w-4 h-4 border-2 border-gray-300 border-t-primary-600 rounded-full animate-spin;
+  }
+  
+  /* ================================
+     CUSTOM KEYFRAMES
+     ================================ */
+  
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+  }
+}
+
+@layer utilities {
+  /* ================================
+     CUSTOM UTILITIES
+     ================================ */
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
