@@ -1,0 +1,77 @@
+node_modules/
+.wwebjs_auth/
+.wwebjs_cache/
+.env/# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# WhatsApp session data
+.wwebjs_auth/
+.wwebjs_cache/
+session/
+tokens/
+
+# Database files (contienen datos sensibles)
+data/users.json
+data/clients.json
+data/messages.json
+data/sessions.json
+data/settings.json
+
+# Backup files
+backups/
+*.backup
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+
+# Build files
+dist/
+build/
+
+# PM2
+.pm2/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# User uploads
+uploads/
+public/uploads/

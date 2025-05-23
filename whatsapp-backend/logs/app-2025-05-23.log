@@ -1117,3 +1117,40 @@
 {"timestamp":"2025-05-23T05:17:53.379Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
 {"timestamp":"2025-05-23T05:18:21.242Z","level":"INFO","message":"📨 Message received from 51958597425@c.us"}
 {"timestamp":"2025-05-23T05:18:53.357Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T06:08:56.579Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T06:08:56.658Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T06:08:56.659Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T06:08:56.660Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T06:08:56.661Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T06:08:57.463Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T06:08:57.465Z","level":"INFO","message":"📱 WhatsApp: Using whatsapp-web.js"}
+{"timestamp":"2025-05-23T06:08:57.466Z","level":"INFO","message":"🔒 Authentication: JWT enabled"}
+{"timestamp":"2025-05-23T06:08:57.467Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T06:08:57.468Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T06:08:57.469Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T06:08:57.470Z","level":"INFO","message":"🔐 Login at: http://localhost:3001/login"}
+{"timestamp":"2025-05-23T06:10:54.943Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T06:10:54.972Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T06:10:54.973Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T06:10:54.974Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T06:10:54.975Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T06:10:55.200Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T06:10:55.201Z","level":"INFO","message":"📱 WhatsApp: Using whatsapp-web.js"}
+{"timestamp":"2025-05-23T06:10:55.202Z","level":"INFO","message":"🔒 Authentication: JWT enabled"}
+{"timestamp":"2025-05-23T06:10:55.203Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T06:10:55.204Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T06:10:55.205Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T06:10:55.206Z","level":"INFO","message":"🔐 Login at: http://localhost:3001/login"}
+{"timestamp":"2025-05-23T06:11:02.440Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T06:11:04.152Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T06:11:05.685Z","level":"INFO","message":"📨 Message received from status@broadcast"}
+{"timestamp":"2025-05-23T06:11:05.769Z","level":"INFO","message":"📨 Message received from 51979086570-1574098893@g.us"}
+{"timestamp":"2025-05-23T06:11:05.920Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:11:06.298Z","level":"INFO","message":"📨 Message received from status@broadcast"}
+{"timestamp":"2025-05-23T06:11:06.611Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:11:06.746Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:11:06.857Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:11:07.099Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:11:07.194Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
+{"timestamp":"2025-05-23T06:22:20.593Z","level":"INFO","message":"📨 Message received from status@broadcast"}
+{"timestamp":"2025-05-23T06:22:42.635Z","level":"INFO","message":"📨 Message received from status@broadcast"}
