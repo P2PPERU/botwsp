@@ -1154,3 +1154,187 @@
 {"timestamp":"2025-05-23T06:11:07.194Z","level":"INFO","message":"📨 Message received from 51912633151-1607616291@g.us"}
 {"timestamp":"2025-05-23T06:22:20.593Z","level":"INFO","message":"📨 Message received from status@broadcast"}
 {"timestamp":"2025-05-23T06:22:42.635Z","level":"INFO","message":"📨 Message received from status@broadcast"}
+{"timestamp":"2025-05-23T17:37:56.829Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T17:37:56.854Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T17:37:56.854Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T17:37:56.855Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T17:37:56.855Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T17:37:57.211Z","level":"INFO","message":"📊 Metrics service initialized"}
+{"timestamp":"2025-05-23T17:37:57.212Z","level":"INFO","message":"🔍 WhatsApp health check started"}
+{"timestamp":"2025-05-23T17:37:57.215Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T17:37:57.216Z","level":"INFO","message":"📱 WhatsApp: Using whatsapp-web.js"}
+{"timestamp":"2025-05-23T17:37:57.216Z","level":"INFO","message":"🔒 Authentication: JWT enabled"}
+{"timestamp":"2025-05-23T17:37:57.217Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T17:37:57.217Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T17:37:57.218Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T17:37:57.218Z","level":"INFO","message":"🔐 Login at: http://localhost:3001/login"}
+{"timestamp":"2025-05-23T17:37:57.218Z","level":"INFO","message":"📊 Metrics dashboard: http://localhost:3001/metrics"}
+{"timestamp":"2025-05-23T17:38:02.650Z","level":"INFO","message":"GET /login - ::1"}
+{"timestamp":"2025-05-23T17:38:02.652Z","level":"ERROR","message":"Unhandled error:","data":{"message":"ENOENT: no such file or directory, stat 'E:\\BOTWSP2\\botwsp\\whatsapp-backend\\public\\login.html'","stack":"Error: ENOENT: no such file or directory, stat 'E:\\BOTWSP2\\botwsp\\whatsapp-backend\\public\\login.html'","url":"/login","method":"GET","ip":"::1"}}
+{"timestamp":"2025-05-23T17:38:02.673Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:38:02.808Z","level":"INFO","message":"GET /favicon.ico - ::1"}
+{"timestamp":"2025-05-23T17:38:55.874Z","level":"INFO","message":"GET /metrics - ::1"}
+{"timestamp":"2025-05-23T17:39:02.533Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:39:22.546Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:39:42.554Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:40:02.559Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:40:22.571Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:41:34.113Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:42:34.117Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:42:54.120Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:42:56.237Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T17:43:14.125Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:43:34.140Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:43:54.151Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:45:05.659Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:46:05.673Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:46:25.683Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:46:45.685Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:47:05.690Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:47:25.701Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:47:56.253Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T17:48:37.135Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:49:37.140Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:49:57.149Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:50:17.154Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:50:37.158Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:50:57.163Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:52:08.105Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:52:56.270Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T17:53:08.119Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:53:28.133Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:53:48.142Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:54:08.158Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:54:28.168Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:55:39.118Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:56:39.132Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:56:59.140Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:57:19.161Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:57:39.166Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:57:56.306Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T17:57:59.179Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T17:59:09.828Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:00:00.916Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T18:00:00.917Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T18:00:09.843Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:00:29.850Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:00:49.854Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:01:09.868Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:01:29.881Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:02:40.791Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:02:56.366Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T18:03:40.808Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:04:00.820Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:04:20.833Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:04:40.842Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:05:00.852Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:06:12.484Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:07:12.503Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:07:32.510Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:07:52.518Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:07:56.417Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T18:08:12.539Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:08:23.992Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:08:23.996Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:08:32.546Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:08:53.992Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:09:23.996Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:09:43.488Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:09:54.904Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:10:24.918Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:10:43.502Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:10:54.926Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:11:03.515Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:11:23.531Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:11:24.932Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:11:43.533Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:12:03.546Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:12:19.949Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:12:56.477Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T18:18:38.683Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T18:18:38.705Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T18:18:38.706Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T18:18:38.706Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T18:18:38.706Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T18:18:38.904Z","level":"INFO","message":"📊 Metrics service initialized"}
+{"timestamp":"2025-05-23T18:18:38.905Z","level":"INFO","message":"🔍 WhatsApp health check started"}
+{"timestamp":"2025-05-23T18:18:38.908Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T18:18:38.909Z","level":"INFO","message":"📱 WhatsApp: Using whatsapp-web.js"}
+{"timestamp":"2025-05-23T18:18:38.910Z","level":"INFO","message":"🔒 Authentication: JWT enabled"}
+{"timestamp":"2025-05-23T18:18:38.910Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T18:18:38.910Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T18:18:38.911Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T18:18:38.911Z","level":"INFO","message":"🔐 Login at: http://localhost:3001/login"}
+{"timestamp":"2025-05-23T18:18:38.911Z","level":"INFO","message":"📊 Metrics dashboard: http://localhost:3001/metrics"}
+{"timestamp":"2025-05-23T18:18:44.235Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:18:46.996Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:18:51.810Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:18:51.812Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:19:20.007Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:19:21.818Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:19:26.337Z","level":"INFO","message":"POST /api/auth/login - ::1"}
+{"timestamp":"2025-05-23T18:19:26.414Z","level":"SUCCESS","message":"User logged in: admin@whatsapphub.com (admin)"}
+{"timestamp":"2025-05-23T18:19:44.127Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:19:47.015Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:19:51.813Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:20:04.133Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:20:17.003Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:20:22.016Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:20:24.149Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:20:44.162Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:20:52.015Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:21:04.031Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:21:04.033Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:21:04.034Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:21:04.036Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:21:04.176Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:21:20.020Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:21:35.025Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:22:05.027Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:22:15.268Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:22:20.034Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:23:13.628Z","level":"INFO","message":"POST /api/auth/login - ::1"}
+{"timestamp":"2025-05-23T18:23:13.692Z","level":"SUCCESS","message":"User logged in: admin@whatsapphub.com (admin)"}
+{"timestamp":"2025-05-23T18:23:13.709Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:23:13.714Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"2ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:23:15.278Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:23:20.046Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:23:20.048Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"1ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:23:35.291Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:23:38.192Z","level":"INFO","message":"Metrics saved successfully"}
+{"timestamp":"2025-05-23T18:23:38.590Z","level":"INFO","message":"POST /api/auth/logout - ::1"}
+{"timestamp":"2025-05-23T18:23:38.592Z","level":"INFO","message":"User logged out: admin@whatsapphub.com"}
+{"timestamp":"2025-05-23T18:23:40.396Z","level":"INFO","message":"POST /api/auth/login - ::1"}
+{"timestamp":"2025-05-23T18:23:40.460Z","level":"SUCCESS","message":"User logged in: admin@whatsapphub.com (admin)"}
+{"timestamp":"2025-05-23T18:23:40.474Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:23:40.477Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"1ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:23:55.315Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:24:04.662Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:24:04.664Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:24:04.700Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:24:04.704Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"2ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:15.330Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:24:20.047Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:24:20.049Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"1ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:23.632Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:24:23.636Z","level":"INFO","message":"GET /api/auth/verify - ::1"}
+{"timestamp":"2025-05-23T18:24:23.725Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:24:23.728Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"1ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:27.378Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T18:24:27.379Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/qr","statusCode":200,"responseTime":"0ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:30.573Z","level":"INFO","message":"POST /api/sessions/restart - ::1"}
+{"timestamp":"2025-05-23T18:24:30.632Z","level":"INFO","message":"WhatsApp session closed"}
+{"timestamp":"2025-05-23T18:24:32.643Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T18:24:32.649Z","level":"INFO","message":"Session restarting..."}
+{"timestamp":"2025-05-23T18:24:32.649Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"POST","path":"/restart","statusCode":200,"responseTime":"2074ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:34.875Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T18:24:34.876Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/qr","statusCode":200,"responseTime":"0ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:35.044Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:24:35.657Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T18:24:35.659Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/qr","statusCode":200,"responseTime":"0ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:35.955Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"910ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:24:37.667Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T18:24:53.725Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:24:53.729Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"2ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}
+{"timestamp":"2025-05-23T18:25:05.059Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T18:25:05.062Z","level":"INFO","message":{"type":"AUDIT","user":"admin@whatsapphub.com","role":"admin","method":"GET","path":"/status","statusCode":200,"responseTime":"1ms","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}}

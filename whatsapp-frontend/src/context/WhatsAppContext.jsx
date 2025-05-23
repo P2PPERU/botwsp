@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react'
 import { whatsappAPI } from '@services/api'
+import { useAuth } from '@context/AuthContext'
 import toast from 'react-hot-toast'
 
 // Estado inicial
@@ -12,7 +13,8 @@ const initialState = {
   selectedConversation: null,
   isLoading: false,
   error: null,
-  lastCheck: null
+  lastCheck: null,
+  sessionInfo: null
 }
 
 // Reducer para manejar el estado
@@ -38,6 +40,12 @@ const whatsappReducer = (state, action) => {
         ...state,
         qrCode: action.payload,
         sessionStatus: action.payload ? 'connecting' : state.sessionStatus
+      }
+
+    case 'SET_SESSION_INFO':
+      return {
+        ...state,
+        sessionInfo: action.payload
       }
 
     case 'SET_MESSAGES':
@@ -85,6 +93,9 @@ const whatsappReducer = (state, action) => {
         error: null
       }
 
+    case 'RESET_STATE':
+      return initialState
+
     default:
       return state
   }
@@ -105,52 +116,104 @@ export const useWhatsApp = () => {
 // Provider del contexto
 export const WhatsAppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(whatsappReducer, initialState)
+  const { isAuthenticated, isLoading: authLoading } = useAuth()
 
-  // Verificar estado de conexión periódicamente
+  // Solo verificar estado de conexión si está autenticado
   useEffect(() => {
+    if (!isAuthenticated || authLoading) {
+      // Reset del estado si no está autenticado
+      dispatch({ type: 'RESET_STATE' })
+      return
+    }
+
+    // Verificar inmediatamente
     checkConnectionStatus()
     
+    // Configurar intervalo
     const interval = setInterval(() => {
-      checkConnectionStatus()
+      if (isAuthenticated) {
+        checkConnectionStatus()
+      }
     }, 30000) // Cada 30 segundos
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isAuthenticated, authLoading])
 
   // Verificar estado de conexión
   const checkConnectionStatus = async () => {
+    // Solo ejecutar si está autenticado
+    if (!isAuthenticated) {
+      console.log('⚠️ Skipping WhatsApp status check - not authenticated')
+      return
+    }
+
     try {
       const response = await whatsappAPI.getStatus()
+      
+      // Tu backend puede devolver diferentes estructuras
+      let isConnected = false
+      let status = 'disconnected'
+      
+      if (response.data.success && response.data.data) {
+        isConnected = response.data.data.connected || response.data.data.status === 'connected'
+        status = response.data.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
+      } else {
+        isConnected = response.data.connected || response.data.status === 'connected'
+        status = response.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
+      }
+      
+      console.log('📱 WhatsApp status:', { isConnected, status })
       
       dispatch({
         type: 'SET_CONNECTION_STATUS',
         payload: {
-          connected: response.data.status,
-          status: response.data.status ? 'connected' : 'disconnected',
-          lastCheck: response.data.lastCheck
-        }
-      })
-    } catch (error) {
-      console.error('Error checking WhatsApp status:', error)
-      dispatch({
-        type: 'SET_CONNECTION_STATUS',
-        payload: {
-          connected: false,
-          status: 'error',
+          connected: isConnected,
+          status: status,
           lastCheck: new Date().toISOString()
         }
       })
+    } catch (error) {
+      // Solo loggear errores que no sean de autenticación
+      if (error.response?.status !== 401 && error.response?.status !== 403) {
+        console.error('Error checking WhatsApp status:', error)
+        dispatch({
+          type: 'SET_CONNECTION_STATUS',
+          payload: {
+            connected: false,
+            status: 'error',
+            lastCheck: new Date().toISOString()
+          }
+        })
+      } else {
+        console.log('⚠️ WhatsApp status check failed - authentication required')
+      }
     }
   }
 
   // Obtener código QR
   const getQRCode = async () => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       
       const response = await whatsappAPI.getQRCode()
       
-      if (response.data.connected) {
+      let isConnected = false
+      let qrCode = null
+      
+      if (response.data.success && response.data.data) {
+        isConnected = response.data.data.connected
+        qrCode = response.data.data.qr
+      } else {
+        isConnected = response.data.connected
+        qrCode = response.data.qr
+      }
+      
+      if (isConnected) {
         dispatch({
           type: 'SET_CONNECTION_STATUS',
           payload: {
@@ -161,8 +224,8 @@ export const WhatsAppProvider = ({ children }) => {
         })
         dispatch({ type: 'SET_QR_CODE', payload: null })
         toast.success('WhatsApp ya está conectado')
-      } else if (response.data.qr) {
-        dispatch({ type: 'SET_QR_CODE', payload: response.data.qr })
+      } else if (qrCode) {
+        dispatch({ type: 'SET_QR_CODE', payload: qrCode })
         toast.success('Escanea el código QR con WhatsApp')
       } else {
         toast.info('Generando código QR...')
@@ -180,6 +243,11 @@ export const WhatsAppProvider = ({ children }) => {
 
   // Cerrar sesión de WhatsApp
   const closeSession = async () => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       
@@ -194,6 +262,7 @@ export const WhatsAppProvider = ({ children }) => {
         }
       })
       dispatch({ type: 'SET_QR_CODE', payload: null })
+      dispatch({ type: 'SET_SESSION_INFO', payload: null })
       
       toast.success('Sesión de WhatsApp cerrada')
     } catch (error) {
@@ -207,6 +276,11 @@ export const WhatsAppProvider = ({ children }) => {
 
   // Reiniciar sesión
   const restartSession = async () => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       
@@ -234,13 +308,73 @@ export const WhatsAppProvider = ({ children }) => {
     }
   }
 
+  // Iniciar sesión
+  const startSession = async () => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true })
+      
+      await whatsappAPI.startSession()
+      
+      dispatch({
+        type: 'SET_CONNECTION_STATUS',
+        payload: {
+          connected: false,
+          status: 'connecting',
+          lastCheck: new Date().toISOString()
+        }
+      })
+      
+      toast.success('Iniciando sesión de WhatsApp...')
+      
+      // Obtener QR después de 2 segundos
+      setTimeout(() => getQRCode(), 2000)
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || 'Error al iniciar sesión'
+      dispatch({ type: 'SET_ERROR', payload: errorMessage })
+      toast.error(errorMessage)
+    } finally {
+      dispatch({ type: 'SET_LOADING', payload: false })
+    }
+  }
+
+  // Obtener información de la sesión
+  const getSessionInfo = async () => {
+    if (!isAuthenticated) return null
+
+    try {
+      const response = await whatsappAPI.getSessionInfo()
+      const sessionInfo = response.data.success ? response.data.data : response.data
+      dispatch({ type: 'SET_SESSION_INFO', payload: sessionInfo })
+      return sessionInfo
+    } catch (error) {
+      console.error('Error getting session info:', error)
+      return null
+    }
+  }
+
   // Enviar mensaje
   const sendMessage = async (phone, message, type = 'text') => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
     try {
-      const response = await whatsappAPI.sendMessage({ phone, message, type })
+      const response = await whatsappAPI.sendMessage({ 
+        phone, 
+        message, 
+        type 
+      })
+      
+      const messageData = response.data.success ? response.data.data : response.data
       
       const newMessage = {
-        id: response.data.messageId,
+        id: messageData.messageId || Date.now(),
         from: 'me',
         to: phone,
         message,
@@ -253,7 +387,7 @@ export const WhatsAppProvider = ({ children }) => {
       dispatch({ type: 'ADD_MESSAGE', payload: newMessage })
       
       toast.success('Mensaje enviado')
-      return response.data
+      return messageData
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Error al enviar mensaje'
       toast.error(errorMessage)
@@ -263,6 +397,11 @@ export const WhatsAppProvider = ({ children }) => {
 
   // Enviar mensaje masivo
   const sendBulkMessage = async (phones, message, delay = 2000) => {
+    if (!isAuthenticated) {
+      toast.error('Debes iniciar sesión primero')
+      return
+    }
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       
@@ -286,12 +425,18 @@ export const WhatsAppProvider = ({ children }) => {
 
   // Obtener historial de mensajes
   const getMessages = async (filters = {}) => {
+    if (!isAuthenticated) return null
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       
       const response = await whatsappAPI.getMessages(filters)
       
-      dispatch({ type: 'SET_MESSAGES', payload: response.data.messages })
+      const messages = response.data.success ? 
+        response.data.data.messages || response.data.data : 
+        response.data.messages || response.data
+      
+      dispatch({ type: 'SET_MESSAGES', payload: messages })
       return response.data
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Error al obtener mensajes'
@@ -299,6 +444,19 @@ export const WhatsAppProvider = ({ children }) => {
       toast.error(errorMessage)
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false })
+    }
+  }
+
+  // Obtener estadísticas de mensajes
+  const getMessageStats = async () => {
+    if (!isAuthenticated) return null
+
+    try {
+      const response = await whatsappAPI.getMessageStats()
+      return response.data.success ? response.data.data : response.data
+    } catch (error) {
+      console.error('Error getting message stats:', error)
+      return null
     }
   }
 
@@ -357,11 +515,14 @@ export const WhatsAppProvider = ({ children }) => {
     getQRCode,
     closeSession,
     restartSession,
+    startSession,
+    getSessionInfo,
     
     // Acciones de mensajes
     sendMessage,
     sendBulkMessage,
     getMessages,
+    getMessageStats,
     
     // Acciones de conversaciones
     generateConversations,

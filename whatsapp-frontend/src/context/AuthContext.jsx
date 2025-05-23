@@ -5,10 +5,36 @@ import toast from 'react-hot-toast'
 // Estado inicial
 const initialState = {
   user: null,
-  token: localStorage.getItem('token'),
+  token: null,
   isAuthenticated: false,
   isLoading: true,
   error: null
+}
+
+// Función segura para localStorage
+const safeLocalStorage = {
+  getItem: (key) => {
+    try {
+      return localStorage?.getItem(key) || null
+    } catch (error) {
+      console.warn('localStorage not available:', error)
+      return null
+    }
+  },
+  setItem: (key, value) => {
+    try {
+      localStorage?.setItem(key, value)
+    } catch (error) {
+      console.warn('localStorage setItem failed:', error)
+    }
+  },
+  removeItem: (key) => {
+    try {
+      localStorage?.removeItem(key)
+    } catch (error) {
+      console.warn('localStorage removeItem failed:', error)
+    }
+  }
 }
 
 // Reducer para manejar el estado
@@ -82,12 +108,15 @@ export const useAuth = () => {
 
 // Provider del contexto
 export const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, initialState)
+  const [state, dispatch] = useReducer(authReducer, {
+    ...initialState,
+    token: safeLocalStorage.getItem('token')
+  })
 
   // Verificar token al cargar la aplicación
   useEffect(() => {
     const verifyToken = async () => {
-      const token = localStorage.getItem('token')
+      const token = safeLocalStorage.getItem('token')
       
       if (!token) {
         dispatch({ type: 'SET_LOADING', payload: false })
@@ -96,16 +125,34 @@ export const AuthProvider = ({ children }) => {
 
       try {
         const response = await authAPI.verify()
+        
+        // Tu backend devuelve diferentes estructuras, vamos a manejar todas
+        let userData = null
+        
+        if (response.data.success && response.data.data) {
+          // Si viene en formato { success: true, data: { user: ... } }
+          userData = response.data.data.user || response.data.data
+        } else if (response.data.user) {
+          // Si viene directo { user: ... }
+          userData = response.data.user
+        } else {
+          // Si viene directo los datos del usuario
+          userData = response.data
+        }
+        
+        console.log('✅ Token verificado, usuario:', userData)
+        
         dispatch({
           type: 'AUTH_SUCCESS',
           payload: {
-            user: response.data.user,
+            user: userData,
             token: token
           }
         })
       } catch (error) {
-        console.error('Token verification failed:', error)
-        localStorage.removeItem('token')
+        console.error('❌ Token verification failed:', error)
+        safeLocalStorage.removeItem('token')
+        safeLocalStorage.removeItem('refreshToken')
         dispatch({ type: 'AUTH_ERROR', payload: 'Session expired' })
       }
     }
@@ -118,22 +165,56 @@ export const AuthProvider = ({ children }) => {
     try {
       dispatch({ type: 'AUTH_START' })
       
-      const response = await authAPI.login(credentials)
-      const { token, user } = response.data
+      console.log('🔐 Intentando login con:', credentials.email)
       
-      // Guardar token en localStorage
-      localStorage.setItem('token', token)
+      const response = await authAPI.login(credentials)
+      
+      console.log('📦 Respuesta del backend:', response.data)
+      
+      // Tu backend puede devolver diferentes estructuras
+      let token = null
+      let userData = null
+      let refreshToken = null
+      
+      if (response.data.success && response.data.data) {
+        // Formato: { success: true, data: { token, user, refreshToken } }
+        token = response.data.data.token
+        userData = response.data.data.user
+        refreshToken = response.data.data.refreshToken
+      } else {
+        // Formato directo: { token, user, refreshToken }
+        token = response.data.token
+        userData = response.data.user
+        refreshToken = response.data.refreshToken
+      }
+      
+      if (!token) {
+        throw new Error('No se recibió token del servidor')
+      }
+      
+      if (!userData) {
+        throw new Error('No se recibieron datos del usuario')
+      }
+      
+      console.log('✅ Login exitoso:', { user: userData, hasToken: !!token })
+      
+      // Guardar tokens en localStorage
+      safeLocalStorage.setItem('token', token)
+      if (refreshToken) {
+        safeLocalStorage.setItem('refreshToken', refreshToken)
+      }
       
       dispatch({
         type: 'AUTH_SUCCESS',
-        payload: { user, token }
+        payload: { user: userData, token }
       })
       
-      toast.success(`¡Bienvenido ${user.name}!`)
+      toast.success(`¡Bienvenido ${userData.name || userData.email}!`)
       return response.data
       
     } catch (error) {
-      const errorMessage = error.response?.data?.error || 'Error al iniciar sesión'
+      console.error('❌ Login error:', error)
+      const errorMessage = error.response?.data?.error || error.message || 'Error al iniciar sesión'
       dispatch({ type: 'AUTH_ERROR', payload: errorMessage })
       toast.error(errorMessage)
       throw error
@@ -143,37 +224,16 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = async () => {
     try {
+      // Intentar logout en el backend
       await authAPI.logout()
     } catch (error) {
-      console.error('Logout error:', error)
+      console.error('Error en logout del backend:', error)
     } finally {
-      localStorage.removeItem('token')
+      // Limpiar localStorage y estado
+      safeLocalStorage.removeItem('token')
+      safeLocalStorage.removeItem('refreshToken')
       dispatch({ type: 'AUTH_LOGOUT' })
       toast.success('Sesión cerrada correctamente')
-    }
-  }
-
-  // Refresh token
-  const refreshToken = async () => {
-    try {
-      const refreshToken = localStorage.getItem('refreshToken')
-      if (!refreshToken) throw new Error('No refresh token')
-
-      const response = await authAPI.refresh({ refreshToken })
-      const { token, user } = response.data
-      
-      localStorage.setItem('token', token)
-      
-      dispatch({
-        type: 'AUTH_SUCCESS',
-        payload: { user, token }
-      })
-      
-      return response.data
-    } catch (error) {
-      console.error('Token refresh failed:', error)
-      logout()
-      throw error
     }
   }
 
@@ -182,10 +242,17 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authAPI.updateProfile(profileData)
       
+      let updatedUser = null
+      if (response.data.success && response.data.data) {
+        updatedUser = response.data.data.user || response.data.data
+      } else {
+        updatedUser = response.data.user || response.data
+      }
+      
       dispatch({
         type: 'AUTH_SUCCESS',
         payload: {
-          user: response.data.user,
+          user: updatedUser,
           token: state.token
         }
       })
@@ -216,16 +283,26 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'AUTH_CLEAR_ERROR' })
   }
 
-  // Verificar permisos
+  // Verificar permisos - adaptado a tu backend
   const hasPermission = (resource, action) => {
     if (!state.user || !state.user.permissions) return false
-    return state.user.permissions[resource]?.includes(action) || false
+    const resourcePermissions = state.user.permissions[resource]
+    if (!resourcePermissions) return false
+    return resourcePermissions.includes(action)
   }
 
-  // Verificar rol
-  const hasRole = (role) => {
+  // Verificar rol - adaptado a tu backend
+  const hasRole = (roles) => {
     if (!state.user) return false
-    return state.user.role === role
+    if (typeof roles === 'string') {
+      return state.user.role === roles
+    }
+    return roles.includes(state.user.role)
+  }
+
+  // Verificar si es admin
+  const isAdmin = () => {
+    return hasRole('admin')
   }
 
   const value = {
@@ -235,14 +312,14 @@ export const AuthProvider = ({ children }) => {
     // Acciones
     login,
     logout,
-    refreshToken,
     updateProfile,
     changePassword,
     clearError,
     
     // Utilities
     hasPermission,
-    hasRole
+    hasRole,
+    isAdmin
   }
 
   return (

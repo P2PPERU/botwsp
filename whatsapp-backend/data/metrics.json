@@ -1,0 +1,395 @@
+{
+  "messages": {
+    "sent": {
+      "total": 0,
+      "today": 0,
+      "failed": 0,
+      "byHour": {}
+    },
+    "received": {
+      "total": 0,
+      "today": 0,
+      "byHour": {}
+    }
+  },
+  "gpt": {
+    "requests": {
+      "total": 0,
+      "today": 0,
+      "failed": 0
+    },
+    "tokens": {
+      "total": 0,
+      "today": 0
+    },
+    "cost": {
+      "total": 0,
+      "today": 0
+    },
+    "responseTime": {
+      "total": 0,
+      "count": 0,
+      "average": 0
+    },
+    "cache": {
+      "hits": 0,
+      "misses": 0
+    }
+  },
+  "whatsapp": {
+    "connections": {
+      "total": 0,
+      "successful": 0,
+      "failed": 0
+    },
+    "uptime": {
+      "start": 1748021876223,
+      "disconnections": []
+    },
+    "status": "disconnected",
+    "lastCheck": 1748024600048
+  },
+  "clients": {
+    "total": 3,
+    "active": 1,
+    "expiring": 1,
+    "expired": 1,
+    "byService": {
+      "Netflix Premium": 1,
+      "Disney+ Familiar": 1,
+      "Prime Video": 1
+    }
+  },
+  "errors": {
+    "total": 27,
+    "today": 27,
+    "byType": {
+      "api_error": 27
+    },
+    "recent": [
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024540035
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024525028
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024495026
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024480021
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024464037
+      },
+      {
+        "type": "api_error",
+        "message": "GET /verify - 403",
+        "details": {
+          "path": "/verify",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024464035
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024464033
+      },
+      {
+        "type": "api_error",
+        "message": "GET /verify - 403",
+        "details": {
+          "path": "/verify",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024464032
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024452016
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024422016
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024417004
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024391814
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 403",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 403,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024387016
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024361819
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024360008
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024331813
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024331811
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748024326997
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023939950
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023884933
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023854927
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023824919
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023794904
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023763996
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023733992
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023703997
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748023703993
+      }
+    ]
+  },
+  "api": {
+    "requests": {
+      "total": 31,
+      "today": 31,
+      "byEndpoint": {
+        "GET /sessions/status": 25,
+        "POST /login": 2,
+        "GET /verify": 2,
+        "GET /status": 2
+      }
+    },
+    "responseTime": {
+      "total": 158,
+      "count": 31,
+      "average": 5.096774193548387
+    },
+    "statusCodes": {
+      "200": 4,
+      "401": 18,
+      "403": 9
+    }
+  },
+  "system": {
+    "startTime": 1748021876223,
+    "lastUpdate": 1748024600049
+  }
+}

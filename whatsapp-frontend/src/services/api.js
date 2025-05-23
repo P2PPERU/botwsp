@@ -1,8 +1,10 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-// Configuración base de Axios
+// Configuración base de Axios - ACTUALIZADA PARA TU BACKEND
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
+
+console.log('🔗 API Base URL:', API_BASE_URL)
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -19,9 +21,15 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
+    
+    if (import.meta.env.DEV) {
+      console.log(`🚀 ${config.method?.toUpperCase()} ${config.url}`, config.data)
+    }
+    
     return config
   },
   (error) => {
+    console.error('❌ Request Error:', error)
     return Promise.reject(error)
   }
 )
@@ -29,10 +37,20 @@ api.interceptors.request.use(
 // Interceptor para manejar respuestas y errores
 api.interceptors.response.use(
   (response) => {
+    if (import.meta.env.DEV) {
+      console.log(`✅ ${response.config.method?.toUpperCase()} ${response.config.url}`, response.data)
+    }
     return response
   },
   async (error) => {
     const originalRequest = error.config
+
+    console.error('❌ API Error:', {
+      url: error.config?.url,
+      method: error.config?.method,
+      status: error.response?.status,
+      message: error.response?.data?.error || error.message
+    })
 
     // Si el error es 401 y no es un retry, intentar refrescar el token
     if (error.response?.status === 401 && !originalRequest._retry) {
@@ -45,7 +63,7 @@ api.interceptors.response.use(
             refreshToken
           })
           
-          const { token } = response.data.data
+          const { token } = response.data
           localStorage.setItem('token', token)
           
           // Reintentar la petición original
@@ -53,7 +71,7 @@ api.interceptors.response.use(
           return api(originalRequest)
         }
       } catch (refreshError) {
-        // Si el refresh falla, limpiar el localStorage y redirigir al login
+        console.error('❌ Token refresh failed:', refreshError)
         localStorage.removeItem('token')
         localStorage.removeItem('refreshToken')
         window.location.href = '/login'
@@ -62,17 +80,35 @@ api.interceptors.response.use(
     }
 
     // Manejar errores específicos
-    if (error.response?.status === 403) {
+    if (error.code === 'NETWORK_ERROR' || error.code === 'ERR_NETWORK') {
+      toast.error('Error de conexión. Verifica que el servidor esté funcionando.')
+    } else if (error.response?.status === 403) {
       toast.error('No tienes permisos para realizar esta acción')
     } else if (error.response?.status === 404) {
       toast.error('Recurso no encontrado')
     } else if (error.response?.status >= 500) {
       toast.error('Error interno del servidor. Intenta nuevamente.')
+    } else if (error.response?.status === 400) {
+      const message = error.response?.data?.error || 'Datos inválidos'
+      toast.error(message)
     }
 
     return Promise.reject(error)
   }
 )
+
+// Función para testear la conexión con el backend
+export const testConnection = async () => {
+  try {
+    // Tu backend tiene health check en /health (sin /api)
+    const response = await axios.get('http://localhost:3001/health')
+    console.log('✅ Backend conectado:', response.data)
+    return true
+  } catch (error) {
+    console.error('❌ Backend no disponible:', error.message)
+    return false
+  }
+}
 
 // ================================
 // API ENDPOINTS - AUTENTICACIÓN
@@ -84,20 +120,23 @@ export const authAPI = {
   refresh: (data) => api.post('/auth/refresh', data),
   updateProfile: (data) => api.put('/auth/profile', data),
   changePassword: (data) => api.post('/auth/change-password', data),
+  getProfile: () => api.get('/auth/profile'),
+  register: (data) => api.post('/auth/register', data),
 }
 
 // ================================
-// API ENDPOINTS - WHATSAPP
+// API ENDPOINTS - WHATSAPP (SESSIONS en tu backend)
 // ================================
 export const whatsappAPI = {
-  // Sesión
+  // Sesión - usando /sessions según tu backend
   getStatus: () => api.get('/sessions/status'),
   getQRCode: () => api.get('/sessions/qr'),
   closeSession: () => api.post('/sessions/close'),
   restartSession: () => api.post('/sessions/restart'),
   getSessionInfo: () => api.get('/sessions/info'),
+  startSession: () => api.post('/sessions/start'),
 
-  // Mensajes
+  // Mensajes - usando /messages según tu backend
   sendMessage: (data) => api.post('/messages/send', data),
   sendFile: (data) => api.post('/messages/send-file', data),
   sendBulkMessage: (data) => api.post('/messages/send-bulk', data),
@@ -121,33 +160,6 @@ export const clientsAPI = {
   suspend: (id, data) => api.post(`/clients/${id}/suspend`, data),
   reactivate: (id) => api.post(`/clients/${id}/reactivate`),
   importClients: (data) => api.post('/clients/import', data),
-}
-
-// ================================
-// API ENDPOINTS - GPT/IA
-// ================================
-export const gptAPI = {
-  generateResponse: (data) => api.post('/gpt/generate', data),
-  analyzeIntent: (data) => api.post('/gpt/analyze-intent', data),
-  enhanceMessage: (data) => api.post('/gpt/enhance-message', data),
-  generateSummary: (data) => api.post('/gpt/generate-summary', data),
-  getConfig: () => api.get('/gpt/config'),
-  healthCheck: () => api.get('/gpt/health'),
-}
-
-// ================================
-// API ENDPOINTS - MÉTRICAS
-// ================================
-export const metricsAPI = {
-  getSummary: () => api.get('/metrics/summary'),
-  getDetailed: () => api.get('/metrics/detailed'),
-  getDashboard: () => api.get('/metrics/dashboard'),
-  getHourlyActivity: () => api.get('/metrics/hourly'),
-  getCosts: () => api.get('/metrics/costs'),
-  getErrors: (params) => api.get('/metrics/errors', { params }),
-  getSystemStatus: () => api.get('/metrics/system'),
-  getHistorical: (params) => api.get('/metrics/historical', { params }),
-  exportMetrics: (params) => api.get('/metrics/export', { params }),
 }
 
 // ================================
@@ -179,6 +191,21 @@ export const workflowsAPI = {
 }
 
 // ================================
+// API ENDPOINTS - MÉTRICAS
+// ================================
+export const metricsAPI = {
+  getSummary: () => api.get('/metrics/summary'),
+  getDetailed: () => api.get('/metrics/detailed'),
+  getDashboard: () => api.get('/metrics/dashboard'),
+  getHourlyActivity: () => api.get('/metrics/hourly'),
+  getCosts: () => api.get('/metrics/costs'),
+  getErrors: (params) => api.get('/metrics/errors', { params }),
+  getSystemStatus: () => api.get('/metrics/system'),
+  getHistorical: (params) => api.get('/metrics/historical', { params }),
+  exportMetrics: (params) => api.get('/metrics/export', { params }),
+}
+
+// ================================
 // API ENDPOINTS - ESTADÍSTICAS
 // ================================
 export const statsAPI = {
@@ -192,6 +219,9 @@ export const statsAPI = {
 // ================================
 // UTILIDADES
 // ================================
+
+// Health check general
+export const healthCheck = () => axios.get('http://localhost:3001/health')
 
 // Función para manejar archivos
 export const uploadFile = async (file, endpoint) => {
@@ -220,24 +250,11 @@ export const downloadFile = async (url, filename) => {
     document.body.appendChild(link)
     link.click()
     link.remove()
-    window.URL.revokeObjectURL(downloadUrl)
+    window.URL.createObjectURL(downloadUrl)
   } catch (error) {
     toast.error('Error al descargar el archivo')
     throw error
   }
 }
-
-// Función para convertir imagen a base64
-export const fileToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => resolve(reader.result)
-    reader.onerror = (error) => reject(error)
-  })
-}
-
-// Health check general
-export const healthCheck = () => api.get('/health')
 
 export default api
