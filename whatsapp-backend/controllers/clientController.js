@@ -1,6 +1,6 @@
 const Client = require('../models/Client');
 const logger = require('../utils/logger');
-const wppService = require('../services/wppService');
+const whatsappService = require('../services/whatsappWebService');
 
 class ClientController {
   // Obtener todos los clientes
@@ -109,7 +109,7 @@ class ClientController {
       }
 
       // Formatear número de teléfono
-      clientData.phone = wppService.formatPhoneNumber(clientData.phone);
+      clientData.phone = whatsappService.formatPhoneNumber(clientData.phone);
       
       // Verificar si el cliente ya existe
       const existingClient = await Client.findByPhone(clientData.phone);
@@ -152,7 +152,7 @@ class ClientController {
       
       // Formatear teléfono si se está actualizando
       if (updateData.phone) {
-        updateData.phone = wppService.formatPhoneNumber(updateData.phone);
+        updateData.phone = whatsappService.formatPhoneNumber(updateData.phone);
       }
 
       // Calcular estado si se actualiza la fecha de vencimiento
@@ -398,7 +398,7 @@ class ClientController {
           }
 
           // Formatear teléfono
-          clientData.phone = wppService.formatPhoneNumber(clientData.phone);
+          clientData.phone = whatsappService.formatPhoneNumber(clientData.phone);
           
           // Verificar si ya existe
           const existing = await Client.findByPhone(clientData.phone);

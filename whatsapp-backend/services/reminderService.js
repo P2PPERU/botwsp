@@ -1,5 +1,5 @@
 const Client = require('../models/Client');
-const { wppClient, WPP_SESSION } = require('../config/wppconnect');
+const whatsappService = require('../services/whatsappWebService');
 const logger = require('../utils/logger');
 const messageTemplates = require('../utils/messageTemplates');
 
@@ -80,17 +80,15 @@ class ReminderService {
     try {
       const message = this.generateReminderMessage(client, daysToExpiry);
       
-      const response = await wppClient.post(`/api/${WPP_SESSION}/send-message`, {
-        phone: client.phone,
-        message: message
-      });
+      // Usar whatsapp-web.js en lugar de wppClient
+      const response = await whatsappService.sendMessage(client.phone, message);
 
       // Registrar el envío
       await this.logReminderSent(client, daysToExpiry, message);
 
       logger.success(`📨 Recordatorio enviado a ${client.name} (${client.phone})`);
       
-      return response.data;
+      return response;
     } catch (error) {
       logger.error(`❌ Error enviando recordatorio a ${client.name}:`, error.message);
       throw error;
@@ -111,16 +109,14 @@ class ReminderService {
         return { scheduled: true, scheduleFor };
       }
 
-      const response = await wppClient.post(`/api/${WPP_SESSION}/send-message`, {
-        phone: client.phone,
-        message: message
-      });
+      // Usar whatsapp-web.js
+      const response = await whatsappService.sendMessage(client.phone, message);
 
       await this.logReminderSent(client, null, message, 'custom');
 
       logger.success(`📨 Recordatorio personalizado enviado a ${client.name}`);
       
-      return response.data;
+      return response;
     } catch (error) {
       logger.error('Error sending custom reminder:', error.message);
       throw error;
@@ -145,10 +141,8 @@ class ReminderService {
 
         const message = this.personalizeMessage(messageTemplate, client);
         
-        await wppClient.post(`/api/${WPP_SESSION}/send-message`, {
-          phone: client.phone,
-          message: message
-        });
+        // Usar whatsapp-web.js
+        await whatsappService.sendMessage(client.phone, message);
 
         await this.logReminderSent(client, null, message, 'bulk');
         results.sent++;
@@ -295,11 +289,11 @@ class ReminderService {
   // Validar configuración antes de enviar
   async validateConfiguration() {
     try {
-      // Verificar conexión con WPPConnect
-      const response = await wppClient.get(`/api/${WPP_SESSION}/check-connection-session`);
+      // Verificar conexión con whatsapp-web.js
+      const status = await whatsappService.checkConnection();
       
-      if (!response.data.status) {
-        throw new Error('WPPConnect session not connected');
+      if (!status.connected) {
+        throw new Error('WhatsApp Web session not connected');
       }
 
       logger.success('✅ Reminder service configuration validated');

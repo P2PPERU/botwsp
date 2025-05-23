@@ -51,9 +51,13 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     memory: process.memoryUsage(),
-    version: '1.0.0'
+    version: '2.0.0',
+    whatsapp: 'whatsapp-web.js'
   });
 });
+
+// Ruta para stats del sistema usando el controlador real
+app.get('/api/stats/system', (req, res) => statsController.getSystemStats(req, res));
 
 // Manejo de errores
 app.use(errorHandler);
@@ -61,10 +65,11 @@ app.use(errorHandler);
 // Iniciar servidor
 app.listen(PORT, () => {
   logger.info(`🚀 Backend API running on port ${PORT}`);
-  logger.info(`📱 WPPConnect URL: ${process.env.WPPCONNECT_URL}`);
+  logger.info(`📱 WhatsApp: Using whatsapp-web.js`);
   logger.info(`🤖 n8n URL: ${process.env.N8N_URL}`);
   logger.info(`🧠 OpenAI: ${process.env.OPENAI_API_KEY ? 'Configured' : 'Not configured'}`);
   logger.info('⏰ Cron jobs initialized');
+  logger.info('🔒 Session: streaming-bot');
 });
 
 module.exports = app;

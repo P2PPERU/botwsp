@@ -1,0 +1,1119 @@
+{"timestamp":"2025-05-23T00:14:32.235Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:14:32.241Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:14:32.242Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:14:32.244Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:14:32.570Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:14:32.571Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:14:32.573Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:14:32.575Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:14:32.577Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:14:35.928Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:14:37.283Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:14:37.300Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:14:37.323Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:14:37.325Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:14:37.333Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:14:37.337Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:14:40.248Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:14:41.319Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:14:41.344Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:14:41.354Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:14:41.356Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:14:41.372Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:14:41.379Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:15:23.003Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:15:23.006Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:15:23.007Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:15:23.007Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:15:23.283Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:15:23.284Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:15:23.285Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:15:23.286Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:15:23.287Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:15:23.296Z","level":"INFO","message":"GET /api/sessions/status - ::ffff:127.0.0.1"}
+{"timestamp":"2025-05-23T00:15:25.198Z","level":"INFO","message":"GET /health - ::ffff:127.0.0.1"}
+{"timestamp":"2025-05-23T00:15:25.230Z","level":"INFO","message":"GET /api/stats - ::ffff:127.0.0.1"}
+{"timestamp":"2025-05-23T00:15:25.243Z","level":"INFO","message":"GET /api/stats/system - ::ffff:127.0.0.1"}
+{"timestamp":"2025-05-23T00:15:25.246Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:15:25.252Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:15:25.255Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:15:26.845Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:15:28.381Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:15:29.455Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:15:29.475Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:15:29.490Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:15:29.492Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:15:29.495Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:15:29.499Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:15:30.510Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:16:13.081Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:16:13.086Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:16:13.087Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:16:13.088Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:16:13.378Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:16:13.379Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:16:13.380Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:16:13.380Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:16:13.382Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:16:13.517Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:16:15.205Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:16:15.231Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:16:15.250Z","level":"INFO","message":"GET /api/stats/system - ::ffff:127.0.0.1"}
+{"timestamp":"2025-05-23T00:16:15.254Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:16:15.266Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:16:15.273Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:16:16.314Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:16:33.717Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:16:33.721Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:16:33.726Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:16:34.829Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:16:42.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:17:13.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:17:43.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:18:23.239Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:18:23.250Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:18:23.266Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:18:23.268Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:18:23.273Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:18:23.278Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:18:24.289Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:18:40.647Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:18:46.623Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:18:46.712Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:18:46.720Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:18:47.012Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:18:47.380Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:18:48.468Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:18:48.490Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:18:48.507Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:18:48.509Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:18:48.514Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:18:48.520Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:18:49.534Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:19:10.305Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:19:11.222Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:19:11.232Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:19:11.248Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:19:11.250Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:19:11.256Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:11.260Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:19:11.622Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:19:12.705Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:19:12.726Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:19:12.748Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:19:12.754Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:19:12.764Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:12.772Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:19:20.701Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:19:20.778Z","level":"ERROR","message":"Error closing session:","data":"Request failed with status code 500"}
+{"timestamp":"2025-05-23T00:19:26.414Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:26.417Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:19:26.420Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:19:26.427Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:26.431Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:19:26.435Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:19:31.426Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:36.424Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:19:42.130Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:19:49.157Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:19:49.223Z","level":"INFO","message":"Session tes4 closed"}
+{"timestamp":"2025-05-23T00:19:51.165Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:19:51.167Z","level":"ERROR","message":"Error starting session:","data":"Cannot read properties of undefined (reading 'autoClose')"}
+{"timestamp":"2025-05-23T00:20:12.141Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:13.222Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:20:13.240Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:20:13.255Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:20:13.256Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:20:13.261Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:20:13.264Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:22.987Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:20:22.997Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:20:23.005Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:20:23.008Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:20:23.012Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:20:23.015Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:23.390Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:24.461Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:20:24.473Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:20:24.483Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:20:24.485Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:20:24.488Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:20:24.491Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:45.852Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:20:45.854Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:20:45.857Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:20:45.864Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:20:45.868Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:20:45.872Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:20:50.813Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:20:53.908Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:21:24.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:21:53.905Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:21:53.916Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:21:53.977Z","level":"INFO","message":"Session tes4 closed"}
+{"timestamp":"2025-05-23T00:21:55.055Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:21:55.078Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:21:55.090Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:21:55.092Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:21:55.097Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:21:55.102Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:22:24.194Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:22:54.193Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:23:09.213Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:23:09.221Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:23:09.251Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:23:09.253Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:23:09.263Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:23:09.268Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:23:10.294Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:23:40.127Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:23:41.219Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:23:41.242Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:23:41.255Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:23:41.257Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:23:41.262Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:23:41.266Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:23:42.277Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:24:10.123Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:24:40.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:25:10.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:25:29.061Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:25:29.065Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:25:29.069Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:25:32.765Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:25:32.767Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:25:32.770Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:25:34.702Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:25:34.705Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:25:34.709Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:25:36.386Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:25:39.708Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:25:39.711Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:25:39.715Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T00:25:40.125Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:26:10.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:26:40.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:26:53.591Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:26:53.594Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:26:53.595Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:26:53.596Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:26:53.910Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:26:53.911Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:26:53.912Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:26:53.913Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:26:53.914Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:27:10.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:27:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:28:53.193Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:29:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:30:10.122Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:30:35.256Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:30:35.275Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:30:35.301Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:30:35.306Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:30:35.326Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:30:35.330Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:30:36.355Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:30:39.142Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:30:39.227Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:30:39.233Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:30:39.831Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:30:40.926Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:30:40.933Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:30:40.941Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:30:40.943Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:30:40.947Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:30:40.952Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:30:41.966Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:31:11.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:31:13.198Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:31:13.232Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:31:13.239Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:31:13.243Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:31:13.246Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:31:13.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:31:15.203Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:31:41.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:31:48.424Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:31:48.427Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:31:48.428Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:31:48.429Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:31:48.732Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:31:48.733Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:31:48.735Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:31:48.736Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:31:48.737Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:32:04.348Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:32:04.361Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:32:04.404Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:32:04.406Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:32:04.412Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:32:04.415Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:32:26.433Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:32:26.572Z","level":"INFO","message":"GET /favicon.ico - ::1"}
+{"timestamp":"2025-05-23T00:32:36.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:32:38.193Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:32:38.234Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:32:38.242Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:32:38.246Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:32:38.249Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:32:38.252Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:32:42.660Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:32:42.740Z","level":"ERROR","message":"Error closing session:","data":"Request failed with status code 500"}
+{"timestamp":"2025-05-23T00:32:43.750Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:32:43.816Z","level":"INFO","message":"Session tes4 closed"}
+{"timestamp":"2025-05-23T00:32:45.079Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:32:45.143Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:32:45.150Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:32:45.781Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:32:46.879Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:32:46.903Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:32:46.925Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:32:46.928Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:32:46.938Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:32:46.943Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:33:12.022Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:33:17.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:33:19.191Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:33:19.220Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:33:19.230Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:33:19.233Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:33:19.237Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:33:19.240Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:33:33.513Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:33:33.522Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:33:33.535Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:33:33.537Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:33:33.542Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:33:33.547Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:34:04.415Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:34:05.485Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:34:05.503Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:34:05.515Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:34:05.517Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:34:05.521Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:34:05.525Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:34:34.415Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:35:05.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:35:35.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:36:05.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:36:53.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:37:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:38:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:39:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:40:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:41:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:42:43.019Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:42:43.122Z","level":"INFO","message":"GET /favicon.ico - ::1"}
+{"timestamp":"2025-05-23T00:42:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:43:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:44:53.193Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:45:13.882Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:45:13.886Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:45:13.887Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:45:13.888Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:45:14.272Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:45:14.273Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:45:14.274Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:45:14.276Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:45:14.277Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:45:52.130Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:45:57.420Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:45:57.545Z","level":"ERROR","message":"Error closing session:","data":"Request failed with status code 500"}
+{"timestamp":"2025-05-23T00:45:58.559Z","level":"INFO","message":"POST /api/sessions/close - ::1"}
+{"timestamp":"2025-05-23T00:45:58.624Z","level":"INFO","message":"Session tes4 closed"}
+{"timestamp":"2025-05-23T00:46:00.257Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:46:00.334Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:46:00.344Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:46:00.983Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:46:02.118Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:46:02.161Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:46:02.217Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:46:02.224Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:46:02.234Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:46:02.240Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:46:33.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:46:35.196Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:46:35.222Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:46:35.232Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:46:35.234Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:46:35.239Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:46:35.242Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:47:05.279Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T00:47:05.282Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T00:47:05.283Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T00:47:05.284Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T00:47:05.547Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T00:47:05.548Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T00:47:05.549Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T00:47:05.550Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T00:47:05.551Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T00:47:29.218Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T00:47:29.230Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T00:47:29.265Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T00:47:29.269Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T00:47:29.275Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T00:47:29.278Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:47:41.904Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:47:41.988Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:47:41.994Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:47:42.705Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:48:13.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:48:26.941Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:48:29.895Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:48:58.192Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:49:26.650Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T00:49:26.738Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T00:49:26.743Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T00:49:27.466Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:49:43.733Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:50:15.194Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:50:44.257Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:51:14.260Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:51:44.259Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:52:14.255Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:52:44.247Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:53:14.255Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:53:44.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:54:14.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:54:44.253Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:55:14.258Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:55:44.250Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:56:14.248Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:56:44.251Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:57:14.256Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:57:44.263Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:58:14.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:58:44.261Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:59:14.255Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T00:59:44.252Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:00:00.057Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T01:00:00.059Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T01:00:14.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:00:44.257Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:01:15.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:01:45.192Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:02:53.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:35.795Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T01:03:35.799Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T01:03:35.801Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T01:03:35.802Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T01:03:36.136Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T01:03:36.137Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T01:03:36.138Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T01:03:36.139Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T01:03:36.140Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T01:03:36.768Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:36.828Z","level":"ERROR","message":"Error checking session status:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:37.853Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:37.862Z","level":"ERROR","message":"Error checking session status:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:44.248Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:44.260Z","level":"ERROR","message":"Error checking session status:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:44.921Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:03:44.930Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:03:44.945Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:03:44.949Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:03:44.956Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:03:44.959Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:44.964Z","level":"ERROR","message":"Error checking WPP connection:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:44.974Z","level":"ERROR","message":"Error checking WPP connection:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:44.979Z","level":"ERROR","message":"Error checking session status:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:44.984Z","level":"ERROR","message":"Error getting session stats:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:45.988Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:03:45.992Z","level":"ERROR","message":"Error checking session status:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:48.207Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:03:48.229Z","level":"ERROR","message":"Error starting session:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:49.236Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:03:49.243Z","level":"ERROR","message":"Error starting session:","data":"Request failed with status code 401"}
+{"timestamp":"2025-05-23T01:03:59.484Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T01:03:59.486Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T01:03:59.487Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T01:03:59.488Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T01:03:59.658Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T01:03:59.659Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T01:03:59.660Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T01:03:59.660Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T01:03:59.662Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T01:04:01.589Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:04:01.750Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:04:01.759Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:04:02.504Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:04:33.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:09:35.917Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T01:09:35.921Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T01:09:35.922Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T01:09:35.923Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T01:09:36.253Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T01:09:36.254Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T01:09:36.255Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T01:09:36.256Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T01:09:36.257Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T01:09:44.180Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:09:44.329Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:09:44.339Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:09:44.962Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:10:15.461Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:10:45.480Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:10:55.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:10:56.394Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:10:58.782Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:10:58.792Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:10:59.319Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:01.550Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:11:01.562Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:11:01.589Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:11:01.594Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:11:01.625Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:11:01.629Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:18.792Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:11:18.802Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:11:18.817Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:11:18.820Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:11:18.827Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:11:18.831Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:21.261Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:11:21.344Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:11:21.351Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:11:21.977Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:52.491Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:52.503Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:11:53.513Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:11:53.517Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:12:22.485Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:12:22.488Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:12:23.496Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:12:23.501Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:12:52.484Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:12:52.488Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:12:53.501Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:12:53.505Z","level":"ERROR","message":"Error checking session status:"}
+{"timestamp":"2025-05-23T01:13:26.621Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T01:13:26.624Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T01:13:26.625Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T01:13:26.626Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T01:13:26.918Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T01:13:26.919Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T01:13:26.921Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T01:13:26.922Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T01:13:26.923Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T01:13:57.335Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:13:57.347Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:13:57.383Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:13:57.386Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:13:57.391Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:13:57.395Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:13:59.385Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:14:05.375Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:14:05.444Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:14:05.449Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:14:06.045Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:14:07.630Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:14:10.661Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:14:27.395Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:14:27.511Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:14:27.516Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:14:28.128Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:14:58.638Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:15:29.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:15:58.635Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:16:29.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:16:59.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:17:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:17:58.486Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:18:18.368Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:18:18.473Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:18:18.478Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:18:19.100Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:18:49.624Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:18:59.726Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:19:31.191Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:20:01.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:20:31.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:01.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:14.648Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T01:21:14.744Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T01:21:14.750Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T01:21:15.368Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:16.509Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:18.546Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:19.960Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:21:47.191Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:22:17.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:22:47.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:23:07.202Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:23:07.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:23:07.212Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:23:07.231Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:23:07.235Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:23:07.241Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:23:27.780Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T01:23:27.784Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T01:23:27.785Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T01:23:27.786Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T01:23:28.097Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T01:23:28.098Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T01:23:28.099Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T01:23:28.100Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T01:23:28.101Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T01:23:38.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:24:33.117Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T01:24:33.129Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T01:24:33.148Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T01:24:33.152Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T01:24:33.158Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T01:24:33.164Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:25:04.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:25:34.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:26:04.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:26:34.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:27:04.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:27:53.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:28:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:29:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:30:53.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:31:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:32:53.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:33:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:34:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:35:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:36:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:37:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:38:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:39:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:40:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:41:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:42:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:43:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:44:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:45:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:46:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:47:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:48:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:49:53.217Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:50:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:51:53.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:52:53.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:53:53.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:54:53.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:55:53.215Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:56:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:57:53.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:58:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T01:59:53.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:00:00.082Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T02:00:00.083Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T02:00:53.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:01:53.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:02:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:03:53.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:04:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:05:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:06:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:07:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:08:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:09:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:10:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:11:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:12:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:13:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:14:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:15:53.216Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:16:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:17:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:18:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:19:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:20:53.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:21:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:22:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:23:53.225Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:24:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:25:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:26:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:27:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:28:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:29:53.220Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:30:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:31:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:32:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:33:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:34:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:35:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:36:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:37:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:38:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:39:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:40:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:41:53.215Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:42:53.215Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:43:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:44:53.215Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:45:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:46:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:47:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:48:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:49:53.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:50:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:51:53.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:52:53.215Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:53:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:54:53.201Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:55:53.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:56:53.221Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:57:53.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:58:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T02:59:53.222Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:00:00.048Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T03:00:00.050Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T03:00:53.213Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:01:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:02:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:03:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:04:53.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:05:53.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:06:53.216Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:07:53.227Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:07:57.383Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:07:57.451Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:07:57.459Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:07:58.050Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:08:29.195Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:08:59.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:09:29.193Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:09:59.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:10:29.191Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:11:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:12:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:13:20.538Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:13:22.456Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:13:31.888Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T03:13:31.891Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T03:13:31.892Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T03:13:31.892Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T03:13:32.185Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T03:13:32.186Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T03:13:32.187Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T03:13:32.188Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T03:13:32.190Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T03:13:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:14:05.384Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:14:05.393Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:14:05.409Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:14:05.412Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:14:05.420Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:14:05.424Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:14:09.633Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T03:14:09.639Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:14:09.643Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:14:15.033Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:14:15.101Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:14:15.108Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:14:15.680Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:14:23.192Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:14:46.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:14:53.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:15:16.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:15:23.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:15:46.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:15:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:16:13.982Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:16:16.930Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:16:16.996Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:16:17.001Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:16:17.580Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:16:21.505Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:16:52.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:16:53.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:17:22.195Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:17:52.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:17:53.210Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:18:22.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:18:52.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:18:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:19:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:19:53.281Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:20:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:20:53.276Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:21:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:21:53.278Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:22:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:22:53.278Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:23:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:23:53.281Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:24:16.870Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:24:53.203Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:24:53.285Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:25:53.193Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:25:53.275Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:26:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:26:53.272Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:27:53.195Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:27:53.271Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:28:53.213Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:28:53.303Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:29:00.888Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T03:29:00.892Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T03:29:00.894Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T03:29:00.894Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T03:29:01.194Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T03:29:01.195Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T03:29:01.196Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T03:29:01.197Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T03:29:01.199Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T03:29:25.189Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:29:25.202Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:29:25.251Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:29:25.255Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:29:25.261Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:29:25.266Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:29:35.943Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:29:36.032Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:29:36.038Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:29:36.551Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:29:53.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:30:07.059Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:30:37.049Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:30:53.214Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:31:07.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:31:37.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:31:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:32:07.196Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:32:31.260Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T03:32:31.265Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T03:32:31.266Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T03:32:31.267Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T03:32:31.564Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T03:32:31.565Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T03:32:31.567Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T03:32:31.568Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T03:32:31.569Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T03:32:53.234Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:32:55.752Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:32:55.763Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:32:55.779Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:32:55.782Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:32:55.789Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:32:55.796Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:32:57.943Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:32:58.009Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:32:58.016Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:32:58.528Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:33:29.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:33:32.173Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:33:32.810Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:33:32.872Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:33:32.878Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:33:33.396Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:33:53.207Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:34:04.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:34:23.210Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T03:34:23.213Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T03:34:23.214Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T03:34:23.215Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T03:34:23.512Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T03:34:23.513Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T03:34:23.514Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T03:34:23.515Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T03:34:23.516Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T03:34:34.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:34:42.550Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:34:42.563Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:34:42.569Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:34:42.581Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:34:42.587Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:34:42.590Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:34:53.182Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:34:53.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:34:53.258Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:34:53.265Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:34:53.776Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:35:24.291Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:35:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:35:54.287Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:36:25.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:36:53.216Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:36:55.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:37:25.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:37:53.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:38:53.197Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:38:53.274Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:39:53.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:39:53.288Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:40:53.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:40:53.276Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:41:25.860Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T03:41:25.863Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T03:41:25.864Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T03:41:25.866Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T03:41:26.189Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T03:41:26.190Z","level":"INFO","message":"📱 WPPConnect URL: http://localhost:21465"}
+{"timestamp":"2025-05-23T03:41:26.192Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T03:41:26.193Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T03:41:26.194Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T03:41:44.682Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:41:51.213Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:41:51.234Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:41:51.257Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:41:51.268Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:41:51.275Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:41:51.282Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:41:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:42:01.335Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:42:01.400Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:42:01.407Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:42:01.980Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:42:33.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:42:33.278Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:42:53.205Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:43:03.128Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:43:03.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:43:03.272Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:43:33.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:43:33.274Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:43:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:43:53.663Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:03.198Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:03.276Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:44:03.610Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:44:11.279Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:14.953Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T03:44:14.965Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T03:44:14.979Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T03:44:14.982Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T03:44:14.987Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:14.990Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T03:44:16.646Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T03:44:21.061Z","level":"INFO","message":"Session tes4 start initiated"}
+{"timestamp":"2025-05-23T03:44:21.071Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T03:44:21.774Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:44:53.611Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:45:23.194Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:45:52.284Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:45:53.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:46:23.206Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:46:49.281Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:46:52.972Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:46:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:47:23.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:47:47.224Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:47:53.204Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:47:53.278Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:48:23.222Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:48:52.279Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:48:53.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:49:23.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:49:28.168Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:49:53.199Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:49:53.283Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:50:53.213Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:50:53.289Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:51:53.195Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:51:53.270Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:52:53.208Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:52:53.285Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:53:53.202Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:53:53.276Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:54:53.200Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:54:53.276Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:55:53.209Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:55:53.293Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:56:53.213Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:56:53.293Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:57:53.213Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:57:53.298Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:58:53.212Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:58:53.294Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:59:53.211Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T03:59:53.284Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:00:00.094Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T04:00:00.095Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T04:00:09.060Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T04:00:11.986Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T04:00:22.299Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:00:49.069Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T04:00:52.295Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:00:53.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:00:57.600Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:00:58.526Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T04:00:58.555Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:00:58.560Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T04:01:03.560Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:08.525Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:13.531Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:16.291Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:16.295Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T04:01:16.299Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T04:01:21.197Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T04:01:28.113Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:01:43.127Z","level":"INFO","message":"PUT /api/clients/3 - ::1"}
+{"timestamp":"2025-05-23T04:01:43.137Z","level":"ERROR","message":"Error updating client:","data":"Cannot read properties of undefined (reading 'calculateStatus')"}
+{"timestamp":"2025-05-23T04:01:44.148Z","level":"INFO","message":"PUT /api/clients/3 - ::1"}
+{"timestamp":"2025-05-23T04:01:44.149Z","level":"ERROR","message":"Error updating client:","data":"Cannot read properties of undefined (reading 'calculateStatus')"}
+{"timestamp":"2025-05-23T04:01:50.815Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:50.818Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T04:01:50.823Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T04:01:53.216Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:01:54.555Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:01:55.817Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:01:58.121Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:02:00.825Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:02:05.828Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:02:10.825Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:02:28.221Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:02:53.224Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:02:58.218Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:03:28.219Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:03:53.231Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:04:53.234Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:04:53.311Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:05:53.227Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:05:53.304Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:06:53.249Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:06:53.321Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:07:53.237Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:07:53.312Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:08:53.237Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:08:53.325Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:09:53.250Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:09:53.326Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:51:49.865Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T04:51:49.964Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T04:51:49.965Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T04:51:49.966Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T04:51:49.968Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T04:51:50.158Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T04:51:50.159Z","level":"INFO","message":"📱 WPPConnect URL: undefined"}
+{"timestamp":"2025-05-23T04:51:50.160Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T04:51:50.162Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T04:51:50.163Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T04:52:00.114Z","level":"INFO","message":"📱 QR Code received"}
+{"timestamp":"2025-05-23T04:53:04.021Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T04:53:45.826Z","level":"INFO","message":"📨 Message received from status@broadcast"}
+{"timestamp":"2025-05-23T04:53:47.483Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T04:53:47.523Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T04:53:47.524Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T04:53:47.525Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T04:53:47.526Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T04:53:47.678Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T04:53:47.679Z","level":"INFO","message":"📱 WPPConnect URL: undefined"}
+{"timestamp":"2025-05-23T04:53:47.680Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T04:53:47.681Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T04:53:47.682Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T04:53:48.771Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:53:57.230Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T04:55:42.697Z","level":"INFO","message":"📨 Message received from 51997732840@c.us"}
+{"timestamp":"2025-05-23T04:55:44.114Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T04:55:44.156Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T04:55:44.157Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T04:55:44.158Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T04:55:44.158Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T04:55:44.304Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T04:55:44.305Z","level":"INFO","message":"📱 WPPConnect URL: undefined"}
+{"timestamp":"2025-05-23T04:55:44.307Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T04:55:44.308Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T04:55:44.309Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T04:55:54.636Z","level":"INFO","message":"GET /health - ::1"}
+{"timestamp":"2025-05-23T04:55:54.651Z","level":"INFO","message":"GET /api/stats - ::1"}
+{"timestamp":"2025-05-23T04:55:54.667Z","level":"INFO","message":"GET /api/stats/system - ::1"}
+{"timestamp":"2025-05-23T04:55:54.670Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T04:55:54.677Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T04:55:54.681Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T04:55:55.694Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T04:56:12.911Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T04:56:12.951Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T04:56:12.952Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T04:56:12.953Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T04:56:12.954Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T04:56:13.098Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T04:56:13.099Z","level":"INFO","message":"📱 WPPConnect URL: undefined"}
+{"timestamp":"2025-05-23T04:56:13.101Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T04:56:13.102Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T04:56:13.103Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T04:58:58.634Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T04:58:58.680Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T04:58:58.681Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T04:58:58.682Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T04:58:58.683Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T04:58:58.852Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T04:58:58.853Z","level":"INFO","message":"📱 WPPConnect URL: undefined"}
+{"timestamp":"2025-05-23T04:58:58.854Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T04:58:58.855Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T04:58:58.856Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T04:59:08.091Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T04:59:53.333Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:00:00.025Z","level":"INFO","message":"🔍 Verificación de salud del sistema..."}
+{"timestamp":"2025-05-23T05:00:00.026Z","level":"INFO","message":"💚 Sistema funcionando correctamente"}
+{"timestamp":"2025-05-23T05:00:30.875Z","level":"INFO","message":"📨 Message received from 51997732840@c.us"}
+{"timestamp":"2025-05-23T05:00:53.341Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:01:41.388Z","level":"INFO","message":"📨 Message received from 51988453452@c.us"}
+{"timestamp":"2025-05-23T05:01:53.332Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:02:29.041Z","level":"INFO","message":"📨 Message received from 51947841201@c.us"}
+{"timestamp":"2025-05-23T05:02:53.335Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:03:05.911Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:03:08.717Z","level":"INFO","message":"POST /api/sessions/start - ::1"}
+{"timestamp":"2025-05-23T05:03:08.726Z","level":"INFO","message":"GET /api/sessions/qr - ::1"}
+{"timestamp":"2025-05-23T05:03:09.279Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:03:18.143Z","level":"INFO","message":"📨 Message received from 51921372032@c.us"}
+{"timestamp":"2025-05-23T05:03:18.429Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:03:28.540Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T05:03:28.555Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:28.560Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T05:03:33.551Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:37.030Z","level":"INFO","message":"POST /api/messages/send - ::1"}
+{"timestamp":"2025-05-23T05:03:37.041Z","level":"INFO","message":"📤 Message sent to 51947841201@c.us"}
+{"timestamp":"2025-05-23T05:03:37.048Z","level":"SUCCESS","message":"Message sent to 51947841201@c.us"}
+{"timestamp":"2025-05-23T05:03:37.052Z","level":"SUCCESS","message":"Message sent to 51947841201@c.us","data":{"messageId":"msg_1747976617049_522"}}
+{"timestamp":"2025-05-23T05:03:37.060Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:38.543Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:43.542Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:48.538Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:48.939Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:03:53.552Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:03:58.542Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:03.545Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:04.823Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T05:04:07.432Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T05:04:12.033Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:12.037Z","level":"INFO","message":"GET /api/clients - ::1"}
+{"timestamp":"2025-05-23T05:04:12.041Z","level":"INFO","message":"GET /api/messages/stats - ::1"}
+{"timestamp":"2025-05-23T05:04:17.036Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:18.932Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:04:22.046Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:27.038Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:32.040Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:37.047Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:42.034Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:47.041Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:48.386Z","level":"INFO","message":"POST /api/messages/send - ::1"}
+{"timestamp":"2025-05-23T05:04:48.392Z","level":"INFO","message":"📤 Message sent to 51997732840@c.us"}
+{"timestamp":"2025-05-23T05:04:48.395Z","level":"SUCCESS","message":"Message sent to 51997732840@c.us"}
+{"timestamp":"2025-05-23T05:04:48.398Z","level":"SUCCESS","message":"Message sent to 51997732840@c.us","data":{"messageId":"msg_1747976688396_585"}}
+{"timestamp":"2025-05-23T05:04:48.403Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:48.938Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:04:52.036Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:04:57.039Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:02.050Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:07.038Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:12.049Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:17.035Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:18.938Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:05:21.342Z","level":"INFO","message":"📨 Message received from 51982359568@c.us"}
+{"timestamp":"2025-05-23T05:05:22.037Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:27.041Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:05:32.050Z","level":"INFO","message":"GET /api/messages/history - ::1"}
+{"timestamp":"2025-05-23T05:16:43.462Z","level":"INFO","message":"🔄 Initializing WhatsApp Web client..."}
+{"timestamp":"2025-05-23T05:16:43.562Z","level":"INFO","message":"📅 Trabajos programados inicializados:"}
+{"timestamp":"2025-05-23T05:16:43.563Z","level":"INFO","message":"   - Recordatorios: Diario a las 9:00 AM"}
+{"timestamp":"2025-05-23T05:16:43.564Z","level":"INFO","message":"   - Salud del sistema: Cada hora"}
+{"timestamp":"2025-05-23T05:16:43.565Z","level":"INFO","message":"   - Limpieza de logs: Domingos a las 2:00 AM"}
+{"timestamp":"2025-05-23T05:16:43.737Z","level":"INFO","message":"🚀 Backend API running on port 3001"}
+{"timestamp":"2025-05-23T05:16:43.738Z","level":"INFO","message":"📱 WhatsApp: Using whatsapp-web.js"}
+{"timestamp":"2025-05-23T05:16:43.739Z","level":"INFO","message":"🤖 n8n URL: http://localhost:5678"}
+{"timestamp":"2025-05-23T05:16:43.740Z","level":"INFO","message":"🧠 OpenAI: Not configured"}
+{"timestamp":"2025-05-23T05:16:43.741Z","level":"INFO","message":"⏰ Cron jobs initialized"}
+{"timestamp":"2025-05-23T05:16:43.742Z","level":"INFO","message":"🔒 Session: streaming-bot"}
+{"timestamp":"2025-05-23T05:16:53.358Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:16:54.744Z","level":"SUCCESS","message":"✅ WhatsApp Web client is ready!"}
+{"timestamp":"2025-05-23T05:17:53.379Z","level":"INFO","message":"GET /api/sessions/status - ::1"}
+{"timestamp":"2025-05-23T05:18:21.242Z","level":"INFO","message":"📨 Message received from 51958597425@c.us"}
+{"timestamp":"2025-05-23T05:18:53.357Z","level":"INFO","message":"GET /api/sessions/status - ::1"}

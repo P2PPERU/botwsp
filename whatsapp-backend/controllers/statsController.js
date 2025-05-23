@@ -1,7 +1,7 @@
 const Client = require('../models/Client');
 const Message = require('../models/Message');
 const logger = require('../utils/logger');
-const wppService = require('../services/wppService');
+const whatsappService = require('../services/whatsappWebService');
 
 class StatsController {
   
@@ -63,7 +63,7 @@ class StatsController {
       };
 
       // Estado de WPPConnect
-      const wppStatus = await wppService.checkConnection();
+      const wppStatus = await whatsappService.checkConnection();
 
       // Próximos vencimientos
       const upcomingExpirations = await Client.findExpiring(7);
@@ -227,7 +227,7 @@ class StatsController {
   // Obtener estadísticas de rendimiento del sistema
   async getSystemStats(req, res) {
     try {
-      const wppHealth = await wppService.healthCheck();
+      const wppHealth = await whatsappService.healthCheck();
       const memUsage = process.memoryUsage();
       
       const systemStats = {

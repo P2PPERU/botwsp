@@ -1,55 +1,26 @@
-const { wppClient, WPP_SESSION } = require('../config/wppconnect');
+const whatsappService = require('../services/whatsappWebService');
 const logger = require('../utils/logger');
 
 class SessionController {
   // Verificar estado de la sesión
   async getStatus(req, res) {
     try {
-      const response = await wppClient.get(`/api/${WPP_SESSION}/check-connection-session`);
+      const status = await whatsappService.checkConnection();
       
       res.json({
         success: true,
-        data: {
-          session: WPP_SESSION,
-          status: response.data.status ? 'connected' : 'disconnected',
-          message: response.data.message,
-          lastCheck: new Date().toISOString()
-        }
+        status: status.connected,
+        message: status.connected ? 'Conectado' : 'Desconectado',
+        session: status.session || 'streaming-bot',
+        lastCheck: status.lastCheck || new Date().toISOString()
       });
     } catch (error) {
       logger.error('Error checking session status:', error.message);
       res.status(500).json({
         success: false,
+        status: false,
         error: 'Failed to check session status',
-        details: error.response?.data || error.message
-      });
-    }
-  }
-
-  // Iniciar nueva sesión
-  async startSession(req, res) {
-    try {
-      const { autoClose = 120, webhook = "" } = req.body;
-      
-      const response = await wppClient.post(`/api/${WPP_SESSION}/start-session`, {
-        webhook: webhook,
-        waitQrCode: true,
-        autoClose: autoClose
-      });
-
-      logger.info(`Session ${WPP_SESSION} start initiated`);
-      
-      res.json({
-        success: true,
-        data: response.data,
-        message: 'Session start initiated'
-      });
-    } catch (error) {
-      logger.error('Error starting session:', error.message);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to start session',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -57,17 +28,25 @@ class SessionController {
   // Obtener código QR
   async getQRCode(req, res) {
     try {
-      const response = await wppClient.get(`/api/${WPP_SESSION}/qrcode-session`);
+      const qrData = await whatsappService.getQRCode();
       
-      // Si es una imagen, devolver la imagen directamente
-      if (response.headers['content-type']?.includes('image')) {
-        res.set('Content-Type', response.headers['content-type']);
-        res.send(response.data);
+      if (qrData.connected) {
+        res.json({
+          success: true,
+          connected: true,
+          message: 'Already connected'
+        });
+      } else if (qrData.qr) {
+        res.json({
+          success: true,
+          qrCode: qrData.qr,
+          session: 'streaming-bot',
+          message: 'Scan QR code with WhatsApp'
+        });
       } else {
         res.json({
           success: true,
-          qrCode: response.data,
-          session: WPP_SESSION
+          message: 'Initializing... Please wait and try again in a few seconds'
         });
       }
     } catch (error) {
@@ -75,7 +54,7 @@ class SessionController {
       res.status(500).json({
         success: false,
         error: 'Failed to get QR code',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -83,13 +62,12 @@ class SessionController {
   // Cerrar sesión
   async closeSession(req, res) {
     try {
-      const response = await wppClient.post(`/api/${WPP_SESSION}/close-session`);
+      await whatsappService.closeSession();
       
-      logger.info(`Session ${WPP_SESSION} closed`);
+      logger.info('Session closed');
       
       res.json({
         success: true,
-        data: response.data,
         message: 'Session closed successfully'
       });
     } catch (error) {
@@ -97,7 +75,7 @@ class SessionController {
       res.status(500).json({
         success: false,
         error: 'Failed to close session',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -105,13 +83,13 @@ class SessionController {
   // Obtener información de la sesión
   async getSessionInfo(req, res) {
     try {
-      const response = await wppClient.get(`/api/${WPP_SESSION}/status-session`);
+      const info = await whatsappService.getSessionInfo();
       
       res.json({
         success: true,
         data: {
-          session: WPP_SESSION,
-          ...response.data
+          session: 'streaming-bot',
+          ...info
         }
       });
     } catch (error) {
@@ -119,7 +97,7 @@ class SessionController {
       res.status(500).json({
         success: false,
         error: 'Failed to get session info',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -127,34 +105,33 @@ class SessionController {
   // Reiniciar sesión
   async restartSession(req, res) {
     try {
-      // Primero cerrar la sesión existente
-      await wppClient.post(`/api/${WPP_SESSION}/close-session`).catch(() => {});
+      await whatsappService.restartSession();
       
-      // Esperar un momento
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Iniciar nueva sesión
-      const response = await wppClient.post(`/api/${WPP_SESSION}/start-session`, {
-        webhook: "",
-        waitQrCode: true,
-        autoClose: 120
-      });
-
-      logger.info(`Session ${WPP_SESSION} restarted`);
+      logger.info('Session restarting...');
       
       res.json({
         success: true,
-        data: response.data,
-        message: 'Session restarted successfully'
+        message: 'Session restarting... Check QR code in a few seconds'
       });
     } catch (error) {
       logger.error('Error restarting session:', error.message);
       res.status(500).json({
         success: false,
         error: 'Failed to restart session',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
+  }
+
+  // Iniciar sesión (compatibilidad con frontend antiguo)
+  async startSession(req, res) {
+    res.json({
+      success: true,
+      message: 'Session auto-starts with whatsapp-web.js. Check /api/sessions/qr for QR code',
+      data: {
+        status: 'initialized'
+      }
+    });
   }
 }
 

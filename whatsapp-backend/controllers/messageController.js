@@ -1,7 +1,6 @@
-const { wppClient, WPP_SESSION } = require('../config/wppconnect');
+const whatsappService = require('../services/whatsappWebService');
 const logger = require('../utils/logger');
 const Message = require('../models/Message');
-const wppService = require('../services/wppService');
 
 class MessageController {
   // Enviar mensaje simple
@@ -18,16 +17,14 @@ class MessageController {
       }
 
       // Formatear número de teléfono
-      const formattedPhone = wppService.formatPhoneNumber(phone);
+      const formattedPhone = whatsappService.formatPhoneNumber(phone);
       
-      const response = await wppClient.post(`/api/${WPP_SESSION}/send-message`, {
-        phone: formattedPhone,
-        message: message
-      });
+      // Enviar mensaje usando whatsapp-web.js
+      const response = await whatsappService.sendMessage(formattedPhone, message);
 
       // Guardar mensaje en base de datos
       const newMessage = new Message({
-        from: WPP_SESSION,
+        from: 'streaming-bot',
         to: formattedPhone,
         message: message,
         type: type,
@@ -43,7 +40,7 @@ class MessageController {
         success: true,
         data: {
           messageId: newMessage.id,
-          wppResponse: response.data,
+          wppResponse: response,
           message: newMessage
         }
       });
@@ -52,7 +49,7 @@ class MessageController {
       res.status(500).json({
         success: false,
         error: 'Failed to send message',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -69,18 +66,19 @@ class MessageController {
         });
       }
 
-      const formattedPhone = wppService.formatPhoneNumber(phone);
+      const formattedPhone = whatsappService.formatPhoneNumber(phone);
       
-      const response = await wppClient.post(`/api/${WPP_SESSION}/send-file`, {
-        phone: formattedPhone,
-        base64: file,
-        caption: caption,
-        filename: filename
-      });
+      // Enviar archivo usando whatsapp-web.js
+      const response = await whatsappService.sendFile(
+        formattedPhone, 
+        file, 
+        filename, 
+        caption
+      );
 
       // Guardar mensaje en base de datos
       const newMessage = new Message({
-        from: WPP_SESSION,
+        from: 'streaming-bot',
         to: formattedPhone,
         message: caption || 'File sent',
         type: 'file',
@@ -97,7 +95,7 @@ class MessageController {
         success: true,
         data: {
           messageId: newMessage.id,
-          wppResponse: response.data
+          wppResponse: response
         }
       });
     } catch (error) {
@@ -105,7 +103,7 @@ class MessageController {
       res.status(500).json({
         success: false,
         error: 'Failed to send file',
-        details: error.response?.data || error.message
+        details: error.message
       });
     }
   }
@@ -126,16 +124,14 @@ class MessageController {
       
       for (const phone of phones) {
         try {
-          const formattedPhone = wppService.formatPhoneNumber(phone);
+          const formattedPhone = whatsappService.formatPhoneNumber(phone);
           
-          const response = await wppClient.post(`/api/${WPP_SESSION}/send-message`, {
-            phone: formattedPhone,
-            message: message
-          });
+          // Enviar mensaje usando whatsapp-web.js
+          const response = await whatsappService.sendMessage(formattedPhone, message);
 
           // Guardar mensaje
           const newMessage = new Message({
-            from: WPP_SESSION,
+            from: 'streaming-bot',
             to: formattedPhone,
             message: message,
             type: 'text',
@@ -204,7 +200,7 @@ class MessageController {
       const filters = {};
       
       if (phone) {
-        const formattedPhone = wppService.formatPhoneNumber(phone);
+        const formattedPhone = whatsappService.formatPhoneNumber(phone);
         filters.$or = [
           { from: formattedPhone },
           { to: formattedPhone }

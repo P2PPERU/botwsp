@@ -4,57 +4,11 @@ const logger = require('../utils/logger');
 const Message = require('../models/Message');
 const Client = require('../models/Client');
 const gptService = require('../services/gptService');
-const wppService = require('../services/wppService');
+const whatsappService = require('../services/whatsappWebService');
 
-// Webhook principal de WPPConnect para mensajes entrantes
-router.post('/wppconnect', async (req, res) => {
-  try {
-    const { type, body, from, fromMe, timestamp, session } = req.body;
-    
-    logger.info('Webhook WPPConnect received:', {
-      type,
-      from,
-      fromMe,
-      session
-    });
-
-    // Solo procesar mensajes entrantes (no enviados por nosotros)
-    if (!fromMe && type === 'chat' && body) {
-      // Guardar mensaje en base de datos
-      const newMessage = new Message({
-        from: from,
-        to: session,
-        message: body,
-        type: 'text',
-        status: 'received',
-        fromMe: false,
-        timestamp: timestamp || Date.now()
-      });
-      
-      await newMessage.save();
-
-      // Buscar cliente por teléfono
-      const cleanPhone = wppService.extractCleanNumber(from);
-      const client = await Client.findByPhone(cleanPhone);
-
-      // Procesar respuesta automática si está habilitada
-      if (process.env.AUTO_RESPONSE_ENABLED === 'true') {
-        await processAutoResponse(from, body, client, session);
-      }
-
-      // Log del mensaje recibido
-      logger.success(`Message received and saved from ${from}`);
-    }
-
-    res.status(200).json({ success: true, received: true });
-
-  } catch (error) {
-    logger.error('Error processing WPPConnect webhook:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Webhook para n8n - Resultados de workflows
+// ============================================
+// WEBHOOK PARA N8N - RESULTADOS DE WORKFLOWS
+// ============================================
 router.post('/n8n-result', async (req, res) => {
   try {
     const { workflowId, executionId, status, data, error } = req.body;
@@ -90,52 +44,9 @@ router.post('/n8n-result', async (req, res) => {
   }
 });
 
-// Webhook para notificaciones de estado de WPPConnect
-router.post('/wppconnect-status', async (req, res) => {
-  try {
-    const { session, status, event, data } = req.body;
-    
-    logger.info('WPPConnect status update:', {
-      session,
-      status,
-      event
-    });
-
-    // Procesar diferentes eventos de estado
-    switch (event) {
-      case 'qrcode':
-        logger.info(`QR Code generated for session ${session}`);
-        // Aquí podrías guardar el QR code o notificar al frontend
-        break;
-      
-      case 'connected':
-        logger.success(`Session ${session} connected successfully`);
-        break;
-      
-      case 'disconnected':
-        logger.warn(`Session ${session} disconnected`);
-        // Intentar reconectar automáticamente
-        setTimeout(() => {
-          wppService.restartSession().catch(error => {
-            logger.error('Auto-restart failed:', error.message);
-          });
-        }, 5000);
-        break;
-      
-      case 'error':
-        logger.error(`Session ${session} error:`, data);
-        break;
-    }
-
-    res.status(200).json({ success: true, event: event });
-
-  } catch (error) {
-    logger.error('Error processing WPPConnect status webhook:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Webhook genérico para notificaciones externas
+// ============================================
+// WEBHOOK PARA NOTIFICACIONES EXTERNAS
+// ============================================
 router.post('/external', async (req, res) => {
   try {
     const { source, type, data, timestamp } = req.body;
@@ -175,7 +86,9 @@ router.post('/external', async (req, res) => {
   }
 });
 
-// Webhook de test para desarrollo
+// ============================================
+// WEBHOOK DE TEST PARA DESARROLLO
+// ============================================
 router.post('/test', async (req, res) => {
   try {
     logger.info('Test webhook called with data:', req.body);
@@ -196,14 +109,14 @@ router.post('/test', async (req, res) => {
   }
 });
 
-// Health check para webhooks
+// ============================================
+// HEALTH CHECK PARA WEBHOOKS
+// ============================================
 router.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
     webhooks: {
-      wppconnect: '/webhook/wppconnect',
       n8n_result: '/webhook/n8n-result',
-      status: '/webhook/wppconnect-status',
       external: '/webhook/external',
       test: '/webhook/test'
     },
@@ -211,47 +124,11 @@ router.get('/health', (req, res) => {
   });
 });
 
-// Funciones auxiliares para procesar diferentes tipos de webhooks
+// ============================================
+// FUNCIONES AUXILIARES
+// ============================================
 
-async function processAutoResponse(from, message, client, session) {
-  try {
-    // Generar contexto para GPT
-    const context = client ? {
-      name: client.name,
-      service: client.service,
-      plan: client.plan,
-      status: client.status,
-      expiry: client.expiry
-    } : null;
-
-    // Generar respuesta con GPT
-    const gptResponse = await gptService.generateResponse(message, context);
-    
-    if (gptResponse && gptResponse.trim().length > 0) {
-      // Enviar respuesta automática
-      await wppService.sendMessage(from, gptResponse);
-      
-      // Guardar respuesta en base de datos
-      const responseMessage = new Message({
-        from: session,
-        to: from,
-        message: gptResponse,
-        type: 'text',
-        status: 'sent',
-        fromMe: true,
-        timestamp: Date.now()
-      });
-      
-      await responseMessage.save();
-      
-      logger.success(`Auto-response sent to ${from}`);
-    }
-
-  } catch (error) {
-    logger.error('Error in auto-response:', error.message);
-  }
-}
-
+// Procesar resultado de recordatorio de n8n
 async function processReminderResult(data) {
   try {
     const { clientId, status, error, messageId } = data;
@@ -261,7 +138,6 @@ async function processReminderResult(data) {
       
       // Actualizar estado del cliente si es necesario
       if (clientId) {
-        // Aquí podrías actualizar el último recordatorio enviado
         logger.info(`Updated reminder status for client ${clientId}`);
       }
     } else {
@@ -273,6 +149,7 @@ async function processReminderResult(data) {
   }
 }
 
+// Procesar resultado de respuesta automática
 async function processAutoResponseResult(data) {
   try {
     const { phone, originalMessage, response, status } = data;
@@ -288,6 +165,7 @@ async function processAutoResponseResult(data) {
   }
 }
 
+// Procesar resultado de backup
 async function processBackupResult(data) {
   try {
     const { type, status, timestamp, size } = data;
@@ -303,6 +181,7 @@ async function processBackupResult(data) {
   }
 }
 
+// Procesar notificación de pago
 async function processPaymentNotification(data) {
   try {
     const { clientId, amount, status, paymentId } = data;
@@ -326,7 +205,7 @@ async function processPaymentNotification(data) {
         // Enviar confirmación por WhatsApp
         const confirmationMessage = `✅ ¡Pago confirmado!\n\nGracias ${client.name}, tu suscripción de ${client.service} ha sido renovada hasta el ${newExpiry.toLocaleDateString()}.`;
         
-        await wppService.sendMessage(client.phone, confirmationMessage);
+        await whatsappService.sendMessage(client.phone, confirmationMessage);
       }
     }
 
@@ -335,6 +214,7 @@ async function processPaymentNotification(data) {
   }
 }
 
+// Procesar actualización de Google Sheets
 async function processGoogleSheetsUpdate(data) {
   try {
     const { action, rowData, sheetName } = data;
@@ -367,6 +247,7 @@ async function processGoogleSheetsUpdate(data) {
   }
 }
 
+// Procesar notificación de backup
 async function processBackupNotification(data) {
   try {
     const { status, files, timestamp } = data;
