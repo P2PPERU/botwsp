@@ -14,6 +14,7 @@
     
     <!-- Meta tags for PWA -->
     <meta name="theme-color" content="#25d366" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="WhatsApp Hub" />
@@ -39,9 +40,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/src/styles/index.css" as="style">
     
     <!-- Custom CSS variables for theme -->
     <style>
@@ -167,17 +165,23 @@
         }, 1000); // Show loading for at least 1 second
       });
       
-      // Handle theme preference
+      // Handle theme preference - MEJORADO para evitar errores
       (function() {
-        const theme = localStorage.getItem('theme') || 
-          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
+        try {
+          const theme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (error) {
+          console.log('Theme detection failed:', error);
+          // Fallback a tema claro si hay problemas con localStorage
         }
       })();
       
-      // Service Worker Registration (for future PWA support)
+      // Service Worker Registration - COMENTADO para evitar errores 404
+      
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
@@ -189,6 +193,7 @@
             });
         });
       }
+      
     </script>
   </body>
 </html>

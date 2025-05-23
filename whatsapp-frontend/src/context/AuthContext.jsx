@@ -11,28 +11,41 @@ const initialState = {
   error: null
 }
 
-// Función segura para localStorage
+// Función segura para localStorage - MEJORADA
 const safeLocalStorage = {
   getItem: (key) => {
     try {
-      return localStorage?.getItem(key) || null
+      if (typeof window !== 'undefined' && window.localStorage) {
+        return localStorage.getItem(key) || null
+      }
+      return null
     } catch (error) {
-      console.warn('localStorage not available:', error)
+      console.warn('localStorage getItem failed:', error)
       return null
     }
   },
   setItem: (key, value) => {
     try {
-      localStorage?.setItem(key, value)
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem(key, value)
+        return true
+      }
+      return false
     } catch (error) {
       console.warn('localStorage setItem failed:', error)
+      return false
     }
   },
   removeItem: (key) => {
     try {
-      localStorage?.removeItem(key)
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.removeItem(key)
+        return true
+      }
+      return false
     } catch (error) {
       console.warn('localStorage removeItem failed:', error)
+      return false
     }
   }
 }
@@ -124,6 +137,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
+        console.log('🔐 Verificando token guardado...')
         const response = await authAPI.verify()
         
         // Tu backend devuelve diferentes estructuras, vamos a manejar todas
@@ -198,7 +212,7 @@ export const AuthProvider = ({ children }) => {
       
       console.log('✅ Login exitoso:', { user: userData, hasToken: !!token })
       
-      // Guardar tokens en localStorage
+      // Guardar tokens en localStorage usando función segura
       safeLocalStorage.setItem('token', token)
       if (refreshToken) {
         safeLocalStorage.setItem('refreshToken', refreshToken)
@@ -224,6 +238,7 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = async () => {
     try {
+      console.log('🚪 Cerrando sesión...')
       // Intentar logout en el backend
       await authAPI.logout()
     } catch (error) {
@@ -234,12 +249,14 @@ export const AuthProvider = ({ children }) => {
       safeLocalStorage.removeItem('refreshToken')
       dispatch({ type: 'AUTH_LOGOUT' })
       toast.success('Sesión cerrada correctamente')
+      console.log('✅ Sesión cerrada')
     }
   }
 
   // Actualizar perfil
   const updateProfile = async (profileData) => {
     try {
+      console.log('👤 Actualizando perfil:', profileData)
       const response = await authAPI.updateProfile(profileData)
       
       let updatedUser = null
@@ -258,8 +275,10 @@ export const AuthProvider = ({ children }) => {
       })
       
       toast.success('Perfil actualizado correctamente')
+      console.log('✅ Perfil actualizado')
       return response.data
     } catch (error) {
+      console.error('❌ Error actualizando perfil:', error)
       const errorMessage = error.response?.data?.error || 'Error al actualizar perfil'
       toast.error(errorMessage)
       throw error
@@ -269,9 +288,12 @@ export const AuthProvider = ({ children }) => {
   // Cambiar contraseña
   const changePassword = async (passwordData) => {
     try {
+      console.log('🔑 Cambiando contraseña...')
       await authAPI.changePassword(passwordData)
       toast.success('Contraseña cambiada correctamente')
+      console.log('✅ Contraseña cambiada')
     } catch (error) {
+      console.error('❌ Error cambiando contraseña:', error)
       const errorMessage = error.response?.data?.error || 'Error al cambiar contraseña'
       toast.error(errorMessage)
       throw error

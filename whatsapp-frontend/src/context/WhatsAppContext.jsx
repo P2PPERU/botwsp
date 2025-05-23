@@ -151,16 +151,18 @@ export const WhatsAppProvider = ({ children }) => {
       const response = await whatsappAPI.getStatus()
       
       // Tu backend puede devolver diferentes estructuras
-      let isConnected = false
-      let status = 'disconnected'
-      
-      if (response.data.success && response.data.data) {
-        isConnected = response.data.data.connected || response.data.data.status === 'connected'
-        status = response.data.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
-      } else {
-        isConnected = response.data.connected || response.data.status === 'connected'
-        status = response.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
-      }
+    let isConnected = false
+    let status = 'disconnected'
+
+    if (response.data.success && response.data.data) {
+      // Si hay data anidada
+      isConnected = response.data.data.connected || response.data.data.status === true || response.data.data.status === 'connected'
+      status = response.data.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
+    } else {
+      // Formato directo - TU BACKEND USA ESTE
+      isConnected = response.data.connected || response.data.status === true || response.data.status === 'connected'
+      status = response.data.sessionStatus || (isConnected ? 'connected' : 'disconnected')
+    }
       
       console.log('📱 WhatsApp status:', { isConnected, status })
       
@@ -205,13 +207,13 @@ export const WhatsAppProvider = ({ children }) => {
       let isConnected = false
       let qrCode = null
       
-      if (response.data.success && response.data.data) {
-        isConnected = response.data.data.connected
-        qrCode = response.data.data.qr
-      } else {
-        isConnected = response.data.connected
-        qrCode = response.data.qr
-      }
+    if (response.data.success && response.data.data) {
+      isConnected = response.data.data.connected
+      qrCode = response.data.data.qrCode || response.data.data.qr  // ← CORREGIDO
+    } else {
+      isConnected = response.data.connected
+      qrCode = response.data.qrCode || response.data.qr            // ← CORREGIDO
+    }
       
       if (isConnected) {
         dispatch({

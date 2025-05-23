@@ -38,16 +38,16 @@
   },
   "whatsapp": {
     "connections": {
-      "total": 0,
-      "successful": 0,
+      "total": 2,
+      "successful": 2,
       "failed": 0
     },
     "uptime": {
       "start": 1748021876223,
       "disconnections": []
     },
-    "status": "disconnected",
-    "lastCheck": 1748024600048
+    "status": "connected",
+    "lastCheck": 1748027549535
   },
   "clients": {
     "total": 3,
@@ -61,253 +61,242 @@
     }
   },
   "errors": {
-    "total": 27,
-    "today": 27,
+    "total": 86,
+    "today": 86,
     "byType": {
-      "api_error": 27
+      "api_error": 64,
+      "whatsapp_check": 22
     },
     "recent": [
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 401",
+        "message": "GET /sessions/status - 429",
         "details": {
           "path": "/sessions/status",
           "method": "GET",
-          "statusCode": 401,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024540035
+        "timestamp": 1748027639168
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 401",
+        "message": "GET /sessions/status - 429",
         "details": {
           "path": "/sessions/status",
           "method": "GET",
-          "statusCode": 401,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024525028
+        "timestamp": 1748027634162
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 401",
+        "message": "GET /sessions/status - 429",
         "details": {
           "path": "/sessions/status",
           "method": "GET",
-          "statusCode": 401,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024495026
+        "timestamp": 1748027630340
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 401",
+        "message": "GET /sessions/status - 429",
         "details": {
           "path": "/sessions/status",
           "method": "GET",
-          "statusCode": 401,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024480021
+        "timestamp": 1748027630337
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 403",
+        "message": "GET /sessions/qr - 429",
         "details": {
-          "path": "/sessions/status",
+          "path": "/sessions/qr",
           "method": "GET",
-          "statusCode": 403,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024464037
+        "timestamp": 1748027629156
       },
       {
         "type": "api_error",
-        "message": "GET /verify - 403",
+        "message": "GET /sessions/qr - 429",
         "details": {
-          "path": "/verify",
+          "path": "/sessions/qr",
           "method": "GET",
-          "statusCode": 403,
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024464035
+        "timestamp": 1748027628551
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 403",
+        "message": "POST /sessions/restart - 429",
         "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
+          "path": "/sessions/restart",
+          "method": "POST",
+          "statusCode": 429,
           "error": "Unknown error"
         },
-        "timestamp": 1748024464033
+        "timestamp": 1748027627138
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027625146
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027620333
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027615345
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027612345
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027610341
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027605337
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600385
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600381
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600376
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600372
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600367
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600363
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027600359
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027595146
       },
       {
         "type": "api_error",
-        "message": "GET /verify - 403",
+        "message": "POST /restart - 500",
         "details": {
-          "path": "/verify",
-          "method": "GET",
-          "statusCode": 403,
+          "path": "/restart",
+          "method": "POST",
+          "statusCode": 500,
           "error": "Unknown error"
         },
-        "timestamp": 1748024464032
+        "timestamp": 1748027588131
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027582301
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027580534
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027579534
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 403",
+        "message": "POST /restart - 500",
         "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
+          "path": "/restart",
+          "method": "POST",
+          "statusCode": 500,
           "error": "Unknown error"
         },
-        "timestamp": 1748024452016
+        "timestamp": 1748027577635
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027571984
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027570344
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.",
+        "details": null,
+        "timestamp": 1748027570340
       },
       {
         "type": "api_error",
-        "message": "GET /sessions/status - 403",
+        "message": "POST /restart - 500",
         "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
+          "path": "/restart",
+          "method": "POST",
+          "statusCode": 500,
           "error": "Unknown error"
         },
-        "timestamp": 1748024422016
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 403",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024417004
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 403",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024391814
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 403",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 403,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024387016
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024361819
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024360008
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024331813
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024331811
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748024326997
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748023939950
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748023884933
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748023854927
-      },
-      {
-        "type": "api_error",
-        "message": "GET /sessions/status - 401",
-        "details": {
-          "path": "/sessions/status",
-          "method": "GET",
-          "statusCode": 401,
-          "error": "Unknown error"
-        },
-        "timestamp": 1748023824919
+        "timestamp": 1748027564965
       },
       {
         "type": "api_error",
@@ -318,7 +307,7 @@
           "statusCode": 401,
           "error": "Unknown error"
         },
-        "timestamp": 1748023794904
+        "timestamp": 1748027473810
       },
       {
         "type": "api_error",
@@ -329,7 +318,19 @@
           "statusCode": 401,
           "error": "Unknown error"
         },
-        "timestamp": 1748023763996
+        "timestamp": 1748027458280
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Cannot read properties of null (reading 'evaluate')",
+        "details": null,
+        "timestamp": 1748027340661
+      },
+      {
+        "type": "whatsapp_check",
+        "message": "Cannot read properties of null (reading 'evaluate')",
+        "details": null,
+        "timestamp": 1748027340655
       },
       {
         "type": "api_error",
@@ -340,7 +341,7 @@
           "statusCode": 401,
           "error": "Unknown error"
         },
-        "timestamp": 1748023733992
+        "timestamp": 1748025873884
       },
       {
         "type": "api_error",
@@ -351,7 +352,7 @@
           "statusCode": 401,
           "error": "Unknown error"
         },
-        "timestamp": 1748023703997
+        "timestamp": 1748025860236
       },
       {
         "type": "api_error",
@@ -362,34 +363,185 @@
           "statusCode": 401,
           "error": "Unknown error"
         },
-        "timestamp": 1748023703993
+        "timestamp": 1748025860234
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025860233
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025860231
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025800241
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025800240
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025800238
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025800235
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025740228
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025740226
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025740224
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025722208
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025695196
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025692210
+      },
+      {
+        "type": "api_error",
+        "message": "GET /sessions/status - 401",
+        "details": {
+          "path": "/sessions/status",
+          "method": "GET",
+          "statusCode": 401,
+          "error": "Unknown error"
+        },
+        "timestamp": 1748025680218
       }
     ]
   },
   "api": {
     "requests": {
-      "total": 31,
-      "today": 31,
+      "total": 363,
+      "today": 363,
       "byEndpoint": {
-        "GET /sessions/status": 25,
-        "POST /login": 2,
-        "GET /verify": 2,
-        "GET /status": 2
+        "GET /sessions/status": 56,
+        "POST /login": 5,
+        "GET /verify": 34,
+        "GET /status": 234,
+        "GET /qr": 23,
+        "POST /logout": 2,
+        "POST /restart": 5,
+        "POST /close": 1,
+        "POST /sessions/restart": 1,
+        "GET /sessions/qr": 2
       }
     },
     "responseTime": {
-      "total": 158,
-      "count": 31,
-      "average": 5.096774193548387
+      "total": 10932,
+      "count": 363,
+      "average": 30.115702479338843
     },
     "statusCodes": {
-      "200": 4,
-      "401": 18,
-      "403": 9
+      "200": 299,
+      "401": 45,
+      "403": 9,
+      "429": 7,
+      "500": 3
     }
   },
   "system": {
     "startTime": 1748021876223,
-    "lastUpdate": 1748024600049
+    "lastUpdate": 1748027639168
   }
 }

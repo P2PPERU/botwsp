@@ -1,9 +1,9 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider } from '@context/AuthContext'
 import { WhatsAppProvider } from '@context/WhatsAppContext'
 import { ThemeProvider } from '@context/ThemeContext'
 import ProtectedRoute from '@components/common/ProtectedRoute'
-import LoadingSpinner from '@components/ui/LoadingSpinner'
+
 
 // Pages
 import LoginPage from '@pages/auth/LoginPage'
@@ -11,12 +11,28 @@ import DashboardPage from '@pages/dashboard/DashboardPage'
 import ChatPage from '@pages/chat/ChatPage'
 import SettingsPage from '@pages/settings/SettingsPage'
 
+// Componente de Layout principal
+const MainLayout = ({ children }) => {
+  const location = useLocation()
+  
+  // No mostrar layout en login
+  if (location.pathname === '/login') {
+    return children
+  }
+  
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      {children}
+    </div>
+  )
+}
+
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <WhatsAppProvider>
-          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+          <MainLayout>
             <Routes>
               {/* Public Routes */}
               <Route path="/login" element={<LoginPage />} />
@@ -53,7 +69,7 @@ function App() {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Routes>
-          </div>
+          </MainLayout>
         </WhatsAppProvider>
       </AuthProvider>
     </ThemeProvider>

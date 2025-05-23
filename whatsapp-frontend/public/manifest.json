@@ -1,0 +1,22 @@
+{
+  "name": "WhatsApp Hub",
+  "short_name": "WA Hub",
+  "description": "Sistema profesional de gestión de WhatsApp para empresas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#25d366",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

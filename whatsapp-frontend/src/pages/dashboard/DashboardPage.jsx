@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
   MessageCircle, 
@@ -24,13 +25,16 @@ import { useWhatsApp } from '@context/WhatsAppContext'
 import LoadingSpinner from '@components/ui/LoadingSpinner'
 
 const DashboardPage = () => {
+  const navigate = useNavigate()
   const { user, logout } = useAuth()
   const { 
     isConnected, 
-    sessionStatus, 
+    sessionStatus,
+    qrCode,        
     getQRCode, 
     closeSession, 
     restartSession,
+    checkConnectionStatus,
     isLoading 
   } = useWhatsApp()
   
@@ -44,13 +48,17 @@ const DashboardPage = () => {
   })
 
   const [isLoadingStats, setIsLoadingStats] = useState(true)
+  const [isCheckingConnection, setIsCheckingConnection] = useState(false)
+  
+  // Refs para cleanup
+  const connectionCheckInterval = useRef(null)
+  const connectionTimeout = useRef(null)
 
   useEffect(() => {
     // Simular carga de estadísticas desde la API
     const loadStats = async () => {
       setIsLoadingStats(true)
       try {
-        // Aquí harías la llamada real a la API
         await new Promise(resolve => setTimeout(resolve, 1500))
         
         setStats({
@@ -70,6 +78,40 @@ const DashboardPage = () => {
 
     loadStats()
   }, [])
+
+  // Cleanup al desmontar componente
+  useEffect(() => {
+    return () => {
+      clearConnectionChecks()
+    }
+  }, [])
+
+  // Cleanup de intervalos
+  const clearConnectionChecks = () => {
+    if (connectionCheckInterval.current) {
+      clearInterval(connectionCheckInterval.current)
+      connectionCheckInterval.current = null
+    }
+    if (connectionTimeout.current) {
+      clearTimeout(connectionTimeout.current)
+      connectionTimeout.current = null
+    }
+  }
+
+  // Función de navegación
+  const handleNavigation = (path) => {
+    navigate(path)
+  }
+
+  // Navegación específica para ir al chat
+  const handleGoToChat = () => {
+    navigate('/chat')
+  }
+
+  // Navegación para configuración
+  const handleGoToSettings = () => {
+    navigate('/settings')
+  }
 
   const statCards = [
     {
@@ -162,6 +204,38 @@ const DashboardPage = () => {
     }
   ]
 
+  // Acciones rápidas con navegación
+  const quickActions = [
+    {
+      title: 'Enviar Mensaje',
+      description: 'Envía un mensaje rápido',
+      icon: Send,
+      color: 'whatsapp',
+      action: () => handleNavigation('/chat')
+    },
+    {
+      title: 'Gestionar Clientes',
+      description: 'Ver y editar clientes',
+      icon: Users,
+      color: 'primary',
+      action: () => handleNavigation('/clients')
+    },
+    {
+      title: 'Ver Reportes',
+      description: 'Analiza tu rendimiento',
+      icon: BarChart3,
+      color: 'success',
+      action: () => handleNavigation('/reports')
+    },
+    {
+      title: 'Configuración',
+      description: 'Ajustar configuración',
+      icon: Settings,
+      color: 'gray',
+      action: () => handleNavigation('/settings')
+    }
+  ]
+
   const getStatusIcon = (status) => {
     switch (status) {
       case 'delivered':
@@ -222,21 +296,88 @@ const DashboardPage = () => {
     }
   }
 
+  // Iniciar verificación automática de conexión - PRODUCCIÓN
+  const startConnectionCheck = () => {
+    // Limpiar verificaciones anteriores
+    clearConnectionChecks()
+    
+    console.log('🔄 Iniciando verificación automática de conexión...')
+    
+    // Verificar cada 3 segundos
+    connectionCheckInterval.current = setInterval(async () => {
+      if (!isConnected) {
+        console.log('🔍 Verificando estado de conexión...')
+        await checkConnectionStatus()
+      } else {
+        // Si ya está conectado, limpiar la verificación
+        console.log('✅ WhatsApp conectado! Deteniendo verificación automática.')
+        clearConnectionChecks()
+      }
+    }, 5000)
+    
+    // Timeout de seguridad: detener después de 3 minutos
+    connectionTimeout.current = setTimeout(() => {
+      console.log('⏰ Timeout de verificación alcanzado. Deteniendo verificación automática.')
+      clearConnectionChecks()
+    }, 180000) // 3 minutos
+  }
+
   const handleConnectWhatsApp = async () => {
-    await getQRCode()
+    try {
+      console.log('🔗 Obteniendo código QR...')
+      await getQRCode()
+      
+      // Iniciar verificación automática después de mostrar QR
+      startConnectionCheck()
+      
+    } catch (error) {
+      console.error('❌ Error al obtener QR:', error)
+    }
   }
 
   const handleRestartSession = async () => {
-    await restartSession()
+    try {
+      console.log('🔄 Reiniciando sesión...')
+      clearConnectionChecks() // Limpiar verificaciones anteriores
+      await restartSession()
+      
+      // Esperar un poco y luego obtener nuevo QR
+      setTimeout(async () => {
+        await getQRCode()
+        startConnectionCheck()
+      }, 2000)
+      
+    } catch (error) {
+      console.error('❌ Error al reiniciar sesión:', error)
+    }
   }
 
   const handleCloseSession = async () => {
-    await closeSession()
+    try {
+      console.log('🚪 Cerrando sesión...')
+      clearConnectionChecks() // Limpiar verificaciones
+      await closeSession()
+    } catch (error) {
+      console.error('❌ Error al cerrar sesión:', error)
+    }
+  }
+
+  // Verificación manual de conexión
+  const handleManualCheck = async () => {
+    try {
+      setIsCheckingConnection(true)
+      console.log('🔍 Verificación manual de conexión...')
+      await checkConnectionStatus()
+    } catch (error) {
+      console.error('❌ Error en verificación manual:', error)
+    } finally {
+      setIsCheckingConnection(false)
+    }
   }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
+      {/* Header con navegación */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -254,6 +395,28 @@ const DashboardPage = () => {
               </div>
             </div>
 
+            {/* Navegación */}
+            <nav className="hidden md:flex items-center gap-4">
+              <button
+                onClick={() => handleNavigation('/dashboard')}
+                className="px-3 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-lg"
+              >
+                Dashboard
+              </button>
+              <button
+                onClick={() => handleNavigation('/chat')}
+                className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Chat
+              </button>
+              <button
+                onClick={() => handleNavigation('/settings')}
+                className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Configuración
+              </button>
+            </nav>
+
             <div className="flex items-center gap-4">
               {/* Estado de conexión */}
               <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border ${getStatusBgColor()}`}>
@@ -265,7 +428,10 @@ const DashboardPage = () => {
 
               {/* Menú de usuario */}
               <div className="flex items-center gap-2">
-                <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <button 
+                  onClick={handleGoToSettings}
+                  className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
                   <Settings className="w-5 h-5" />
                 </button>
                 <button 
@@ -370,39 +536,101 @@ const DashboardPage = () => {
                 </div>
               </div>
 
+              {/* SECCIÓN PRINCIPAL - QR O ESTADO CONECTADO */}
               {!isConnected && (
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-warning-100 dark:bg-warning-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <QrCode className="w-8 h-8 text-warning-600 dark:text-warning-400" />
-                  </div>
-                  <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    WhatsApp no está conectado
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
-                    Conecta tu cuenta de WhatsApp escaneando el código QR para comenzar a enviar mensajes
-                  </p>
-                  <div className="flex gap-3 justify-center">
-                    <button
-                      onClick={handleConnectWhatsApp}
-                      disabled={isLoading}
-                      className="btn-success flex items-center gap-2"
-                    >
-                      {isLoading ? (
-                        <LoadingSpinner size="sm" color="white" />
-                      ) : (
-                        <QrCode className="w-4 h-4" />
-                      )}
-                      Conectar WhatsApp
-                    </button>
-                    <button
-                      onClick={handleRestartSession}
-                      disabled={isLoading}
-                      className="btn-secondary flex items-center gap-2"
-                    >
-                      <RefreshCw className="w-4 h-4" />
-                      Reiniciar
-                    </button>
-                  </div>
+                  {/* Si hay QR code, mostrarlo */}
+                  {qrCode ? (
+                    <div>
+                      <div className="w-64 h-64 mx-auto mb-4 bg-white p-4 rounded-lg shadow-lg border">
+                        <img 
+                          src={qrCode} 
+                          alt="QR Code para WhatsApp" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                        📱 Escanea el código QR
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-md mx-auto">
+                        Abre WhatsApp → Menú (⋮) → Dispositivos vinculados → Vincular dispositivo
+                      </p>
+                      
+                      {/* Indicador de verificación automática */}
+                      <div className="mb-6">
+                        <div className="flex items-center justify-center gap-2 text-sm text-blue-600 dark:text-blue-400 mb-2">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                          Verificando conexión automáticamente...
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-3 justify-center">
+                        <button
+                          onClick={handleConnectWhatsApp}
+                          disabled={isLoading}
+                          className="btn-secondary flex items-center gap-2"
+                        >
+                          <RefreshCw className="w-4 h-4" />
+                          Nuevo QR
+                        </button>
+                        <button
+                          onClick={handleManualCheck}
+                          disabled={isCheckingConnection}
+                          className="btn-primary flex items-center gap-2"
+                        >
+                          {isCheckingConnection ? (
+                            <LoadingSpinner size="sm" color="white" />
+                          ) : (
+                            <RefreshCw className="w-4 h-4" />
+                          )}
+                          Verificar Estado
+                        </button>
+                        <button
+                          onClick={handleRestartSession}
+                          disabled={isLoading}
+                          className="btn-secondary flex items-center gap-2"
+                        >
+                          <RefreshCw className="w-4 h-4" />
+                          Reiniciar
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    /* Si no hay QR, mostrar botón para obtenerlo */
+                    <div>
+                      <div className="w-16 h-16 bg-warning-100 dark:bg-warning-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <QrCode className="w-8 h-8 text-warning-600 dark:text-warning-400" />
+                      </div>
+                      <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                        WhatsApp no está conectado
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+                        Conecta tu cuenta de WhatsApp escaneando el código QR para comenzar a enviar mensajes
+                      </p>
+                      <div className="flex gap-3 justify-center">
+                        <button
+                          onClick={handleConnectWhatsApp}
+                          disabled={isLoading}
+                          className="btn-success flex items-center gap-2"
+                        >
+                          {isLoading ? (
+                            <LoadingSpinner size="sm" color="white" />
+                          ) : (
+                            <QrCode className="w-4 h-4" />
+                          )}
+                          Conectar WhatsApp
+                        </button>
+                        <button
+                          onClick={handleRestartSession}
+                          disabled={isLoading}
+                          className="btn-secondary flex items-center gap-2"
+                        >
+                          <RefreshCw className="w-4 h-4" />
+                          Reiniciar
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -418,7 +646,10 @@ const DashboardPage = () => {
                     Tu cuenta está lista para enviar y recibir mensajes
                   </p>
                   <div className="flex gap-3 justify-center">
-                    <button className="btn-primary flex items-center gap-2">
+                    <button 
+                      onClick={handleGoToChat}
+                      className="btn-primary flex items-center gap-2"
+                    >
                       <Send className="w-4 h-4" />
                       Ir al Chat
                     </button>
@@ -494,36 +725,7 @@ const DashboardPage = () => {
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                title: 'Enviar Mensaje',
-                description: 'Envía un mensaje rápido',
-                icon: Send,
-                color: 'whatsapp',
-                href: '/chat'
-              },
-              {
-                title: 'Gestionar Clientes',
-                description: 'Ver y editar clientes',
-                icon: Users,
-                color: 'primary',
-                href: '/clients'
-              },
-              {
-                title: 'Ver Reportes',
-                description: 'Analiza tu rendimiento',
-                icon: BarChart3,
-                color: 'success',
-                href: '/reports'
-              },
-              {
-                title: 'Configuración',
-                description: 'Ajustar configuración',
-                icon: Settings,
-                color: 'gray',
-                href: '/settings'
-              }
-            ].map((action, index) => (
+            {quickActions.map((action, index) => (
               <motion.button
                 key={action.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -531,6 +733,7 @@ const DashboardPage = () => {
                 transition={{ delay: 0.7 + index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={action.action}
                 className="card-hover p-4 text-left group"
               >
                 <div className="flex items-center gap-3">
